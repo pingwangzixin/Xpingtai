@@ -1,0 +1,154 @@
+<system nav="navShowDet"></system>
+
+<div class="zjyset_jiaocai">
+	<div class="header">
+		教材管理
+	</div>
+	<div class="jiaocaimain">
+		<div class="top clearfix">
+			<div class="top_left fl">
+				<p><input type="text" placeholder="选择地区与学校"/></p>
+				<select name="">
+					<option value="">请选择学科</option>
+					<option value="">语文</option>
+					<option value="">数学</option>
+					<option value="">英语</option>
+				</select>
+			</div>
+			<div class="top_right fr">
+				<p class="schoolbtn">查看学校</p>
+				<p class="gradebtn" ng-click="state.gradeLinkup=true">关联年级</p>
+			</div>
+		</div>
+		<div class="content">
+			<div class="versionlist clearfix">
+				<span ng-repeat="item in data.versionlist" ng-class="{'active':$index==state.versionstate}" ng-click="changeversion($index)" ng-bind="item"></span>
+				<p class="addsubject" ng-click="state.addsection=true">+ 添加教材</p>
+			</div>
+			<div class="section">
+				<div class="head_tips">
+					<span class="tips">
+						( 提示 : 直接拖动可排序 )
+					</span>
+					<button type="button" style="background: #1abc9c; outline: none;" class="btn btn-info" ng-click="saveimport()">保存修改</button>
+					<button type="button" style="background: #1abc9c; outline: none; margin-left:20px" class="btn btn-info" ng-click="importshow()">上传教材</button>
+		    		<button type="button" style="background: #1abc9c;outline: none; margin-left:20px" class="btn btn-info" ng-click="downloadmodel()">下载模板</button>
+		    		<i class="tipsright">
+		    			<i class="topstxt">
+		    				空白表，只包含格式，用于导入新数据
+		    			</i>
+		    		</i>
+				</div>
+				<div ng-if="dataTree.length" class="row" style="overflow: hidden;">
+				  <div class="col-sm-12 j_direction_main">
+				    <div ui-tree id="tree-root">
+				      <ol ui-tree-nodes ng-model="dataTree">
+				        <li ng-repeat="node in dataTree" ui-tree-node ng-include="'nodes_renderer.html'" data-collapsed="true"></li>
+				      </ol>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<z-footer></z-footer>
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+        class="glyphicon"
+        ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+    <span id="{{node.id}}">{{node.title}}</span>
+    <a ng-hide="state.schoolshowstate" class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="removeBook(this,node.id)"><span
+        class="glyphicon glyphicon-remove"></span></a>
+    <a ng-hide="state.schoolshowstate" class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+        class="glyphicon glyphicon-plus"></span></a>
+    <a ng-hide="state.schoolshowstate" class="pull-right btn btn-warning btn-xs" data-nodrag ng-click="editItem(this)" style="margin-right: 8px;">  
+            <span class="glyphicon glyphicon-edit"></span>  
+   </a>  
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" data-collapsed="true">
+    </li>
+  </ol>
+</script>
+<div class="gy_del_down importAlert renke_tealist jiaocai_import" ng-show="state.addsection">
+    <div class="gy_hide"></div>
+    <div class="gy_con">
+    	<h3><span class="tit">添加教材</span> <i class="close" ng-click="insertVerBtn()">X</i></h3>
+    	<div class="import-content">
+    		<div class="top"><span ng-class="{'active':state.versioinadd==1}" ng-click="state.versioinadd=1">版本库</span><span ng-class="{'active':state.versioinadd==2}" ng-click="state.versioinadd=2">新建版本</span></div>
+    		<div ng-show="state.versioinadd==1" style="text-align: center; overflow: hidden;">
+    			<div class="header jiaocaihead clearfix">
+	    			<i class="fl">版本库筛选 : </i>
+	    			<ul class="list fr clearfix">
+	    				<li ng-repeat="item in state.versionList" ng-class="{'active':state.sectionindex==$index}" ng-bind="item" ng-click="selectVersion($index,item)"></li>
+	    			</ul>
+	    		</div>
+    		</div>
+    		<div ng-show="state.versioinadd==2" style="text-align: center; overflow: hidden;">
+    			<div class="create_section">
+	    			<label for="create">
+	    				创建新版本 :
+	    			</label>
+	    			<input type="text" style="width: auto; display: inline-block; height: 16px;" class="form-control" ng-model="state.editTitle">
+	    		</div>
+    		</div>
+    		
+    		<div class="footer">
+    			<button type="button" style="background: #1abc9c; outline: none;" class="btn btn-info" ng-click="saveVersion()">确认</button>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="gy_del_down importAlert renke_tealist gradeLinkup" ng-show="state.gradeLinkup">
+    <div class="gy_hide"></div>
+    <div class="gy_con">
+    	<h3><span class="tit">关联年级</span> <i class="close" ng-click="state.gradeLinkup=false">X</i></h3>
+    	<div class="import-content">
+			 <div class="create_section">
+    			<label for="create">
+    				初一年级 :
+    			</label>
+    			<select name="">
+    				<option value=""></option>
+    			</select>
+    		</div>   	
+			 <div class="create_section">
+    			<label for="create">
+    				初一年级 :
+    			</label>
+    			<select name="">
+    				<option value=""></option>
+    			</select>
+    		</div>   	
+			 <div class="create_section">
+    			<label for="create">
+    				初一年级 :
+    			</label>
+    			<select name="">
+    				<option value=""></option>
+    			</select>
+    		</div>   		
+    		<div class="footer">
+    			<button type="button" style="background: #1abc9c; outline: none;" class="btn btn-info" ng-click="state.gradeLinkup=false">确认</button>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="gy_del_down jiaocai_subject" ng-show="state.subjectEdit">
+    <div class="gy_hide"></div>
+    <div class="gy_con">
+    	<div class="con_wrap">
+    		<h2 style="color: #458DF4;">请填入节点名称</h2>
+		    <input type="text" class="form-control" ng-model="state.editTitle">
+		    <button type="button" style="background: #458df4;" class="btn btn-info" ng-click="sureEdit()">确认</button>
+		    <button type="button" class="btn" ng-click="canceledit()">取消</button>
+    	</div>
+    </div>
+</div>
+<img src="./img/jiaocainoselet.png" style="display: none;"/>
+<img src="./img/jiaocaiselet.png" style="display: none;"/>

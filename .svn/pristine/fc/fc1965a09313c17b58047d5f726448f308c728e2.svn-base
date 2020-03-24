@@ -1,0 +1,14 @@
+
+1、html、js文件名采用驼峰命名， eg ：newList
+
+2、css类名前面必须加姓名缩写前缀， eg ：zy_main
+
+共用部分：
+
+3、弹框基本样式，在弹框.html里
+
+4、渐变色圆角边框，在弹框.html里
+
+5、必填项*号，标签<i class="star">*</i>，已有共用样式， eg ：<p>身份证号 <i class="star">*</i></p>，i标签前面有个空格
+
+6、输入项的错误提示信息，标签<strong class="error_prompt"></strong>，已有共用样式，eg：<p>身份证号 <i class="star">*</i><strong class="error_prompt">（请输入正确的身份证号）</strong></p>，

@@ -1,0 +1,154 @@
+.wx_noaccess_btn {
+    border: 0;
+    background: #e8e8e8;
+    color: #999;
+    cursor: no-drop!important;
+    margin-top: 10px;
+}
+
+.wx_sure_btn {
+    border: 0;
+    background: #399fdf;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/*弹窗*/
+.wx_tanchuang {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1200!important;
+}
+
+.wx_tanchuang .wx_hide {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 99;
+}
+
+.wx_tanchuang .wx_tanchuangcon {
+    width: 661px;
+    height: 547px;
+    background: #fff;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.wx_tanchuang .wx_tanchuangcon .tc_con_tit {
+    height: 50px;
+    background: #399fdf;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-size: 16px;
+    position: relative;
+}
+
+.wx_tanchuang .wx_tanchuangcon .tc_con_neirong {
+    padding: 10px 20px;
+}
+
+.wx_tanchuang .wx_tanchuangcon .tc_con_neirong ul li {
+    line-height: 20px;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.wx_success_icon {
+    width: 100px;
+    height: 100px;
+    background: url(../img/success.png)no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+.wx_success_height {
+    height: 230px!important;
+    width: 500px!important;
+}
+
+.wx_erro_icon2 {
+    width: 100px;
+    height: 100px;
+    background: url(../img/erro_icon.png)no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+.wx_wangning_icon {
+    width: 100px;
+    height: 100px;
+    background: url(../img/waning.png)no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+.tc_con_neirong {
+    font-size: 14px;
+}
+
+.tc_anniu_queding {
+    width: 104px;
+    height: 30px;
+    border: 0;
+    background: #399fdf;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.tc_anniu_quxiao {
+    margin-left: 80px;
+    width: 104px;
+    height: 30px;
+    border: 0;
+    background: #cccccc;
+    color: #666666;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.wx_xgrwtc_height {
+    height: 286px!important;
+}
+
+.wx_xgrwtc_height .tc_con_neirong input {
+    width: 100px;
+    height: 28px;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+}
+
+.wx_erro_icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(../img/cuowu2.png)no-repeat;
+    margin-bottom: 10px;
+}
+.img_guanbi {
+    position: absolute;
+    right: 12px;
+    width: 20px;
+    top: 15px;
+    cursor: pointer;
+}
+.repair-group-kemu{
+	min-height: 28px;
+}
+
+.most-z-index{
+	z-index: 1100!important;
+}

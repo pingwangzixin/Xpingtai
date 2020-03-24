@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>走班排课-查看-学生分班明细</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../fonts/iconfont.css">
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../common/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+</head>
+<body>
+    <iframe src="../header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+    <div class="indexcon clearfix">
+        <div class="fanhui">
+            <a href="javaScript:void(0)" onclick="goIndex()"><img src="../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+        </div>
+        <div class="pkqh_con">
+            <!--   切换的列表        -->
+            <div class="qiehu_con_tit">
+                <ul id="cs_tab">
+                    <!--<a href="./check_classSchedule.html">
+						<li>班级课表</li>
+					</a>
+					<a href="./check_teacherSchedule.html">
+						<li>教师课表</li>
+					</a>
+					<a href="./check_classroomSchedule.html">
+						<li>教室课表</li>
+					</a>
+					<a href="./check_gradeSchedule.html">
+						<li>年级课表</li>
+					</a>
+					<a href="./check_studentSchedule.html">
+						<li>学生课表</li>
+					</a>
+					<a href="./check_detailSchedule.html">
+						<li class="active">学生分班明细</li>
+					</a>-->
+                </ul>
+            </div>
+            <!--   设置课表    -->
+            <div class="setkebiao classSchedule" style="padding:0 30px">
+                <div class="wx_jiaoshi_guize_qie">
+                    <ul>
+                        <li> <b>课表名称：</b><span>2017-2018学年第一学期课表</span> </li>
+                        <li class="clearfix mlh_height">
+							<div class="mlh_generate">
+								<em>年&nbsp;&nbsp;&nbsp;&nbsp;级：</em>
+								<select id="sel_grade">
+									<option>高一</option>
+								</select>
+								<em>科目组合：</em>
+								<select id="sel_sub">
+									<option>G1703班教室</option>
+								</select>
+								<em>教学班：</em>
+								<input id="input_class" type="text" name="">
+								<button class="mlh_btn">查询</button>
+							</div>
+						</li>
+                         <li class="mlh_setclass mlh_width clearfix">
+                         	<b>教学班：地理（选）（G1703班）：</b>
+                         	<p>
+	                         	<i class="mlh_addfz mlh_button mlh_bg"><em class="daochu"></em>导出</i>
+                         	</p>
+                         </li>   
+                        <li>
+                            <table class="wx_setrenwu_table mlh_width wx_setkemu_bupai">
+                                    <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th>科目组合</th>
+                                            <th>教学班</th>
+                                            <th>原行政班</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </li>
+                         <li class="mlh_setclass mlh_width clearfix">
+                         	<b>教学班：地理（选）（G1703班）：</b>
+                         </li>   
+                        <li>
+                            <table class="wx_setrenwu_table mlh_width wx_setkemu_bupai">
+                                    <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th>科目组合</th>
+                                            <th>教学班</th>
+                                            <th>原行政班</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                        <tr>
+                                            <td>黄琛灵</td>
+                                            <td>语文</td>
+                                            <td>地理（选）（G1703班）</td>
+                                            <td>1703</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </li>
+                    </ul>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+    <!-- 删除提示弹窗   -->
+    <div class="wx_tanchuang wx_delet_tips" style="display:none">
+        <div class="wx_hide"></div>
+        <div class="wx_tanchuangcon  wx_xgrwtc_height">
+            <div class="tc_con_tit"> <span>删除</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+            <div class="tc_con_neirong" style="margin-top:30px;">
+                <div style="text-align:center"> <em class="wx_erro_icon"></em>
+                    <p style="font-size:16px;">确认要删除吗？</p>
+                </div>
+            </div>
+            <p style="margin-top:20px;text-align:center">
+                <button class="tc_anniu_queding">确定</button>
+                <button class="tc_anniu_quxiao">取消</button>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

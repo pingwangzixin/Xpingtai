@@ -1,0 +1,97 @@
+
+.zjyset_jiaocai {margin: 0 auto; width: 1200px; overflow: hidden;}
+.zjyset_jiaocai .header{margin:30px 0 20px; height: 70px; line-height: 70px; background: #fff; color: #399fdf; font-size: 18px;font-weight: 600; border-radius: 5px;padding-left: 40px;}
+
+.zjyset_jiaocai .jiaocaimain{background: white; border-radius: 5px;}
+.zjyset_jiaocai .jiaocaimain .top{padding:18px 0 0 30px; border-bottom: 1px solid #e0e2e4;}
+.zjyset_jiaocai .jiaocaimain .top .top_left{width: 82%;}
+.zjyset_jiaocai .jiaocaimain .top .top_left p input{width: 215px; height: 36px; border-radius: 5px;border:1px solid #dbdbdb; outline: none; transition: all .4s; padding-left: 15px;margin-bottom: 20px;}
+.zjyset_jiaocai .jiaocaimain .top .top_left p input:focus{border: 1px solid #7fb2fa; box-shadow: 0px 0px 6px #7fb2fa;}
+.zjyset_jiaocai .jiaocaimain .top .top_left select{width: 215px; height: 36px; border-radius: 5px;border:1px solid #dbdbdb; outline: none; margin-top: -10px; padding-left: 15px;}
+.zjyset_jiaocai .jiaocaimain .top .top_right p{width: 148px; height: 36px; border:1px solid #399fdf; color: #399fdf; border-radius: 5px; text-align: center; line-height: 36px;margin: 0 30px 10px 0; cursor: pointer; font-size: 16px;}
+.zjyset_jiaocai .jiaocaimain .top .top_right .gradebtn{background: #399fdf; color: white;}
+.zjyset_jiaocai .jiaocaimain .content{padding:31px;}
+.zjyset_jiaocai .jiaocaimain .content .versionlist>span{float: left; padding:10px 32px;font-size:16px;border-radius: 5px; margin-right: 15px;margin-bottom: 10px; border:1px solid #f1f2f3; cursor: pointer;}
+.zjyset_jiaocai .jiaocaimain .content .versionlist>span.active{background: #1abc9c;color: white; }
+.zjyset_jiaocai .jiaocaimain .content .versionlist .addsubject{width: 123px; height: 36px; line-height: 36px; border:1px solid #f1f2f3; color: #399fdf; float: left; text-align: center;font-size: 16px; border-radius: 5px; cursor: pointer;}
+.zjyset_jiaocai .jiaocaimain .content .section{margin-top: 26px;}
+.zjyset_jiaocai .jiaocaimain .content .section .head_tips{height: 50px;line-height: 50px; text-align: right; position: relative;}
+.zjyset_jiaocai .jiaocaimain .content .section .head_tips .tips{color: red;position: absolute; left: 10px;bottom: -10px}
+.zjyset_jiaocai .jiaocaimain .content .section .head_tips .tipsright{display: inline-block; width: 22px;height: 21px; background: url(../img/jiaocaitips.png) no-repeat center; vertical-align: middle; margin-left: 10px; position: relative;}
+.zjyset_jiaocai .jiaocaimain .content .section .head_tips .tipsright .topstxt{display: none; position: absolute;padding:6px;background: #f1f2f3; border:1px solid #e8edf1;font-style: normal;width: 100px; top: -96px;left: -88px; line-height: 1.6; text-align: left;}
+.zjyset_jiaocai .jiaocaimain .content .section .head_tips .tipsright .topstxt:before{content: '';display: inline-block; position: absolute; width:0; height:0;border-width:6px 12px 6px 12px;border-style:solid; border-color:#F1F2F3 #F1F2F3 transparent transparent; bottom: -12px;right:12px; }
+.zjyset_jiaocai .jiaocaimain .content .section .head_tips .tipsright:hover .topstxt{display: block;}
+.j_direction_main{ padding-bottom: 20px; width: 98%;}
+
+.importAlert .import-content{padding:10px 20px 25px 18px; min-height: 185px;}
+.jiaocai_import .import-content .header{height: auto;font-size: 14px; padding-top: 15px; }
+.jiaocai_import .import-content .header.jiaocaihead{max-height: 200px; overflow: auto; display: inline-block;}
+.jiaocai_import .import-content .header i{font-style: normal;font-weight: 600; float: left;}
+.jiaocai_import .import-content .header .list{float: left; margin-left:15px;}
+.jiaocai_import .import-content .header .list li{float: left;padding:3px 10px;margin-right: 10px; -webkit-user-select: none;user-select: none;cursor: pointer; margin-bottom: 5px; border-radius: 3px;}
+.jiaocai_import .import-content .header .list li.active{color: white;background: #1abc9c;}
+.importAlert .import-content .footer{text-align: center; margin-top: 30px;}
+.importAlert .import-content .footer span{display: inline-block; width: 145px;height: 40px;line-height: 40px; background: #458DF4; margin:0 40px;border-radius: 5px;color: white; cursor: pointer;}
+.importAlert .import-content .footer span:last-child{background: #ccc;color: black; }
+.importAlert .import-content .footer .btn{width: 300px;}
+.importAlert .import-content .top{text-align: center;height: 60px; font-size: 14px; color:#000; line-height: 50px;}
+.importAlert .import-content .top span{padding-left: 25px;font-size: 17px; background: url(../img/jiaocainoselet.png) no-repeat left center; cursor: pointer;}
+.importAlert .import-content .top span.active{background-image: url(../img/jiaocaiselet.png);}
+.importAlert .import-content .top span:first-of-type{margin-right: 25px; }
+
+.renke_tealist .gy_con{width: 860px ;height:auto;overflow: hidden; transform: translate(-50%,-50%);top: 50%; left:50%; right:auto; bottom: auto;}
+.renke_tealist .gy_con h3{height: 55px;background: #f1f2f3;color: #212121; font-size: 14px; padding-left:30px; line-height: 55px; position: relative;}
+.renke_tealist .gy_con h3 .tit{font-size: 16px;}
+.renke_tealist .gy_con h3 .close{position: absolute;top: 20px;right: 28px;width: 17px;height: 15px;cursor: pointer; opacity: 1; font-style: normal; color: #c3c4c4; font-weight: 600;}
+
+.jiaocai_subject .con_wrap{width: 80%;margin:20px auto;text-align: center}
+.jiaocai_subject .gy_con{border-radius: 5px; width: 380px;height: 240px;}
+.jiaocai_subject .con_wrap .btn{outline: none; margin:0 20px}
+.jiaocai_subject .con_wrap .form-control{margin:30px 0; width: 92%; height: 40px!important;}
+
+.gradeLinkup .gy_con{width: 700px;}
+.gradeLinkup .create_section{width: 326px; margin:0px auto 15px;}
+.gradeLinkup .create_section label{font-size: 16px; display: block; margin:5px 0;}
+.gradeLinkup .create_section select{width: 100%; height: 36px; border-radius: 5px;border:1px solid #dbdbdb; outline: none; padding-left: 15px;}
+
+.angular-ui-tree-dropzone,.angular-ui-tree-empty{border:1px dashed #bbb;min-height:100px;background-color:#e5e5e5;background-image:-webkit-linear-gradient(45deg,#fff 25%,transparent 0,transparent 75%,#fff 0,#fff),-webkit-linear-gradient(45deg,#fff 25%,transparent 0,transparent 75%,#fff 0,#fff);background-image:linear-gradient(45deg,#fff 25%,transparent 0,transparent 75%,#fff 0,#fff),linear-gradient(45deg,#fff 25%,transparent 0,transparent 75%,#fff 0,#fff);background-size:60px 60px;background-position:0 0,30px 30px}.angular-ui-tree-empty{pointer-events:none}.angular-ui-tree-nodes{position:relative;margin:0;padding:0;list-style:none}.angular-ui-tree-nodes .angular-ui-tree-nodes{padding-left:20px}.angular-ui-tree-node,.angular-ui-tree-placeholder{position:relative;margin:0;padding:0;min-height:20px;line-height:20px}.angular-ui-tree-hidden{display:none}.angular-ui-tree-placeholder{margin:10px;padding:0;min-height:30px}.angular-ui-tree-handle{cursor:move;text-decoration:none;font-weight:700;box-sizing:border-box;min-height:20px;line-height:20px}.angular-ui-tree-drag{position:absolute;pointer-events:none;z-index:999;opacity:.8}.angular-ui-tree-drag .tree-node-content{margin-top:0}
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+    height:100px
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+.tree-node-content {
+    margin: 10px;
+}
+
+
+
+
+
+
+
+

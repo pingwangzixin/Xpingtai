@@ -1,0 +1,87 @@
+<system nav="navShowDet"></system>
+
+<div class="zy_system_bg zy_role_box_bg">
+	<div class="zy_role_box">
+		<div class="zy_operation">
+<!--
+			{{operationGroup.add}}
+    		{{operationGroup.edit}}
+    		{{operationGroup.roleTit}}
+-->
+			<button class="fr" ng-click="(operationGroup.add = !operationGroup.add) && (operationGroup.roleTit = true)">新增</button>
+		</div>
+		<div class="zy_table_box zy_role_list">
+			<table border="" cellspacing="" cellpadding="">
+				<tr>
+					<th>角色</th>
+					<th>管辖范围</th>
+					<th>备注</th>
+					<th>操作</th>
+				</tr>
+				<tr ng-repeat="r in roleusers">
+					<td>李连杰</td>
+					<td>学校</td>
+					<td>
+						<span>捷成超级管理员</span>
+						<span>捷成超级管理员</span>
+						<span>捷成超级管理员</span>
+					</td>
+					<td>
+						<button class="zy_role_edit" ng-click="(operationGroup.edit = !operationGroup.edit) && (operationGroup.roleTit = false)"><em class="icon iconfont icon-bianji1"></em>编辑</button>
+						<button class="zy_role_del" ng-click="operationGroup.delete = !operationGroup.delete"><em class="icon iconfont icon-shanchu"></em>删除</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!--<z-footer></z-footer>-->
+
+<!--新建角色弹框-->
+<div class="gy_del_down zy_role_addRole" ng-show="operationGroup.add || operationGroup.edit">
+    <div class="gy_hide"></div>
+    <div class="gy_con">
+    	<div class="zy_add_tit">
+    		<span ng-show="operationGroup.roleTit">添加角色</span>
+    		<span ng-show="!operationGroup.roleTit">编辑角色</span>
+    		<i class="fr" ng-click="(operationGroup.add = false) || (operationGroup.edit = false)">×</i>
+    	</div>
+    	<div class="zy_add_detail">
+    		<div class="zy_add_ques">
+    			<span>角色名称</span>
+    			<input type="text" />
+    		</div>
+    		<div class="zy_add_ques">
+    			<span>管辖范围</span>
+    			<select name="" ng-model="jurisdictionSelected" ng-options="r.id as r.name for r in jurisdiction">
+    				<option value="">请选择管辖范围</option>
+    			</select>
+    		</div>
+    		<div class="zy_add_ques">
+    			<span>配置权限</span>
+    			<i class="star">*</i>
+    			<ul class="clearfix">
+    				<li ng-class="{'active':active}" ng-repeat="r in range" ng-bind="r.name" ng-click="active = !active">课程中心</li>
+    			</ul>
+    		</div>
+    		<div class="zy_add_ques zy_add_ques_remark">
+    			<span>备注</span>
+    			<textarea name="" rows="" cols=""></textarea>
+    		</div>
+    		<button class="zy_add_role_sure">确认</button>
+    	</div>
+	</div>
+</div>
+
+<!--删除弹框-->
+<div class="gy_del_down zy_delete_role" ng-show="operationGroup.delete">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+    	<p class="zy_delete_who">确定要删除<span>杨楠杨楠杨楠杨楠杨楠杨楠</span>老师吗？</p>
+    	<div class="zy_del_btn">
+    		<button class="zy_cancel_role" ng-click="operationGroup.delete = !operationGroup.delete">取消</button>
+    		<button class="zy_sure_role">确认</button>
+    	</div>
+	</div>
+</div>

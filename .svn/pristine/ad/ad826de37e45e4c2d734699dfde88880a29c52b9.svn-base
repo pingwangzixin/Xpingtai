@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>智能分班</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" href="../../css/newEaxm.css">
+		<link rel="stylesheet" href="../../css/tanchuang.css">
+	</head>
+
+	<body>
+		<!--最大容器 start-->
+		<div class="mlh_wrapper">
+			<!--头部 start-->
+			<div class="mlh_header">
+				<div class="content">
+					<div class="left">
+						<a href="#"><img src="../../img/logo.png"></a>
+						<span>智能分班</span>
+					</div>
+					<div class="right">
+						<!--<span class="help"><i class="iconfont icon-help"></i>用户帮助</span>-->
+						<span class="user">
+						<i class="iconfont icon-user"></i>
+						<!--王老师-->
+						<span id="createName"></span>
+						<i class="arrow"></i>
+						<div class="exit" onclick="loginOut()"><i class="iconfont icon-tuichu"></i>退出登录</div>
+					</span>
+					</div>
+				</div>
+			</div>
+			<!--头部 end-->
+			<!--整个容器 start-->
+			<div class="mlh_container">
+				<div class="fanhui">
+	            	<a href="javaScript:void(0)" onclick="goClassify()"><img src="../../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+	        	</div>
+				<div class="mlh_creat">
+					<div class="mlh_wrap">
+						<div class="cont">
+							<div class="left">
+								<span>学年 </span>
+								<select name="" id="schoolYear" class="index_xuenian range">
+									<option value="2019">2019-2020学年</option>
+									<!--<option value="">请选择</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>-->
+								</select>
+								<span>学期 </span>
+								<select name="" id="term" class="index_xuenian">
+									<option value="1" selected="selected">第一学期</option>
+									<!-- <option value="2" selected="selected">第二学期</option> -->
+									<!--<option value="">请选择</option>
+									<option value="1">第一学期</option>
+									<option value="2">第二学期</option>-->
+								</select>
+							</div>
+							<div class="right">
+								<button class="addkebiao"><i class="iconfont icon-add"></i>新增分班任务</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="dc_table" class="mlh_table">
+					<!--<div class="table-tr">
+						<div class="table-th">
+							<i class="icon-file"></i>
+							<span class="title">高一年级语文选科（单科）0323</span>
+						</div>
+						<div class="table-th">
+						</div>
+						<div class="table-th clearfix">
+							<ul class="operate">
+								<li class="item repair">
+									<a href="set_class.html"><i class="iconfont icon-fenban"></i>分班</a>
+								</li>
+								<li class="item edit">
+									<a href="javascript:;"><i class="iconfont icon-edit"></i>编辑</a>
+								</li>
+								<li class="item see">
+									<a href="check.html"><i class="iconfont icon-check"></i>查看</a>
+								</li>
+								<li class="item del">
+									<a href="javascript:;"><i class="iconfont icon-del"></i>删除</a>
+								</li>
+							</ul>
+						</div>
+					</div>-->
+				</div>
+			</div>
+			<!--整个容器 end-->
+		</div>
+		<!--最大容器 end-->
+		<!--创建分班任务 start-->
+		<div class="del_down" class="mlh_class" id="mlh_class" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>创建分班任务</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table">
+						<form id="dcForm">
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="class-width">设置分班名称：</td>
+									<td><input id="dcName" type="text" name="name" placeholder=""></td>
+								</tr>
+								<tr>
+									<td class="class-width">选择分班年级：</td>
+									<td>
+										<select id="grade_select" name="gradeId">
+											<!--<option>请选择</option>
+										<option selected="">高一</option>-->
+										</select>
+									</td>
+								</tr>
+								<!--<tr>
+									<td class="class-width">选择分班规则：</td>
+									<td class="checkbox">
+										<label>
+						      <input type="checkbox" value="1" name="sexBlance">男女比例均衡
+						    </label>
+										<label class="mlh_spacing">
+						      <input type="checkbox" value="1" name="nameBlance">姓名相同分在不同班级
+						    </label>
+									</td>
+								</tr>-->
+								<tr class="distinguish dcType">
+									<td class="class-width" valign="top">选择分班方案：</td>
+									<td>
+										<a id="type_1" data-value="1" href="javascript:;" class="team active">
+											<span>微走班</span> 按三三组合分
+										</a>
+										<a id="type_2" data-value="2" href="javascript:;" class="team">
+											<span>中走班</span> 按组合分班后少数学生走班
+										</a>
+										<a id="type_3" data-value="3" href="javascript:;" class="team">
+											<span>大走班</span> 所有学生均可按科目分层走班
+										</a>
+										<!--<a id="type_4" data-value="4" href="javascript:;" class="team">
+											<span>定二走一</span> 固定两个科目走一个科目
+										</a>
+-->									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="button" onclick="saveDc()" class="mlh_btn sure distance">确定</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<!--<div class="state" >
+						说明：学生按单科进行选科，选科完成后，依据班级人数均衡及走班量 最少量大原则，高考志愿两两科目匹配，剩余一科目走班的方式分班。
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<!--创建分班任务 end-->
+		<!--编辑分班任务 start-->
+		<!--<div class="del_down" class="mlh_class" id="mlh_edit" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>编辑分班任务</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td class="class-width">设置分班名称：</td>
+								<td><input type="text" name="" placeholder=""></td>
+							</tr>
+							<tr>
+								<td class="class-width">选择分班年级：</td>
+								<td>
+									<select>
+										<option>请选择</option>
+										<option selected="">高一</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="class-width">选择分班规则：</td>
+								<td class="checkbox">
+									<label>
+						      <input type="checkbox" name="task_chkId_01" checked>男女比例均衡
+						    </label>
+									<label class="mlh_spacing">
+						      <input type="checkbox" name="task_chkId_02">姓名相同分在不同班级
+						    </label>
+								</td>
+							</tr>
+							<tr class="distinguish">
+								<td class="class-width" valign="top">选择分班方案：</td>
+								<td>
+									<a href="javascript:;" class="team active">
+										<span>微走班</span> 按三三组合分
+									</a>
+									<a href="javascript:;" class="team">
+										<span>中走班</span> 按组合分班后少数学生走班
+									</a>
+									<a href="javascript:;" class="team">
+										<span>大走班</span> 所有学生均可按科目分层走班
+									</a>
+									<a href="javascript:;" class="team">
+										<span>定二走一</span> 固定两个科目走一个科目
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<button class="mlh_btn sure distance">确定</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="state">
+						说明：学生按单科进行选科，选科完成后，依据班级人数均衡及走班量 最少量大原则，高考志愿两两科目匹配，剩余一科目走班的方式分班。
+					</div>
+				</div>
+			</div>
+		</div>-->
+
+		<!-- 删除提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>删除</span> <img onclick="cancel('deleteTips')" src="../../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">确认要删除吗？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" class="tc_anniu_queding">确定</button>
+					<button onclick="cancel('deleteTips')" class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--编辑分班任务 end-->
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/stu-common.js"></script>
+		<script src="../../js/class.js"></script>
+		<script src="../../js/loginOut.js"></script>
+	</body>
+
+</html>

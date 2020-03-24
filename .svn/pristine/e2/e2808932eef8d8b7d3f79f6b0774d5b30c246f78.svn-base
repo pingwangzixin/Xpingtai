@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>大走班-设置分班</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" href="../../css/newEaxm.css">
+		<link rel="stylesheet" href="../../css/tanchuang.css" />
+	</head>
+
+	<body>
+		<!--最大容器 start-->
+		<div class="mlh_wrapper">
+			<!--头部 start-->
+			<div class="mlh_header">
+				<div class="content">
+					<div class="left">
+						<a href="#"><img src="../../img/logo.png"></a>
+						<span>智能分班</span>
+					</div>
+					<div class="right">
+						<!--<span class="help"><i class="iconfont icon-help"></i>用户帮助</span>-->
+						<span class="user">
+						<i class="iconfont icon-user"></i>
+						<!--王老师-->
+						<span id="createName"></span>
+						<i class="arrow"></i>
+						<div class="exit" onclick="loginOut()"><i class="iconfont icon-tuichu"></i>退出登录</div>
+					</span>
+					</div>
+				</div>
+			</div>
+			<!--头部 end-->
+			<!--整个容器 start-->
+			<div class="mlh_container">
+				<div class="fanhui">
+	            	<a href="javaScript:void(0)" onclick="goClassHtml()"><img src="../../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+	        	</div>
+				<div class="mlh_title">
+					<div class="mlh_check">
+						<a href="#" class="active">设置分班</a>
+						<a id="result_tab" href="#">设置班主任</a>
+					</div>
+				</div>
+				<!--设置分班 start-->
+				<div class="mlh_student" style="display: block;">
+					<ul class="mlh_query">
+						<li id="dcName" class="item">名称：</li>
+						<li class="item">
+							选择选科名称：
+							<select id="sel_sub">
+								<option value="">请选择</option>
+							</select>
+						</li>
+						<li class="item item-1">
+							<p>
+								<span class="number">分班总人数   <span id="yxNum">0</span>人</span>
+								<span class="number">年级人数 <span id="total">0</span>人</span>
+								<span class="number">还有<span id="wxNum">0</span>人由于未选科而没有参加分班</span>
+							</p>
+						</li>
+						<!--<li class="item classes">
+						<p class="kaiban">
+							<mark>*</mark> 设置班额数
+						</p>
+						<p class="select">
+							平均最大额数：
+							<input type="text" name="" class="mean">
+							<span>
+								最大班额数：
+								<input type="text" name="" class="mean">
+							</span>
+						</p>
+					</li>-->
+						<!--<li class="item classes">
+						<p class="kaiban">
+							<mark>*</mark> 设置科目课时数
+						</p>
+						<div class="mlh_tab mlh_set">
+							<table cellpadding="0" cellspacing="0">
+								<thead>
+									<tr>
+										<td>科目组</td>
+										<td>选考周课时</td>
+										<td>学考周课时</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>政治</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+									<tr>
+										<td>历史</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+									<tr>
+										<td>地理</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+									<tr>
+										<td>物理</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+									<tr>
+										<td>化学</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+									<tr>
+										<td>生物</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+									<tr>
+										<td>英语</td>
+										<td><input type="text" placeholder="123"></td>
+										<td><input type="text" placeholder="123"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="select">
+							年级周总课时：
+							<input type="text" name="" placeholder="1" class="mean">
+							<span>
+								非走班科目周总课时：
+								<input type="text" name="" placeholder="1" class="mean">
+							</span>
+							<span class="tips">（非走班科目包括仔细、班会等课时）</span>
+						</p>
+					<!--<li class="item">
+						<i class="iconfont icon-jiantou"></i> 高级设置
+					</li>-->
+						<li class="item classes">
+							<!--<p class="kaiban">
+							设置科目最大班数
+							<span class="tips">
+							（说明：科目开班数可根据学校师资情况设置，分班时会优先考虑；也可不设，系统按优配置）
+							</span>
+						</p>-->
+							<div class="mlh_tab mlh_set">
+								<table cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<td>科目</td>
+											<!--<td>上课教师人数</td>-->
+											<td>选考人数</td>
+											<td>开班数</td>
+											<td>均额数</td>
+											<!--<td>学考人数</td>
+										<td>开班数</td>-->
+										</tr>
+									</thead>
+									<tbody id="sub_class_num">
+										<!--<tr>
+										<td>政治</td>
+										<td><input type="text" placeholder="123"></td>
+										<td>0</td>
+										<td><input type="text" placeholder="开班数"></td>
+										<td>123</td>
+										<td><input type="text" placeholder="0"></td>
+									</tr>-->
+									</tbody>
+								</table>
+							</div>
+							<!--<p class="select">
+							年级周总课时：
+							<input type="text" name="" placeholder="1" class="mean">
+							<span>
+								非走班科目周总课时：
+								<input type="text" name="" placeholder="1" class="mean">
+							</span>
+							<span class="tips">（非走班科目包括仔细、班会等课时）</span>
+						</p>-->
+						</li>
+						<!--<li class="item classes">
+						<p class="kaiban">
+							设置按班级分层
+							<span class="tips">
+							（说明：选择班级名称，选择对应层级，再点击”确定”按钮即可；如果没有分层要求，则可不设）
+							</span>
+						</p>
+						<p class="select">选择班级名称，可多选（默认为A层）</p>
+						<p>
+							<a href="javascript:;" class="mlh_btn subjects active">1704</a>
+	            	<a href="javascript:;" class="mlh_btn subjects active">1704</a>
+	            	<a href="javascript:;" class="mlh_btn subjects">1704</a>
+	            	<a href="javascript:;" class="mlh_btn subjects">1704</a>
+	            	<a href="javascript:;" class="mlh_btn subjects">1704</a>
+	            	<a href="javascript:;" class="mlh_btn subjects">1704</a>
+						</p>
+					</li>
+					<li class="item">
+						选择层级：
+						<select class="select-left">
+							<option>请选择</option>
+							<option selected="">B层</option>
+						</select>
+						<button class="mlh_btn sure">确定</button>
+					</li>-->
+					</ul>
+					<div class="mlh_step">
+						<button id="dcBtn" type="button" onclick="saveDivideClass(true)" class="mlh_btn wx_noaccess_btn addsub_gruop_insert_btn">下一步，开始分班</button>
+					</div>
+				</div>
+				<!--设置分班 end-->
+				<!--分班结果预览 start-->
+				<div class="mlh_student" style="display: none;">
+					<ul class="mlh_query">
+						<li class="item">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<span id="list_dc_name"></span></li>
+						<li class="item item-1">
+							<!--<p>
+								科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目：
+								<select id="one_sub_list">
+									<option>高一</option>
+								</select>
+							</p>-->
+							<!--<p>
+								<a href="#" class="total_table_btn daoru class_table">
+									<i class="iconfont icon-table"></i> 班级总表
+								</a>
+								<a href="#" class="daoru teacher_table">
+									<i class="iconfont icon-table"></i> 师资配比表
+								</a>
+								<a href="#" class="daochu export_result">
+									<i class="iconfont icon-daochu"></i> 导出
+								</a>
+							</p>-->
+						</li>
+					</ul>
+					<div class="mlh_table mlh_tab">
+						<table cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<td>序号</td>
+									<td>类别</td>
+									<td>班级</td>
+									<td>设置班主任</td>
+									<!--<td>总人数</td>
+										<td>科目</td>
+									<td>组合名称</td>
+									<td>组合人数</td>-->
+								</tr>
+							</thead>
+							<tbody id="result_table">
+								<!--<tr>
+									<td rowspan="11">1</td>
+									<td rowspan="11">政治</td>
+									<td rowspan="2">政（选）1709</td>
+									<td rowspan="2">123</td>
+									<td rowspan="2">123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政（选）1709</td>
+									<td>123</td>
+									<td>123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政（选）1709</td>
+									<td>123</td>
+									<td>123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td rowspan="3">政（选）1709</td>
+									<td rowspan="3">123</td>
+									<td rowspan="3">123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政（选）1709</td>
+									<td>123</td>
+									<td>123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政（选）1709</td>
+									<td>123</td>
+									<td>123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政（选）1709</td>
+									<td>123</td>
+									<td>123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>
+								<tr>
+									<td>政（选）1709</td>
+									<td>123</td>
+									<td>123</td>
+									<td>政史物</td>
+									<td>1237</td>
+								</tr>-->
+							</tbody>
+						</table>
+					</div>
+					<div class="mlh_step">
+						<button class="mlh_btn step_top">返回上一步</button>
+						<button class="mlh_btn sure step_btn" onclick="updateClassName()">确定</button>
+					</div>
+				</div>
+				<!--分班结果预览 end-->
+			</div>
+			<!--整个容器 end-->
+		</div>
+		<!--最大容器 end-->
+		<!--班级总表 start-->
+		<div class="del_down" id="totalTable" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>班级总表</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td colspan="2" class="item-1">
+									<p>
+										科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目：
+										<select id="class_total_sel">
+											<option>123</option>
+										</select>
+									</p>
+									<p class="tc_daochu">
+										<a href="#" class="daochu export_total">
+											<i class="iconfont icon-daochu"></i> 导出
+										</a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div class="cont-width kemu-width adjust-width">
+										<div class="checkname">
+											<table cellpadding="0" cellspacing="0" class="sub-table">
+												<thead>
+													<tr>
+														<td>层级</td>
+														<td>科目</td>
+														<td>类别</td>
+														<td>总数</td>
+														<td>班级名称</td>
+														<!--<td>上课地点</td>-->
+														<td>人数</td>
+													</tr>
+												</thead>
+												<tbody id="class_total_table">
+													<!--<tr>
+														<td rowspan="13">1</td>
+														<td rowspan="13">政治</td>
+														<td rowspan="6">选考班</td>
+														<td rowspan="6">6</td>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td rowspan="7">学考班</td>
+														<td rowspan="7">7</td>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>6</td>
+														<td>7</td>
+													</tr>-->
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--班级总表 end-->
+		<!--师资配比表 start-->
+		<div class="del_down" id="teacherTable" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>师资配比表</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td colspan="2" class="item-1">
+									<p></p>
+									<p class="tc_daochu">
+										<a href="#" class="daochu">
+											<i class="iconfont icon-daochu"></i> 导出
+										</a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div class="cont-width kemu-width adjust-width">
+										<div class="checkname">
+											<table cellpadding="0" cellspacing="0" class="sub-table" style="table-layout:inherit;">
+												<thead>
+													<tr>
+														<td rowspan="2">科目</td>
+														<td colspan="3">同时最大开班数</td>
+														<td colspan="3">科目开班数</td>
+														<td>班额上限</td>
+														<td>班额下限</td>
+														<td>地点数</td>
+														<td>场地增加情况</td>
+													</tr>
+													<tr>
+														<td>学考</td>
+														<td>选考</td>
+														<td>总数</td>
+														<td>学考</td>
+														<td>选考</td>
+														<td>总数</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>政治</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--设置班主任 start-->
+		<div class="del_down" class="mlh_class" id="mlh_bzr" style="display:none ; ">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>设置班主任</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table">
+						<div class="mlh_search">
+							<input id="input_tea" type="text" name="" placeholder="请输入教师姓名">
+							<button onclick="searchTeaBtn()">查询</button>
+						</div>
+						<ul class="set_bzr">
+						</ul>
+						<p>
+							<button onclick="addClassAdviser()" type="button" class="mlh_btn sure">确定</button>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!--设置班主任 end-->
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- 删除提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>确认提示</span> <img onclick="cancel('deleteTips')" src="../../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">已存在分班数据,是否确定要重新分班？</p>
+						<span style=" color: red;">(重新分班后，之前的分班数据将被清除)</span>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" onclick="saveDivideClass(false)" class="tc_anniu_queding">确定</button>
+					<button onclick="cancel('deleteTips')" class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+		<!--师资配比表 end-->
+		<script src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/stu-common.js"></script>
+		<script type="text/javascript" src="../../js/big_class.js"></script>
+		<script src="../../js/loginOut.js"></script>
+	</body>
+
+</html>

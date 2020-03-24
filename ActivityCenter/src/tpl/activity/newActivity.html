@@ -1,0 +1,78 @@
+<div>
+	<div class="zy_bg zy_new_activity_bg">
+		<div class="zy_main_con zy_simple_bg zy_new_activity">
+			<div class="zy_new_activity_detail">
+				<!--<div class="zy_two_line clearfix">
+					<div class="zy_a_strip fl">
+						<span>活动名称：</span>
+						<input type="text" placeholder="请输入活动名称" />
+					</div>
+					<div class="zy_a_strip fr">
+						<span>结束时间：</span>
+						<input zjy-laydate type="text" id="id" ng-model="activityOverTime" placeholder="请输入活动结束时间" />
+					</div>
+				</div>-->
+				
+				<div class="zy_a_strip">
+					<span>活动名称</span>
+					<input type="text" maxlength="25" ng-model="activityName" placeholder="请输入活动名称" />
+				</div>
+				<div class="zy_a_strip">
+					<span>结束时间</span>
+					<input readonly zjy-laydate type="text" id="id" min-date="{{mindataTime}}" ng-model="activityOverTime" placeholder="请输入活动结束时间" />
+				</div>
+				<div class="zy_a_strip zy_activity_type">
+					<span>活动类型</span>
+					<ul class="clearfix">
+						<li class="fl" ng-class="{'active' : selectType == activity.id}" ng-click="changeType($index)" ng-repeat="activity in activityType" ng-bind="activity.name"></li>
+					</ul>
+				</div>
+				<div class="zy_a_strip">
+					<span>活动要求</span>
+					<textarea name="" rows="" cols="" maxlength="255" ng-model="activityDeman" placeholder="请输入活动要求"></textarea>
+				</div>
+				<div class="zy_a_strip">
+					<span>上传附件<i class="zy_tip_grey">上传附件(注意:图片支持jpg、png格式)</i></span>
+					<div class="zy_activity_file">
+						<em>选择上传文件</em>
+						<input type="file" name="" id="file" value="" onchange="angular.element(this).scope().upload()" />
+					</div>
+					<dl class="clearfix" ng-show="imgIsShow">
+						<dt class="fl">已上传文件：</dt>
+						<dd ng-bind="imgName"></dd>
+					</dl>
+				</div>
+				<div class="zy_a_strip clearfix">
+					<button class="fr" ng-click="subBtn()">提交</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--确认弹层-->
+<div class="gy_del_down zy_popup" ng-show="submitActivity.popup">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+    	<p class="zy_sentence">确定无误并提交吗？</p>
+    	<div class="zy_btn_box">
+    		<button class="zy_cancel" ng-click="submitActivity.popup = false">取消</button>
+    		<button class="zy_sure" ng-click="subSureBtn()">确认</button>
+    	</div>
+	</div>
+</div>
+
+<!--提示弹层-->
+<div class="gy_del_down zy_popup" ng-show="submitActivity.tip">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+		<p class="zy_prompt">
+			<img src="./img/filed.png" ng-src="./img/{{submitActivity.tipSrc}}.png" />
+			<span ng-bind="submitActivity.tipWord">提交成功</span>
+		</p>
+	
+    </div>
+</div>
+
+<!--<z-footer></z-footer>-->

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>走班排课-设置固定课规则</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../common/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/set_teachingtask.js"></script>
+    <script src="../js/set_teacher.js"></script>
+</head>
+
+	<body>
+		<iframe src="../header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+		<div class="indexcon">
+			<div class="fanhui">
+				<a href="javaScript:void(0)" onclick="goIndex()"><img src="../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+			</div>
+			<div class="pkqh_con">
+				<!--   切换的列表        -->
+				<div class="qiehu_con_tit">
+					<ul id="ul_tab">
+					<a href="./set_kebiao.html"><li>设置课表</li></a>
+                    <a href="./generate_classes.html"><li>生成教学班</li></a>
+                    <a href="./set_jiaoxuerenwu.html"><li>设置教学任务</li></a>
+                    <a href="./set_paike_role.html"><li class="active">设置固定课规则</li></a>
+                    <a href="./set_goClass_time.html"><li>设置走班时段</li></a>
+                    <a href="./zhineng_kebiao.html"><li>智能编排课表</li></a>
+                    <a href="#"><li>微调</li></a>
+                </ul>
+            </div>
+            <div class="wx_role_ul">
+                <ul>
+                    <li class="active">科目规则</li>
+                    <li>科目预排</li>
+                    <!--  正常只显示一个教师规则和合班      为了好区分全部显示为列表-->
+                    <li>教师规则</li>
+                    <!--<li>教师规则1</li>-->
+                    <li>场地规则</li>
+                    <li>合班</li>
+                    <!--<li>合班1</li>-->
+                    <li>单双周</li>
+                </ul>
+            </div>
+            <!--   设置课表       -->
+            <div class="setkebiao" style="padding:0 30px">
+                <div class="wx_set_guize_ul mlh_kebiao">
+                    <!--     科目规则     -->
+                    <div>
+                        <ul>
+                            <li><b>课表名称：</b><span class='timetable_name'>2017-2018学年第一学期课表</span></li>
+                            <li><b>选择年级：</b>
+                                <select name="" id="" class="selectClass">
+                                </select>
+                            </li>
+                            <li class="wx_fenzu_span" id="guize"> <b>选择科目：</b></li>
+                            <li> 
+                                <b>选择教科班：</b>
+                                <div class="wx_nianji_width" id="guize_width">
+                                    <!--<span class="active">[2017]高一</span>
+                                    <span>[2017]高一</span>
+                                    <span>[2017]高一</span>-->
+                                </div>
+                            </li>
+                            <li class="wx_setjieshu">
+                                <input type="radio" value="1" name="setjieshu">
+                                <label for="wx_jieci">各节次均可</label>
+                                <input type="radio" value="2" name="setjieshu">
+                                <label for="wx_shangwu">尽量安排上午</label>
+                                <input type="radio" value="3" name="setjieshu" checked="checked">
+                                <label for="wx_xiawu">尽量安排下午</label>
+                            </li>
+                            <li><b style="width:140px;">设置科目不排节次：</b>
+                                <table class="wx_setrenwu_table wx_setkemu_bupai">
+                                    <thead id="setrenwu_day">
+                                        <!--<tr>
+                                            <th>节次</th>
+                                            <th>星期一</th>
+                                            <th>星期二</th>
+                                            <th>星期三</th>
+                                            <th>星期四</th>
+                                            <th>星期五</th>
+                                        </tr>-->
+                                    </thead>
+                                    <tbody id="setrenwu_quarter">
+                                        <!--<tr>
+                                            <td class="wx_jieci">第一节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第二节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第三节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第四节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                                <button class="wx_sure_btn" onclick="set_Paike()">确定</button>
+                                <button class="wx_noaccess_btn" style="display: none;">确定</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--     科目预排     -->
+                    <div class="wx_hide_li wx_set_guize_ul  mlh_kebiao">
+                        <ul>
+                            <li><b>课表名称：</b><span class="timetable_name"></span></li>
+                            <li><b>选择年级：</b>
+                                <select name="" id="" class="selectClass">
+                                    <option value="">高一</option>
+                                </select>
+                            </li>
+                            <li class="wx_fenzu_span" id="yupai"> <b>选择科目：</b></li>
+                            <li> 
+                                <b>选择教科班：</b>
+                                <div class="wx_nianji_width" id="yupai_width">
+                                    <!--<span class="active">[2017]高一</span>
+                                    <span>[2017]高一</span>
+                                    <span>[2017]高一</span>-->
+                                </div>
+                            </li>
+                            <li><b style="width:140px;">设置科目预排节次：</b>
+                                <table class="wx_setrenwu_table wx_setkemu_bupai">
+                                    <thead id="setrenwu_bupai">
+                                      <!--  <tr>
+                                            <th>节次</th>
+                                            <th>星期一</th>
+                                            <th>星期二</th>
+                                            <th>星期三</th>
+                                            <th>星期四</th>
+                                            <th>星期五</th>
+                                        </tr>-->
+                                    </thead>
+                                    <tbody id="setkemu_lesson">
+                                        <!--<tr>
+                                            <td class="wx_jieci">第一节</td>
+                                            <td class="go_class old_go wx_duigou"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第二节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第三节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第四节</td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="wx_hongzi"></td>
+                                            <td></td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                                <button class="wx_sure_btn" onclick="set_lesson()">确定</button>
+                                <button class="wx_noaccess_btn" style="display: none;">确定</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--     教师规则     qwe-->
+                    <div class="wx_hide_li wx_jiaoshi_guize_qie mlh_kebiao">
+                        <ul class="tea_no">
+                            <li><b>课表名称：</b><span class='timetable_name'>2017-2018学年第一学期课表</span></li>
+                        </ul>
+                        <div class="no_content tea_no">
+                            <button class="addkebiao" style="width:130px;" onclick="add_kebiao()"><em class="indexjia"></em>添加教师规则</button>
+                            <p>您还未新增任何教师规则</p>
+                        </div>
+                        
+                        <ul class="tea_have">
+								<li><b>课表名称：</b><span class='timetable_name'>2017-2018学年第一学期课表</span></li>
+								<li class="wx_select_tea">
+									<b>已选择教师：</b>
+									<div class="mlh_selectTeacher">
+										<!--<span class="active">张老师</span>-->
+									</div>
+								</li>
+								<li class="wx_shezhijs_btn"> <!-- <b style="width:260px; float: left">教师每天最多可排课节数1节</b> -->
+									<div class="mlh_edit">
+										<button class="index_lanse wx_xiugai edit_bg tea_setContent_click"><em class="index_delet"></em>编辑</button>
+										<button class="index_hongse wx_qingkong"><em class="index_delet"></em>删除</button>
+									</div>
+									<div class="fr mlh_frTop">
+										<button class="addkebiao tea_data_insert" style="width:130px; margin-top: -30px"><em class="indexjia"></em>添加教师规则</button>
+									</div>
+									<table class="wx_setrenwu_table wx_setjiaoshitable" style="margin-top:10px;">
+										<thead id="tea_show_tab">
+											<!--<tr>
+												<th>节次</th>
+												<th>星期一</th>
+												<th>星期二</th>
+												<th>星期三</th>
+												<th>星期四</th>
+												<th>星期五</th>
+											</tr>-->
+										</thead>
+										<tbody id="tea_show_paike">
+											<!--<tr>
+												<td class="wx_jieci">第一节</td>
+												<td class="wx_hongzi"></td>
+												<td></td>
+												<td></td>
+												<td class="wx_hongzi"></td>
+												<td></td>
+											</tr>-->
+										</tbody>
+									</table>
+								</li>
+							</ul>
+                    </div>
+
+						<!--     教师规则  1   
+						<div class="wx_hide_li wx_jiaoshi_guize_qie"  style="display: none;">
+							
+						</div>-->
+						<!--     场地规则     -->
+						<div class="wx_hide_li wx_jiaoshi_guize_qie mlh_kebiao">
+							<ul>
+								<li><b>课表名称：</b><span class="schedulename">2017-2018学年第一学期课表</span></li>
+								<div class="fr">
+									<button onclick="insertSpaceDialog()" class="addkebiao wx_addcdrole" style="width:130px;"><em class="indexjia"></em>添加场地规则</button>
+								</div>
+								<div class="clear"></div>
+								<table class="wx_setrenwu_table wx_changdi_table">
+									<thead>
+										<tr>
+											<th class="wx_xuhao_tb"></th>
+											<th>科目</th>
+											<!-- <th>年级</th> -->
+											<th>科目在同一节次最多可排班级数</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody id="spaceRuleTbody"> </tbody>
+								</table>
+							</ul>
+						</div>
+						<!--     合班1     -->
+						<div class="wx_hide_li wx_jiaoshi_guize_qie mlh_kebiao">
+							<ul>
+								<li><b>课表名称：</b><span class="schedulename"></span></li>
+								<div class="fr hb_have">
+									<button onclick="insertClassDialog()" class="addkebiao wx_addcdrole" style="width:130px;"><em class="indexjia"></em>新增合班上课组</button>
+								</div>
+								<div class="clear hb_have"></div>
+								<table class="wx_heban_table hb_have">
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+								</table>
+							</ul>
+							<div class="no_content hb_no">
+								<button onclick="insertClassDialog()" class="addkebiao" style="width:130px;"><em class="indexjia"></em>新增合班上课组</button>
+								<p>您还未新增任何教师规则</p>
+							</div>
+						</div>
+						<!--   合班  -->
+						<!--<div class="wx_hide_li">
+							<ul>
+								<li><b>课表名称：</b><span>2017-2018学年第一学期课表</span></li>
+								<div class="fr">
+									<button class="addkebiao wx_addcdrole" style="width:130px;"><em class="indexjia"></em>新增合班上课组</button>
+								</div>
+								<div class="clear"></div>
+								<table class="wx_heban_table">
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="kebiaoname wx_heban_width"><em class="hebanicon"></em>音乐一组</td>
+										<td>
+											<span>教学001班<em class="cuoicon"></em></span> <span>教学001班
+                                        <em class="cuoicon"></em></span>
+										</td>
+										<td>
+											<button class="index_hongse"><em class="index_delet"></em>删除</button>
+										</td>
+									</tr>
+								</table>
+							</ul>
+						</div>-->
+						<!--   单双周  -->
+						<div class="wx_hide_li mlh_kebiao">
+							<ul>
+								<li><b>课表名称：</b><span class="schedulename"></span></li>
+								<li><b>选择班级：</b>
+									<select name="" id="sel_class" class="selectClass">
+										<!--<option value="">高一</option>-->
+									</select>
+								</li>
+								<li class="wx_fenzu_span"> 
+	                               <b>选择科目：</b> 
+	                               <div id="weekSubject" class="wx_div_width">
+		                               	<!-- <span id="1" class="active">语文</span>
+		                                <span id="2" >数学</span>
+		                                <span id="3" >音乐</span>
+		                                <span id="4" >美术</span>
+		                                <span id="6" >音乐</span>
+		                                <span id="7" >美术</span>   -->
+		                                	你还没有设置单双周科目，请返回“设置教学任务”，选择单周和双周分别上课的两门科目，将科目每周上课节次设为带0.5节的课时，如0.5、1.5、2.5等，如假设“阅读”和“写作”，上课节数分别设为0.5节，则课表显示为“阅读/写作”，表示单双周轮换。
+	                               </div>
+	                                
+	                            </li>
+								<li class="mlh_left mlh_leftDui">
+									<button id="insertWeekBtn" class="wx_noaccess_btn wx_ml100">确定</button>
+									<!--<button class="wx_noaccess_btn wx_ml100" disable="true">确定</button>-->
+									 <div id="weekRuleList">
+		                                <!--<p class="wx_huizi wx_ml100">(高一 | 自习/技术｜2017301，2017302)<span class="wx_delet_week">删除</span></p>
+		                               <p class="wx_huizi wx_ml100">(高一 | 自习/技术｜2017301，2017302)</p>
+		                               <p class="wx_huizi wx_ml100">(高一 | 自习/技术｜2017301，2017302)</p> -->
+	                               </div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--添加教师规则弹窗  aaa   -->
+		<div class="wx_tanchuang mlh_tc mlh_margin" id="tea_rule_dialog" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon wx_addjs_tc_height">
+				<div class="tc_con_tit"> <span>添加教师规则</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<ul class="mlh_tab">
+					<li class="active">按组设置</li>
+					<li>单个教师设置</li>
+				</ul>
+				<div class="mlh_setContent">
+					<div class="tc_con_neirong">
+						<div class="wx_select_banji_tc">
+							<p>选择教师</p>
+							<div class="banji_fenzu_tc">
+								<p>
+									<span class="fl">
+                                    	<b>教师列表</b>
+                                	</span> 
+	                                <span class="fr">
+	                                    <input type="text" placeholder="请输入姓名" class="index_xuenian wx_fenzu_seach">
+	                                </span>
+								</p>
+								<div class="clear"></div>
+								<div class="mlh_banji_ul clearfix" id="tea_guize">
+									<ul>
+										<li class="active">年级组</li>
+										<li>年级组</li>
+									</ul>
+								</div>
+								<div class="mlh_line"></div>
+								<!--没有选择教师的布局-->
+								<div class="techear_zero" style="display: none">
+									（已选教师0名）
+								</div>
+								<!--选择教师后的布局-->
+								<div class="techear_zero techear_num" id="tea_checked">
+									（已选教师<b class="paiming"></b>名）
+									<ul class="teacher tea_instructor">
+										<!--<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>-->
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--<p class="wx_add_guize_js_p">设置教师组名:
+							<input type="text" placeholder="请输教师组名"> </p>
+						<p>设置科目不排节次</p>-->
+						<div class="add_jsguize_tc_table" style="height:200px; margin-top:10px; overflow: auto;">
+							<table class="wx_setrenwu_table wx_setjstc_table">
+								<thead id="tea_tab">
+									<!--<tr>
+										<th>节次</th>
+										<th>星期一</th>
+										<th>星期二</th>
+										<th>星期三</th>
+										<th>星期四</th>
+										<th>星期五</th>
+									</tr>-->
+								</thead>
+								<tbody id="tea_paike">
+									<!--<tr>
+										<td class="wx_jieci">第一节</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+						<p style="margin-top:20px;text-align:center">
+							<button class="tc_anniu_queding" onclick="tea_new_add()">添加</button>
+							<button class="tc_anniu_quxiao">关闭</button>
+						</p>
+					</div>
+				</div>
+				<!--   单个教师     -->
+				<div class="mlh_setContent" style="display: none;">
+					<div class="tc_con_neirong">
+						<div class="wx_select_banji_tc">
+							<p>选择班级</p>
+							<div class="banji_fenzu_tc">
+								<p> <span class="fl">
+                                    <b>教师列表</b>
+                                </span> <span class="fr">
+                                    <input type="text" placeholder="请输入姓名" class="index_xuenian wx_fenzu_seach">
+                                </span> </p>
+								<div class="clear"></div>
+								<div class="mlh_banji_ul clearfix single_teacher"  id="st_guize">
+									<!--<ul>
+										<li class="active">年级组</li>
+										<li>年级组</li>
+										<li>年级组</li>
+										<li>年级组</li>
+									</ul>-->
+								</div>
+								<div class="techear_zero" style="display: none"></div>
+								<div class="techear_zero techear_num" id="st_single_fenzu">
+									<ul class="teacher tea_instructor">
+										<!--<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>
+										<li class="mlh_btn">张珊珊<i class="cuoicon close"></i></li>-->
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--<p class="wx_add_guize_js_p">设置教师组名:
+							<input type="text" placeholder="请输教师组名"> 
+						</p>-->
+						<p>设置科目不排节次</p>
+						<div class="add_jsguize_tc_table" style="height:200px; margin-top:10px; overflow: auto;">
+							<table class="wx_setrenwu_table wx_setjstc_table">
+								<thead  id="tea_single_tab">
+									<!--<tr>
+										<th>节次</th>
+										<th>星期一</th>
+										<th>星期二</th>
+										<th>星期三</th>
+										<th>星期四</th>
+										<th>星期五</th>
+									</tr>-->
+								</thead>
+								<tbody id="tea_single_paike">
+									<!--<tr>
+										<td class="wx_jieci">第一节</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="wx_jieci">第二节</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+						<p style="margin-top:20px;text-align:center">
+							<button class="tc_anniu_queding">添加</button>
+							<button class="tc_anniu_quxiao">关闭</button>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 新增合班上班组弹窗   -->
+		<div id="classRuleDialog" class="wx_tanchuang" style="display:none;">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_heban_height">
+				<div class="tc_con_tit"> <span>新增合班上课组</span> <img class="img_guanbi" src="../img/tanchuanshanchu.png"> </div>
+				<div class="tc_con_neirong">
+					<div>
+						<ul class="wx_set_changdi_tc">
+							<li style="height:110px; overflow-y:auto;">
+								<b>请选择合班上课的科目</b>
+								<div id="hb_tc_sub">
+									<!--<span class="active">语文</span>
+									<span>数学</span>
+									<span>音乐</span>
+									<span>美术</span>
+									<span>数学</span>
+									<span>音乐</span>
+									<span>美术</span>-->
+								</div>
+							</li>
+							<li> <b>选择年级</b>
+								<select name="" class="sel_sub" >
+									<option value="">高一</option>
+								</select>
+							</li>
+							<li>
+								<b>选择分组</b>
+								<div id="hb_tc_class" class="selectFenzu" style="height:90px;overflow-y:auto;">
+									<!--<span class="active">教学001班</span>
+									<span>教学001班</span>
+									<span>教学001班</span>
+									<span>教学001班</span>
+									<span>教学001班</span>
+									<span>教学001班</span>
+									<span>教学001班</span>-->
+								</div>
+							</li>
+						</ul>
+					</div>
+					<p style="margin-top:20px;text-align:center">
+						<button onclick="insertClassRule()" class="tc_anniu_queding">确定</button>
+						<button onclick="cancel('classRuleDialog')" class="tc_anniu_quxiao">关闭</button>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!--修改教师规则弹框   -->
+		<div class="wx_tanchuang wx_addfenzutc tea_setContent_two" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon wx_fenzu_tc_height">
+				<div class="tc_con_tit"> <span>修改教师规则</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:10px;">
+					<p class="wx_fenzu_p tea_revise_name">教师姓名：<b class="tea_revise_names"></b></p>
+					<p class="wx_fenzu_p"> 教师最多每天可排节数:
+						<input type="text" class="tea_revise_class_num"> </p>
+					<div class="wx_select_banji_tc">
+						<p class="set">设置不排节次</p>
+						<table class="wx_setrenwu_table wx_setkemu_bupai">
+							<thead id="tea_revise_tab">
+								<!--<tr>
+									<th>节次</th>
+									<th>星期一</th>
+									<th>星期二</th>
+									<th>星期三</th>
+									<th>星期四</th>
+									<th>星期五</th>
+								</tr>-->
+							</thead>
+							<tbody id="tea_revise_paike">
+								<!--<tr>
+									<td class="wx_jieci">第一节</td>
+									<td class="wx_hongzi"></td>
+									<td></td>
+									<td></td>
+									<td class="wx_hongzi"></td>
+									<td></td>
+								</tr>-->
+							</tbody>
+						</table>
+					</div>
+					<p style="margin-top:20px;text-align:center">
+						<button class="tc_anniu_queding" onclick="tea_revise_add()">确定</button>
+						<button class="tc_anniu_quxiao">取消</button>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- 添加场地规则弹窗   -->
+		<div id="spaceRuleDialog" class="wx_tanchuang wx_addfenzutc" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_changdi_height">
+				<div id="spaceDialogTitle" class="tc_con_tit"> <span>添加场地规则</span> <img class="img_guanbi" src="../img/tanchuanshanchu.png"> </div>
+				<div class="tc_con_neirong">
+					<div>
+						<ul class="wx_set_changdi_tc">
+							<li style="height:100px;overflow-y:auto;"> <b class="mlh_selectKemu">选择科目</b> <i id="spaceDialogSubject" class="wx_span_width">
+                               <!--<span class="active">语文</span>
+                               <span>数学</span>
+                               <span>英语</span>
+                               <span>物理</span>
+                               <span>化学</span>
+                               <span>生物</span>-->
+                          	</i> </li>
+							<li> <b>科目在同一节次最多可排班级数:</b>
+								<input id="spaceRuleClassNum" type="text"> </li>
+							<p class="wx_huizi">(如：星期五第五节，体育课受场地约束最多排3个班级上课)</p>
+						</ul>
+					</div>
+					<p style="margin-top:20px;text-align:center">
+						<button onclick="insertSpaceRule()" class="tc_anniu_queding">确定</button>
+						<button onclick="cancel('spaceRuleDialog')" class="tc_anniu_quxiao">取消</button>
+					</p>
+					<input id="spaceRuleId" type="hidden" /> </div>
+			</div>
+		</div>
+		<!-- 删除提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>删除</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">确认要删除吗？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" class="tc_anniu_queding">确定</button>
+					<button class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/paike_rule.js"></script>
+	</body>
+
+</html>
+<script>
+    //选项卡切换
+    $(function () {
+      	$(document).on("click", "#setrenwu_quarter tr td", function () {
+            if (!$(this).hasClass("wx_jieci") && !$(this).hasClass("wx_no_click")) {
+                $(this).toggleClass("wx_hongzi")
+//              console.log($(this))
+            }
+        })
+      	$(document).on("click", "#setkemu_lesson tr td", function () {
+            if (!$(this).hasClass("wx_jieci") && !$(this).hasClass("wx_no_click")&& !$(this).hasClass("wx_hongzi")) {
+                $(this).toggleClass("wx_duigou")
+            }
+        })
+        $(document).on("click", "#tea_paike tr td", function () {
+            if (!$(this).hasClass("wx_jieci") && !$(this).hasClass("wx_no_click")) {
+                $(this).toggleClass("wx_hongzi")
+            }
+        })
+        $(document).on("click", "#tea_revise_paike tr td", function () {
+            if (!$(this).hasClass("wx_jieci") && !$(this).hasClass("wx_no_click")) {
+                $(this).toggleClass("wx_hongzi")
+            }
+        })
+        $(document).on("click", "#tea_single_paike tr td", function () {
+            if (!$(this).hasClass("wx_jieci") && !$(this).hasClass("wx_no_click")) {
+                $(this).toggleClass("wx_hongzi")
+            }
+        })
+        $(document).on("mouseenter", ".wx_select_tea span", function () {
+            $(this).children().show();
+        });
+        $(document).on("mouseleave", ".wx_select_tea span", function () {
+            $(this).children().hide();
+        });
+        $(document).on("click", ".wx_select_tea span i.wx_delet_icon", function () {
+            alert("11")
+        });
+        $(document).on("click", ".mlh_tab li", function () {
+           $(this).siblings().removeClass("active")
+        });
+        //tab切换
+        $('.mlh_tab li').click(function(){
+            var index = $(this).index();
+            $('.mlh_tab li').removeClass('active').eq(index).addClass('active');
+            $('.mlh_setContent').hide().eq(index).show();
+        });
+    })
+</script>

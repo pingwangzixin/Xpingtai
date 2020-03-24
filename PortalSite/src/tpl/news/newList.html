@@ -1,0 +1,49 @@
+<div class="">
+	<div class="zy_bg zy_news_main_pic">
+		<!--<img src="./img/RQcode_02.png"/>-->
+	</div>
+	
+	<!--消息中心-->
+	<div class="zy_bg zy_news_center_bg">
+		<div class="zy_central_content zy_news_center">
+			<div class="zy_linear zy_news">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit"><i class="iconfont icon-xinwen-copy"></i><span>消息中心</span></div>
+					<div class="zy_new_box clearfix">
+						<ul class="zy_new_list fr">
+							<!--<li>
+								<h4 ui-sref="wrap.new.newDetails">
+									<span>教育云空间培训PPT及视频油</span>
+									<i class="fr">2016-12-13</i>
+								</h4>
+							</li>
+							<li>
+								<h4>
+									<span>教育云空间培训PPT及视频油</span>
+									<i class="fr">2016-12-13</i>
+								</h4>
+							</li>
+							<li>
+								<h4>
+									<span>教育云空间培训PPT及视频油</span>
+									<i class="fr">2016-12-13</i>
+								</h4>
+							</li>-->
+							<li ng-repeat="newss in news">
+								<h4>
+									<span ng-bind="newss.title" ng-click="lookMsgInfo(newss)"></span>
+									<i class="fr" ng-bind="newss.createTime|timeFilter"></i>
+								</h4>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+<!--<z-footer></z-footer>-->

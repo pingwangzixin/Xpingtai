@@ -1,0 +1,24 @@
+<system nav="navShowDet"></system>
+
+<div class="zy_admin_set">
+	<div class="zy_tabs">
+		<div class="zy_switch zy_page_set">
+			<div class="zy_det_nav_bg">
+				<div class="zy_det_nav clearfix">
+					<!--<p class="fr">
+						<span class="zy_nav_out">退出</span>
+					</p>-->
+					<ul class="zy_various_set fr">
+						<li class="" ui-sref="user.teacher" ui-sref-active="active">教师</li>
+						<li class="" ui-sref="user.student" ui-sref-active="active">学生</li>
+						<li class="" ui-sref="user.parent" ui-sref-active="active">家长</li>
+					</ul>
+				</div>
+			</div>
+		
+		</div>
+	
+	</div>
+</div>
+	
+<div ui-view class=""></div>

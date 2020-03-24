@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="src/css/reset.css">
+	<script src="src/common/angular/angular.js"></script>
+</head>
+<body ng-controller="con">
+	<ul>
+		<li ng-repeat="i in list | limitTo:5">
+			<span>{{i}}</span>
+			<span>{{i.name}}</span>
+			<span>{{i.price}}</span>
+		</li>
+	</ul>
+	<br />
+	<br />
+	<ul>
+		<li ng-repeat="i in list">
+			<span>{{$index}}</span>
+			<span>偶数：{{$even}}</span>
+			<span>{{i.name}}</span>
+			<span>{{i.price}}</span>
+		</li>
+	</ul>
+	<br />
+	<br />
+	<ul>
+		<li ng-repeat="i in list" ng-if="$index>0 && $index < 3">
+			<span>{{i.name}}</span>
+			<span>{{i.price}}</span>
+		</li>
+	</ul>
+	<br />
+	<br />
+	<ul>
+		<li ng-repeat="i in list" ng-if="$index=$even">
+			<span>{{i.name}}</span>
+			<span>{{i.price}}</span>
+		</li>
+	</ul>
+<script>
+	angular.module('app',[]).controller('con',function ($scope){
+		$scope.list = [
+			{name: '土豆',price : 3},
+			{name: '大葱',price : 2.3},
+			{name: '胡萝卜',price : 0.5},
+			{name: '山药',price : 5},
+			{name: '菠菜',price : 7.8},
+			{name: '玉米',price : 12},
+		];
+	});
+</script>
+
+</body>
+
+</html>

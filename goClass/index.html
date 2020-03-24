@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>走班排课</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<iframe src="header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+		<div class="indexcon">
+			<div class="fanhui">
+            	<a href="javaScript:void(0)" onclick="goClassify()"><img src="./img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+        	</div>
+			<div class="indexkbtit">
+				<div class="fl indexselect">
+					<span>学年 </span>
+					<select name="" id="sel_year" class="index_xuenian" style="margin-right:20px;">
+						<option value="2019">2019-2020学年</option>
+						<!--<option value="">请选择</option>
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>-->
+					</select>
+					<span>学期 </span>
+					<select name="" id="sel_term" class="index_xuenian">
+						<option value="1" selected="selected">第一学期</option>
+						<!-- <option value="2" selected="selected">第二学期</option> -->
+						<!--<option value="">请选择</option>
+						<option value="1">第一学期</option>
+						<option value="2">第二学期</option>-->
+					</select>
+				</div>
+
+				<div class="fr">
+					<button class="addkebiao"><em class="indexjia"></em>添加课表</button>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="index_table">
+				<table class="table_paike" id="schedule_table">
+					<!--<thead>
+						<tr>
+							<td colspan="7" align="left" class="kebiaoname mlh_file">
+								<em class="kebiaoicon"></em>
+								<input class="text" type="text" name="" value="" placeholder="">
+								<button class="mlh_btn preserve">保存</button>
+								<button class="mlh_btn cancel">取消</button>
+							</td>
+						</tr>
+					</thead>-->
+					<!--<tr>
+						<td class="kebiaoname"><em class="kebiaoicon"></em>周一课表</td>
+						<td class="kebiaodata">2018-01-05</td>
+						<td></td>
+						<td></td>
+						<td><button class="index_lvse"><em class="index_fabu"></em>发布</button></td>
+						<td>
+							<a href="./paike/set_kebiao.html"><button class="index_lanse"><em class="index_paikeicon"></em>排课</button></a>
+						</td>
+						<td><button class="index_hongse"><em class="index_delet"></em>删除</button></td>
+					</tr>
+					<tr>
+						<td class="kebiaoname"><em class="kebiaoicon"></em>周一课表</td>
+						<td class="kebiaodata">2018-01-05</td>
+						<td></td>
+						<td><button class="index_huise"><em class="index_see"></em>查看</button></td>
+						<td><button class="index_lvse"><em class="index_fabu mlh_hide"></em>取消发布</button></td>
+						<td><button class="index_lanse"><em class="index_paikeicon"></em>排课</button></td>
+						<td><button class="index_hongse"><em class="index_delet"></em>删除</button></td>
+					</tr>-->
+				</table>
+			</div>
+		</div>
+
+		<!--  添加课表弹窗  -->
+		<div class="wx_tanchuang wx_addkeiao" style="display:none;">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon" style="height:200px;">
+				<div class="tc_con_tit"> <span>添加课表</span> <img src="img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong">
+					课表名称
+					<input type="text" name="" id="schedule_name" class="wx_addkbtc_select" />
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button class="tc_anniu_queding" onclick="addSchedule()">添加</button>
+					<button class="tc_anniu_quxiao">关闭</button>
+				</p>
+			</div>
+		</div>
+		<!-- 删除提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>删除</span> <img src="img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">确认要删除吗？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" class="tc_anniu_queding">确定</button>
+					<button class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script src="common/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</html>

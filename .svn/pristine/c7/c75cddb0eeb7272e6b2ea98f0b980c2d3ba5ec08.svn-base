@@ -1,0 +1,83 @@
+<div>
+	<div class="zy_bg zy_resources_main_pic">
+		<div class="zy_central_content zy_resources_main clearfix">
+			<div class="zy_resources_left_bar fl">
+				<dl>
+					<dt>全部资源</dt>
+					<dd ui-sref="wrap.resources.resourcesSecondLevel({'studySection' : 'primarySchool'})"><p><img src="./img/primary_school.png"/>小学</span></p></dd>
+					<dd ui-sref="wrap.resources.resourcesSecondLevel({'studySection' : 'juniorMiddleSchool'})"><p><img src="./img/junior_middle_school.png"/><span>初中</span></p></dd>
+					<dd ui-sref="wrap.resources.resourcesSecondLevel({'studySection' : 'highSchool'})"><p><img src="./img/high_school.png"/><span>高中</span></p></dd>
+					<dd ui-sref="wrap.resources.resourcesSecondLevel({'studySection' : 'university'})"><p><img src="./img/university.png"/><span>大学</span></p></dd>
+				</dl>
+			</div>
+			<div class="zy_resources_search fr">
+				<div class="zy_search_box">
+					<input type="text" name="" id="" value="" placeholder="搜索..." />
+					<img src="./img/resources_search.png"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--最新资源-->
+	<div class="zy_bg zy_new_resources_bg">
+		<div class="zy_central_content zy_new_resources">
+			<div class="zy_linear">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit">
+						<i class="fl iconfont icon-tubiaozuixin01 bg_radius"></i>
+						<span>最新资源</span>
+						<b class="zy_more_word fr">更多</b>
+					</div>
+					<div class="zy_new_resources_list">
+						<ul class="clearfix">
+							<li ng-repeat="res in newResource">
+								<img ng-src="{{res.objId|imgFilter}}" alt="" class="fl" />
+								<h4 class="fl" ng-bind="res.title"></h4>
+								<i class="fr" ng-bind="res.createDate|timeFilter"></i>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg zy_resources_middle">
+		
+	</div>
+	
+	<!--资源排行榜-->
+	<div class="zy_bg zy_resources_ranking_bg">
+		<div class="zy_central_content zy_resources_ranking">
+			<div class="zy_linear">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit">
+						<i class="fl iconfont icon-paixingbang bg_radius"></i>
+						<span>资源排行榜</span>
+						<b class="zy_more_word fr">更多</b>
+					</div>
+					<div class="zy_new_resources_list zy_resources_ranking_list clearfix">
+						<ul class="fl">
+							<li class="clearfix" ng-repeat="rank in rankingList" ng-if="$index > -1 && $index < 5">
+								<span class="fl" ng-bind="$index + 1"></span>
+								<h4 class="fl" ng-bind="rank.title"></h4>
+								<i class="fr" ng-bind="rank.createDate|timeFilter"></i>
+							</li>
+						</ul>
+						<ul class="fl">
+							<li class="clearfix" ng-repeat="rank in rankingList" ng-if="$index > 4 && $index < 10">
+								<span class="fl" ng-bind="$index + 1"></span>
+								<h4 class="fl" ng-bind="rank.title"></h4>
+								<i class="fr" ng-bind="rank.createDate|timeFilter"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>

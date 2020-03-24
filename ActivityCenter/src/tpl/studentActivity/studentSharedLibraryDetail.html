@@ -1,0 +1,98 @@
+
+<div class="zy_main">
+	
+	<div class="zy_bg">
+		<div class="zy_main_con zy_main_con_none">
+			<div class="zy_activity_detail clearfix">
+				<p class="fl">活动详情</p>
+				<span class="fr" ui-sref="wrap.share.studentSharedLibrary({token:token})">返回</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg zy_actdet_bg zy_myshare_con" ng-class="activityDetail.class">
+		<div class="zy_main_con zy_main_con_none">
+			<div class="zy_activity_show clearfix">
+				<p class="zy_more_operations zy_if_like" ng-class="{'zy_if_liked':ifLike.like}" ng-click="cliclLike()"><span ng-bind="ifLike.likedTip">赞一下</span>（<span ng-bind="ifLike.likedNum" ></span>）</p>
+				<div class="clearfix">
+					<div class="zy_l_img fl">
+						<img src="{{activityDetail.activityFile}}" style="width: 284px;height: 150px;"/>
+					</div>
+					<div class="zy_r_cont fr">
+						<h4 ng-bind="activityDetail.activityName">爱心字典行动招募志愿者</h4>
+						<p>
+							<span>活动日期：</span>
+							<i>{{activityDetail.activityStartdate}}~{{activityDetail.activityEnddate}}</i>
+						</p>
+						<p>
+							<span>活动状态：</span>
+							<i ng-bind="activityDetail.activityState|activityStateFilter"></i>
+						</p>
+					</div>
+				</div>
+				<div class="zy_activity_show_text">
+					<div>
+						<span>活动要求：</span>
+						{{activityDetail.activityDeman}}
+						<!--“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。
+						“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。
+						“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。-->
+					</div>
+					<div>
+						<span>活动总结：</span>
+						{{activityDetail.assignMastersummary}}
+						<!--“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。
+						“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。
+						“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。“爱心字典”行动旨在构建一座当地学生与志愿者之间的心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg zy_review_area_bg">
+		<div class="zy_main_con zy_main_con_none zy_review_area">
+			<div class="zy_finished zy_finish_teacher">
+				<p>评论区</p>
+				<div class="zy_teacher_summary">
+					<div class="zy_a_strip">
+						<textarea name="" rows="" cols="" maxlength="255" placeholder="您可以对此次活动予以评价~" ng-model="activityComment.context" ng-class="{'zy_disabled' : review.ifEdit}" ng-disabled="review.ifEdit"></textarea>
+					</div>
+					<div class="zy_a_strip">
+						<i class="zy_tip_grey">注意：评论内容不得违反国家法律法规，不能含有以下内容:(一)违反宪法确定的基本原则的；(二)危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；(三)损害国家荣誉和利益的；(四)煽动民族仇恨、民族歧视，破坏民族团结的；(五)破坏国家宗教政策，宣扬邪教和封建迷信的；(六)散布谣言，扰乱社会秩序，破坏社会稳定的；(七)散布淫秽、色情、赌博、暴力、恐怖或者教唆犯罪的；(八)侮辱或者诽谤他人，侵害他人合法权益的；(九)煽动非法集会、结社、游行、示威、聚众扰乱社会秩序的；(十)以非法民间组织名义活动的；(十一)含有法律、行政法规禁止的其他内容的。违者将被依法上报国家公安机关处理!</i>
+					</div>
+					<div class="zy_a_strip clearfix" ng-hide="hidebtn">
+						<button class="fr" ng-click="submitReview()" ng-show=" ! review.btnNone">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+<!--确认提交弹层-->
+<div class="gy_del_down zy_popup" ng-show="review.submitBtn">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+    	<p class="zy_sentence">确认提交评论吗？</p>
+    	<div class="zy_btn_box">
+    		<button class="zy_cancel" ng-click="review.submitBtn = false">取消</button>
+    		<button class="zy_sure" ng-click="sureSubmintReview()">确认</button>
+    	</div>
+	</div>
+</div>
+
+<!--提示弹层-->
+<div class="gy_del_down zy_popup" ng-show="review.sureSubmitBtn">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+		<p class="zy_prompt">
+			<img src="./img/filed.png" ng-src="./img/{{review.tipSrc}}.png" />
+			<span ng-bind="review.sureTip">提交成功</span>
+		</p>
+	
+    </div>
+</div>

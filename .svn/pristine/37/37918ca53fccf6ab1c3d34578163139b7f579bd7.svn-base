@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查看</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../fonts/iconfont.css">
+  <link rel="stylesheet" href="../../css/newEaxm.css">
+  <link rel="stylesheet" href="../../css/tanchuang.css">
+</head>
+<body>
+	<!--最大容器 start-->
+	<div class="mlh_wrapper">	
+		<!--头部 start-->
+		<div class="mlh_header">
+			<div class="content">
+				<div class="left">
+					<a href="#"><img src="../../img/logo.png"></a>
+					<span>3+3选科</span>
+				</div>
+				<div class="right">
+					<!--<span class="help"><i class="iconfont icon-help"></i>用户帮助</span>-->
+					<span class="user">
+						<i class="iconfont icon-user"></i>
+						<!--王老师-->
+						<span id="createName"></span>
+						<i class="arrow"></i>
+						<div class="exit" onclick="loginOut()"><i class="iconfont icon-tuichu"></i>退出登录</div>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!--头部 end-->
+		<!--整个容器 start-->
+		<div class="mlh_container">
+			<div class="fanhui">
+            	<a href="javaScript:void(0)" onclick="goStudentSelection()"><img src="../../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+        	</div>
+			<div class="mlh_creat mlh_check">
+				<a href="#" data-type="stu" class="active">按学生查看</a>
+				<a href="#" data-type="sub">按学科查看</a>
+				<a href="#" data-type="group">按组合查看</a>
+			</div>
+			<div class="mlh_student" style="display: block;">
+				<ul class="mlh_query">
+					<li class="item">选科名称：<span class="sel_sub_name"><!--2017-2018学年第一学期课表--></span></li>
+					<li class="item">
+						班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：
+						<select id="sel_class">
+							<!--<option>高一</option>-->
+						</select>
+						<span class="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+						<input id="stu_name_input" type="text" placeholder="请输入学生姓名">
+						<button onclick="findYxStu();" class="mlh_btn preserve">查询</button>
+					</li>
+					<li class="item item-1">
+						<p>
+							<span id="totalNum" class="number">选科人数   0人</span>
+							<span id="yxNum" class="number">已选科人数   0人</span>
+							<span onclick="showWxStu()" style="cursor: pointer;" id = "wxNum" class="number">未选科人数    0人</span>
+						</p>
+						<p>
+							<!--<a href="#" class="daoru"><i class="iconfont icon-daoru"></i> 批量导入</a>-->
+							<a href="#" class="daochu export_student"><i class="iconfont icon-daochu"></i> 导出</a>
+						</p>
+					</li>
+				</ul>
+				<div class="mlh_table mlh_tab">
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr id="stu_table_title">
+								<td>序号</td>
+								<td>班级</td>
+								<td>姓名</td>
+								<td>政治</td>
+								<td>历史</td>
+								<td>地理</td>
+								<td>物理</td>
+								<td>化学</td>
+								<td>生物</td>
+								<td>英语</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="stu_table_tbody">
+							<!--<tr>
+								<td>1</td>
+								<td>1232</td>
+								<td>陈红</td>
+								<td>---</td>
+								<td><i class="iconfont icon-duihao"></i></td>
+								<td><i class="iconfont icon-duihao"></i></td>
+								<td><i class="iconfont icon-duihao"></i></td>
+								<td>---</td>
+								<td>---</td>
+								<td><i class="iconfont icon-duihao"></i></td>
+								<td><a href="javascript:;" class="adjustment">调整</a></td>
+							</tr>-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="mlh_student">
+				<ul class="mlh_query">
+					<li class="item">选科名称：<span class="sel_sub_name"><!--2017-2018学年第一学期课表--></span></li>
+					<li class="item item-1">
+						<p>
+							科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目：
+						<select id="sub_sel">
+							<option>语文</option>
+						</select>
+						</p>
+						<p>
+							<a href="#" class="daochu export_subject"><i class="iconfont icon-daochu"></i> 导出</a>
+						</p>
+					</li>
+				</ul>
+				<div class="mlh_table mlh_tab">
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<td>序号</td>
+								<td>科目名称</td>
+								<td>姓名</td>
+								<td>班级</td>
+							</tr>
+						</thead>
+						<tbody id="sub_table_tbody">
+							<tr>
+								<td>1</td>
+								<td>科学</td>
+								<td>陈红</td>
+								<td>1232</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="mlh_student">
+				<ul class="mlh_query">
+					<li class="item">选科名称：<span class="sel_sub_name"><!--2017-2018学年第一学期课表--></span></li>
+					<li class="item item-1">
+						<p></p>
+						<p>
+							<a href="#" class="daoru export_group_batch"><i class="iconfont icon-daoru"></i> 批量导出名单</a>
+							<a href="#" class="daochu export_group"><i class="iconfont icon-daochu"></i> 导出统计表</a>
+						</p>
+					</li>
+				</ul>
+				<div class="mlh_table mlh_tab">
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<td>序号</td>
+								<td>组合</td>
+								<td>人数</td>
+								<td>比例</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="group_table_tbody">
+							<!--<tr>
+								<td>1</td>
+								<td>物化生</td>
+								<td>123</td>
+								<td>45%</td>
+								<td><a href="javascript:;" class="list">查看名单</a></td>
+							</tr>-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--整个容器 end-->
+	</div>
+	<!--最大容器 end-->
+	<!--调整科目弹框 start-->
+	<div class="del_down" id="adjust" style="display: none;">
+    <div class="most-z-index mlh_hide"></div>
+    <div class="most-z-index con mlh_tc adjust_height ">
+    	<div class="title">
+    		<span>调整科目组合</span>
+    		<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+    	</div>
+    	<div class="content">
+    		<div class="table">
+    			<table cellpadding="0" cellspacing="0">
+						<tr>
+  						<td colspan="2">
+  							<span id="dialog_adjust_className">班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：1701</span><span id="dialog_adjust_stuName" class="left_range">学生姓名：陈红</span>
+       				</td>
+  					</tr>
+  					<tr>
+  						<td colspan="2">
+  							<div class="cont-width kemu-width adjust-width">
+	  							<div class="kemu" id="kemu">
+										<!--<a href="#" class="mlh_btn kemu active">政史地</a>-->
+									</div>
+								</div>
+  						</td>
+  					</tr>
+  					<tr>
+  						<td colspan="2" align="center">
+  							<button onclick="adjustSave()" class="mlh_btn addsub_gruop_insert_btn">确定</button>
+  							<button class="mlh_btn cancel" onclick="cancel('adjust')">取消</button>
+  						</td>
+  					</tr>
+    			</table>
+    		</div>
+    	</div>
+		</div>
+	</div>
+	<!--调整科目弹框 end-->
+	<!--查看名单 start-->
+	<div class="del_down" id="check" style="display: none;">
+    <div class="mlh_hide"></div>
+    <div class="con mlh_tc">
+    	<div class="title">
+    		<span>查看学生名单</span>
+    		<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+    	</div>
+    	<div class="content">
+    		<div class="table">
+    			<table cellpadding="0" cellspacing="0">
+						<tr>
+  						<td colspan="2" class="item-1">
+								<p>
+									班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：
+									<select id="show_stu_list_sel">
+										<option>123</option>
+									</select>
+								</p>
+								<p class="tc_daochu">
+									<a href="#" class="daochu export_stuList">
+										<i class="iconfont icon-daochu"></i> 导出
+									</a>
+								</p>
+       				</td>
+  					</tr>
+  					<tr>
+  						<td colspan="2">
+  							<div class="cont-width kemu-width adjust-width">
+  								<div class="checkname">
+		  							<table cellpadding="0" cellspacing="0" class="sub-table">
+		  								<thead>
+			  								<tr>
+			  									<td>所选组合</td>
+			  									<td>姓名</td>
+			  									<td>班级</td>
+			  								</tr>
+											</thead>
+											<tbody id="table_group_stu_tbody">
+												<!--<tr>
+				  									<td>物化生</td>
+				  									<td>陈红</td>
+				  									<td>1232</td>
+			  									</tr>-->
+											</tbody>
+		  							</table>
+	  							</div>
+								</div>
+  						</td>
+  					</tr>
+    			</table>
+    		</div>
+    	</div>
+		</div>
+	</div>
+	<!--查看名单 end-->
+	<!--未提交弹窗 start-->
+	<div class="del_down" id="wxstu_dialog" style="display: none;">
+    <div class="mlh_hide"></div>
+    <div class="con mlh_tc">
+    	<div class="title">
+    		<span>未提交学生名单</span>
+    		<a href="#" class="mlh_close cancel"><img src="../../img/tc_del.png"></a>
+    	</div>
+    	<div class="content">
+    		<div class="table">
+    			<table cellpadding="0" cellspacing="0">
+						<tr>
+  						<td colspan="2" class="item-1">
+								<p>
+									班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：
+									<select id="wx_class_sel">
+										<!--<option>123</option>-->
+									</select>
+								</p>
+       				</td>
+       				<td colspan="2" class="item-1">
+								<p>
+									未提交学生<span class="special_color">23</span>人
+								</p>
+								<!--<p class="tc_daochu">
+									<a href="#" class="daochu">
+										<i class="iconfont icon-daochu"></i> 导出
+									</a>
+								</p>-->
+       				</td>
+  					</tr>
+  					<tr>
+  						<td colspan="2">
+  							<div class="cont-width kemu-width adjust-width">
+  								<div class="checkname">
+		  							<table cellpadding="0" cellspacing="0" class="sub-table">
+		  								<thead>
+			  								<tr>
+			  									<td>姓名</td>
+			  									<td>班级</td>
+			  									<td>操作</td>
+			  								</tr>
+											</thead>
+											<tbody id="wx_stu_tbody">
+												<!--<tr>
+				  									<td>陈红</td>
+				  									<td>123</td>
+				  									<td><a href="#">调整</a></td>
+				  								</tr>-->
+											</tbody>
+		  							</table>
+	  							</div>
+								</div>
+  						</td>
+  					</tr>
+    			</table>
+    		</div>
+    	</div>
+		</div>
+	</div>
+	<!--未提交弹窗 end-->
+	
+	<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/stu-common.js"></script>
+	<script src="../../js/check.js"></script>
+	<script src="../../js/loginOut.js"></script>
+</body>
+</html>

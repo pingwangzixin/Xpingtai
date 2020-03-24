@@ -1,0 +1,51 @@
+<template-set class="toggle" ng-if="showAdmin"></template-set>
+<!--<div class="template-set"></div>-->
+<!--<system></system>-->
+<div class="zy_index">
+    <div class="zy_head">
+        <header class="clearfix">
+            <div class="zy_head_logo fl">
+                <p>
+                	<!--<img src="./img/jetsen_logo_double.png" alt="" />
+                	<img src="./img/jetsen_logo_double.png" alt="" />-->
+                	<img ng-repeat="logo in pcLogo" ng-src="./img/{{logo.path}}.png" alt="" />
+                </p>
+            </div>
+            <ul class="zy_head_group fl">
+                <!--<li ui-sref="{{column.href}}" ui-sref-active="active" ng-repeat="column in pcColumn track by $index" ng-bind="column.name">首页</li>-->
+                <li ui-sref="{{column.href}}" ui-sref-active="active" ng-repeat="column in pcColumn" ng-bind="column.name">首页</li>
+            </ul>
+            <div class="zy_users fr" ng-hide="loggedIn">
+            	<img src="./img/zy_user.png" alt="" />
+            	<span ui-sref="login">登录</span>
+            	<span ui-sref="register">注册</span>
+            </div>
+            <div class="zy_users zy_after_login fr" ng-show="loggedIn">
+            	<div class="zy_after_login_info">
+            		<i ng-bind="userLoggedMsg.surname"></i>
+            		<div class="zy_user_info_box">
+            			<p class="zy_triangle_box"><i></i></p>
+            			<ul>
+            				<li ng-bind="userLoggedMsg.realname">王大天老师</li>
+            				<li>
+            					<span ng-repeat="role in roles" ng-bind="role.name" ng-class="{'active':role.checked}" ng-click="roleSwitch($index,$event)"></span>
+            				</li>
+            				<li ng-click="myAccount()">我的账户</li>
+            				<!--<li>系统设置</li>-->
+            				<li ng-click="loginOut()">退出</li>
+            			</ul>
+            		</div>
+            	</div>
+            	<span ng-bind="userLoggedMsg.realname">王大天老师</span>
+            	<div class="zy_per_msg">
+            		<ul>
+            			<li></li>
+            		</ul>
+            	</div>
+            </div>
+        </header>
+    </div>
+    
+    <div ui-view class="toggle"></div>
+    
+</div>

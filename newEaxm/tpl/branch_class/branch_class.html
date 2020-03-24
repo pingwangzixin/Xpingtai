@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分班</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../fonts/iconfont.css">
+	<link rel="stylesheet" href="../../css/newEaxm.css">
+	<link rel="stylesheet" href="../../css/tanchuang.css" />
+</head>
+<body>
+	<!--最大容器 start-->
+	<div class="mlh_wrapper">	
+		<!--头部 start-->
+		<div class="mlh_header">
+			<div class="content">
+				<div class="left">
+					<a href="#"><img src="../../img/logo.png"></a>
+					<span>智能分班</span>
+				</div>
+				<div class="right">
+					<!--<span class="help"><i class="iconfont icon-help"></i>用户帮助</span>-->
+					<span class="user">
+						<i class="iconfont icon-user"></i>
+						<!--王老师-->
+						<span id="createName"></span>
+						<i class="arrow"></i>
+						<div class="exit" onclick="loginOut()"><i class="iconfont icon-tuichu"></i>退出登录</div>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!--头部 end-->
+		<!--整个容器 start-->
+		<div class="mlh_container">
+			<div class="fanhui">
+            	<a href="javaScript:void(0)" onclick="goClassHtml()"><img src="../../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+        	</div>
+			<div class="mlh_title">
+				<div class="mlh_check">
+					<a href="#" class="active" index='0'>选取固定组合</a>
+					<a href="#" index='1'>设置固定组合</a>
+					<a href="#" index='2'>设置剩余组合</a>
+					<a href="#" index='3'>设置班主任</a>
+			  </div>
+			</div>
+			<!--选取固定组合 start-->
+			<div class="mlh_student" style="display: block;">
+				<ul class="mlh_query">
+					<li class="item divideClassName">
+						<!--名称：高一年级微走班98-->
+					</li>
+					<li class="item">
+							选择选科名称：
+							<select id="selectSubList">
+								<!--<option>高一</option>-->
+							</select>
+					</li>
+					<li class="item item-1">
+						<p>
+							<span class="number" id="total"><!--分班总人数   434人--></span>
+							<span class="number" id="electiveCourse"><!--高一人数   434人--></span>
+							<span class="number" id="nonElectiveCourse"><!--还有0人由于未选科而没有参加分班--></span>
+						</p>
+					</li>
+					<li class="item">
+						请选择最大的三三组合优先固定分班
+						<p class="kemu sansan" id="stuSelectSub">
+							<!--<a href="#" class="mlh_btn active">地化生(39)</a>
+							<a href="#" class="mlh_btn">地化生(39)</a>
+							<a href="#" class="mlh_btn">地化生(39)</a>
+							<a href="#" class="mlh_btn">地化生(39)</a>
+							<a href="#" class="mlh_btn">地化生(39)</a>-->
+						</p>
+					</li>
+				</ul>
+				<div class="mlh_step">
+					<button class="mlh_btn sure" onclick="submitFixedSelectSub()">确定</button>
+				</div>
+			</div>
+			<!--选取固定组合 end-->
+			<!--设置固定组合 start-->
+			<div class="mlh_student" style="display: none;">
+				<ul class="mlh_query">
+					<li class="item divideClassName"><!--名称：高一年级微走班98--></li>
+					<li class="item">请选择最大的三三组合优先固定分班</li>
+					<li class="item color" id="fixedCount"><!--组合人数201人--></li>
+				</ul>
+				<div class="mlh_table mlh_tab">
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<td>科目组合</td>
+								<td>选择人数</td>
+								<td>开班数</td>
+								<td>均额数</td>
+							</tr>
+						</thead>
+						<tbody id="fixedTbody">
+							<!--<tr>
+								<td>物化生</td>
+								<td>123</td>
+								<td><input type="text" placeholder="123"></td>
+								<td>123</td>
+							</tr>-->
+						</tbody>
+					</table>
+				</div>
+				<ul class="mlh_query" style="display: none;">
+					<li class="item">
+						<label>
+					    	<input value="0" type="radio" name="kemu1" checked="checked" />随机 
+					    </label>
+						<label class="mlh_spacing">
+					    	<input value="1" type="radio" name="kemu1" />按成绩总分均衡 
+					    </label>
+					    <label class="mlh_spacing">
+					    	<input value="2" type="radio" name="kemu1" />按语数外三科成绩总分均衡  
+					    </label>
+					</li>
+					<li class="item">
+							选择参考成绩：
+							<select class='scoreList'>
+								<option value="gaoyi">高一</option> 
+							</select>
+					</li>
+					<li class="item item-1">
+							<span class="tips">
+								如果成绩分班，请在成绩单中导入成绩！
+							</span>
+					</li>
+				</ul>
+				<div class="mlh_step">
+					<!--<button class="mlh_btn step_top">返回上一步</button>-->
+					<button class="mlh_btn sure step_btn" onclick="updateClassNum('fixed')">确定</button>
+				</div>
+			</div>
+			<!--设置固定组合 end-->
+			<!--设置剩余组合 start-->
+			<div class="mlh_student" style="display: none;">
+				<ul class="mlh_query">
+					<li class="item divideClassName"><!--名称：高一年级微走班98--></li>
+					<li class="item"><em id="surplusCount"><!--剩余人数291人--></em></li>
+					<li class="item">请设置剩余学生行政班</li>
+					<li class="item classes">
+						<p class="kaiban">
+							开班数：<input type="text" name="" id="surplusClassNum" onkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')">
+							<span id="surplusClassPerson"><!--班额数：49人--></span>
+						</p>
+						<p class="select" style="display: none;">
+							<label>
+					    		<input value="0" type="radio" name="kemu2" checked="checked" />随机 
+					    	</label>
+							<label>
+					      		<input value="1" type="radio" name="kemu2" />按成绩总分均衡 
+						    </label>
+						    <label>
+						    	<input value="2" type="radio" name="kemu2" />按语数外三科成绩总分均衡  
+						    </label>
+						    <span>
+						    	选择参考成绩：
+									<select class='scoreList'>
+										<option value="gaoyi">高一</option>
+									</select>
+						    </span>
+						</p>
+					</li>
+				</ul>
+				<div class="mlh_table mlh_tab">
+					<ul class="mlh_query">
+						<li class="item">请设置剩余学生教学班</li>
+					</ul>
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<td>科目组合</td>
+								<td>选择人数</td>
+								<td>开班数</td>
+								<td>班额数</td>
+							</tr>
+						</thead>
+						<tbody id="surplusTbody">
+							<!--<tr>
+								<td>物化生</td>
+								<td>123</td>
+								<td><input type="text" placeholder="123"></td>
+								<td>123</td>
+							</tr>-->
+						</tbody>
+					</table>
+				</div>
+				<ul class="mlh_query" style="display: none;">
+					<li class="item">
+						<label>
+					    	<input value="0" type="radio" name="kemu" checked="checked" />随机 
+					    </label>
+						<label class="mlh_spacing">
+					    	<input value="1" type="radio" name="kemu" />按成绩总分均衡 
+					    </label>
+					    <label class="mlh_spacing">
+					    	<input value="2" type="radio" name="kemu" />按语数外三科成绩总分均衡  
+					    </label>
+					</li>
+					<li class="item">
+							选择参考成绩：
+							<select class='scoreList'>
+								<option value="gaoyi">高一</option>
+							</select>
+					</li>
+					<li class="item item-1">
+							<span class="tips">
+								如果成绩分班，请在成绩单中导入成绩！
+							</span>
+					</li>
+				</ul>
+				<div class="mlh_step">
+					<!--<button class="mlh_btn step_top">返回上一步</button>-->
+					<button class="mlh_btn sure step_btn" onclick="updateClassNum('surplus')">确定，开始分班</button>
+				</div>
+			</div>
+			<!--设置剩余组合 end-->
+			<!--分班结果预览 start-->
+			<div class="mlh_student" style="display: none;">
+				<ul class="mlh_query">
+					<li class="item divideClassName"><!--名称：高一年级微走班98--></li>
+					<li class="item item-1">
+						<p>
+							科目组合：
+							<select id='subjectAssemble'>
+								<!--<option>高一</option>-->
+							</select>
+						</p>
+						<!--<p>
+							<a href="#" class="daochu">
+								<i class="iconfont icon-daochu"></i> 导出
+							</a>
+						</p>-->
+					</li>
+				</ul>
+				<div class="mlh_table mlh_tab">
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<td>序号</td>
+								<td>科目组合</td>
+								<td>教学班级</td>
+								<td>设置班主任</td>
+								<!--<td>男生人数</td>
+								<td>女生人数</td>
+								<td>班级总人数</td>-->
+							</tr>
+						</thead>
+						<tbody id="classPreview">
+							<!--<tr>
+								<td>1</td>
+								<td>物化生</td>
+								<td><input type="text" placeholder="史地生1班"></td>
+								<td>123</td>
+								<td>123</td>
+								<td>123</td>
+							</tr>-->
+						</tbody>
+					</table>
+				</div> 
+				<div class="mlh_step">
+					<!--<button class="mlh_btn step_top">返回上一步</button>-->
+					<button class="mlh_btn sure step_btn" onclick="updateClassName()">确定</button>
+				</div>
+			</div>
+			<!--分班结果预览 end-->
+		</div>
+		<!--整个容器 end-->
+	</div>
+	<!--最大容器 end-->
+	<!-- 删除提示弹窗   -->
+	<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+		<div class="wx_hide"></div>
+		<div class="wx_tanchuangcon  wx_xgrwtc_height">
+			<div class="tc_con_tit"> <span>确认提示</span> <img onclick="cancel('deleteTips')" src="../../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+			<div class="tc_con_neirong" style="margin-top:30px;">
+				<div style="text-align:center"> <em class="wx_erro_icon"></em>
+					<p style="font-size:16px;">您有未保存的调班，是否要保存？</p>
+				</div>
+			</div>
+			<p style="margin-top:20px;text-align:center">
+				<button id="deleteTipsYesBtn" onclick="saveChangeClass('')" class="tc_anniu_queding">保存</button>
+				<button onclick="abandon()" class="tc_anniu_quxiao">放弃</button>
+			</p>
+		</div>
+	</div>
+
+	<!-- 警告提示弹窗   -->
+	<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+		<div class="wx_hide"></div>
+		<div class="wx_tanchuangcon  wx_success_height">
+
+			<div class="tc_con_neirong" style="margin-top:30px;">
+				<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+					<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!--设置班主任 start-->
+	<div class="del_down" class="mlh_class" id="mlh_bzr" style="display:none ; ">
+		<div class="mlh_hide"></div>
+		<div class="con mlh_tc">
+			<div class="title">
+				<span>设置班主任</span>
+				<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+			</div>
+			<div class="content">
+				<div class="table">
+					<div class="mlh_search">
+						<input id="input_tea" type="text" name="" placeholder="请输入教师姓名">
+						<button onclick="searchTeaBtn()">查询</button>
+					</div>
+					<ul class="set_bzr">
+					</ul>
+					<p>
+						<button onclick="addClassAdviser()" type="button" class="mlh_btn sure">确定</button>
+					</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!--设置班主任 end-->
+	<!-- 成功提示弹窗   -->
+	<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+		<div class="wx_hide"></div>
+		<div class="wx_tanchuangcon  wx_success_height">
+
+			<div class="tc_con_neirong" style="margin-top:30px;">
+				<div style="text-align:center"> <em class="wx_success_icon"></em>
+					<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- 失败提示弹窗   -->
+	<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+		<div class="wx_hide"></div>
+		<div class="wx_tanchuangcon  wx_success_height">
+
+			<div class="tc_con_neirong" style="margin-top:30px;">
+				<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+					<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/neweaxm.js"></script>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/branch_class.js"></script>
+	<script src="../../js/loginOut.js"></script>
+</body>
+</html>

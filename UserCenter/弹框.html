@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.border{
+			  position: relative;
+			    border: 4px solid transparent;
+			    border-radius: 16px;
+			    background: linear-gradient(#fff,#fff);
+			    background-clip: padding-box;
+			    padding: 10px;
+			    /* just to show box-shadow still works fine */
+			    /*box-shadow: 0 3px 9px black, inset 0 0 9px white;*/
+			}
+			.border:before{
+			    position: absolute;
+			    top: -4px; bottom: -4px;
+			    left: -4px; right: -4px;
+			    background: linear-gradient(#9bc6e9, #e9e9ea);
+			    content: '';
+			    z-index: -1;
+			    border-radius: 16px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="src/css/reset.css"/>
+	</head>
+	<body>
+		<!--gy_del_down为公用clss名不要动，后面起自己控制的class-->
+		<div class="gy_del_down zy_addClassBox" style="display: block;">
+		    <div class="gy_hide"></div>
+		    <div class="gy_con"><!--弹框具体宽高自定义-->
+			</div>
+		</div>
+		
+		
+		<!--<div class="border">
+			112233
+		</div>-->
+	</body>
+</html>

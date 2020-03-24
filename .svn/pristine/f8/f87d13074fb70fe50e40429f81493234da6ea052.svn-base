@@ -1,0 +1,131 @@
+
+<div class="zy_main">
+	
+	<div class="zy_bg">
+		<div class="zy_main_con zy_main_con_none">
+			<div class="zy_activity_detail clearfix">
+				<p class="fl">活动详情</p>
+				<span class="fr" ui-sref="wrap.list.studentActivityList({token:token})">返回</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg zy_actdet_bg" ng-class="activityDetail.class">
+		<div class="zy_main_con zy_main_con_none">
+			<div class="zy_activity_show clearfix">
+				<!--<p class="zy_more_operations">分享</p>-->
+				<div class="clearfix">
+					<div class="zy_l_img fl" ui-sref="">
+						<img src={{activityDetail.activity_file}}  style="width: 284px;height: 150px;"/>
+					</div>
+					<div class="zy_r_cont fr">
+						<h4 ng-model="activityDetail.activity_name">{{activityDetail.activity_name}}</h4>
+						<p>
+							<span>活动日期：</span>
+							<i>{{activityDetail.activity_startdate}}~{{activityDetail.activity_enddate}}</i>
+						</p>
+						<p>
+							<span>活动状态：</span>
+							<i ng-bind="activityDetail.activity_state|activityStateFilter">已结束</i>
+						</p>
+					</div>
+				</div>
+				<div class="zy_activity_show_text">
+					<div>
+						<span>活动要求：</span>
+						{{activityDetail.activity_deman}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg" >
+		<div class="zy_main_con zy_main_con_none">
+			<div class="zy_finished" ng-hide="hidebtn1">
+				<p>教师活动总结</p>
+				<div class="zy_teacher_summary">
+					<div class="zy_teacher_summary_echo">
+						<div class="zy_teacher_summary_echo_detail" ng-bind="teaActivity.assignMastersummary">
+							教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结教师活动总结
+						</div>
+						<div class="zy_teacher_summary_echo_file">
+							<div class="zy_a_strip">
+								<dl class="clearfix">
+									<dt class="fl">已上传文件：</dt>
+									<dd class="fl"><a ng-href="{{teaActivity.filedownload}}"><span ng-bind="teaActivity.filename">卡世纪东方搜房</span></a></dd>
+									
+						        </dl>
+					        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="zy_finished zy_finish_teacher">
+				<p>学生活动反馈</p>
+				<div class="zy_teacher_summary">
+					<div class="zy_a_strip">
+						<!--<span>活动总结</span>-->
+						<textarea name="" rows="" cols="" maxlength="255" ng-model="activityDetail.activity_comment" placeholder="请输入活动反馈"></textarea>
+					</div>
+					<div class="zy_a_strip">
+						<dl class="clearfix" ng-show="stuIsShowImg">
+							<dt class="fl">已上传文件：</dt>
+							<dd class="fl"><a ng-href="{{stufiledownload}}"><span ng-bind="edit_stufile"></span></a></dd>
+				        </dl>
+			        </div>
+					<div class="zy_a_strip" ng-hide="hidebtn">
+						<span>上传附件<i class="zy_tip_grey">上传附件(注意:图片支持jpg、png格式)</i></span>
+						<div class="zy_activity_file">
+							<em>选择上传文件</em>
+							<input type="file" name="" id="file" value="" onchange="angular.element(this).scope().upload()"/>
+						</div>
+						<dl class="clearfix" ng-show="stuUpShowImg">
+							<dt class="fl">已上传文件：</dt>
+							<dd ng-bind="stuUpImg"></dd>
+						</dl>
+					</div>
+					<div class="zy_a_strip clearfix">
+						<button class="fr" ng-click="subBtn()" ng-hide="hidebtn">提交活动反馈</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+<!--确认弹层-->
+<div class="gy_del_down zy_popup" ng-show="submitActivity.popup">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+    	<p class="zy_sentence">确定无误并提交吗？</p>
+    	<div class="zy_btn_box">
+    		<button class="zy_cancel" ng-click="submitActivity.popup = false">取消</button>
+    		<button class="zy_sure" ng-click="subSureBtn()">确认</button>
+    	</div>
+	</div>
+</div>
+
+<!--提示弹层-->
+<div class="gy_del_down zy_popup" ng-show="submitActivity.tip">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+		<p class="zy_prompt">
+			<img src="./img/filed.png" ng-src="./img/{{submitActivity.tipSrc}}.png" />
+			<span ng-bind="submitActivity.tipWord">提交成功</span>
+		</p>
+	
+    </div>
+</div>
+<!--提示弹层-->
+<div class="gy_del_down zy_popup" ng-show="myshow">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+		<p class="zy_prompt">
+			<img src="./img/filed.png" ng-src="./img/{{deleteActivity.tipSrc}}.png" />
+			<span ng-bind="tctips">提交成功</span>
+		</p>
+	
+    </div>
+</div>

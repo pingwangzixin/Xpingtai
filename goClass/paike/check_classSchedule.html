@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>走班排课-查看-班级课表</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../fonts/iconfont.css">
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../common/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../js/common.js" ></script>
+    <script type="text/javascript" src="../js/check_class.js" ></script>
+</head>
+<style>
+	.wx_fenzu_p input {
+		width: 185px;
+		height: 30px;
+		border:1px solid #ccc;
+	}
+    textarea{height:85px;vertical-align: top;width:530px;border:1px solid #ccc;}
+    .wx_fenzu_p{margin:20px 0;}
+    .wx_fenzu_p span{padding:5px 20px;margin-right: 10px;display: inline-block;border:1px solid #ccc;cursor: pointer;}
+    .wx_fenzu_p span.active{background: #399fdf; border-color:#399fdf; color:#fff;}
+</style>
+
+<body>
+    <iframe src="../header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+    <div class="indexcon clearfix">
+        <div class="fanhui">
+            <a href="javaScript:void(0)" onclick="goIndex()"><img src="../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+        </div>
+        <div class="pkqh_con">
+            <!--   切换的列表        -->
+            <div class="qiehu_con_tit">
+                <ul id="cs_tab">
+                  <!--  <a href="./check_classSchedule.html">
+						<li class="active">班级课表</li>
+					</a>
+					<a href="./check_teacherSchedule.html">
+						<li>教师课表</li>
+					</a>
+					<a href="./check_classroomSchedule.html">
+						<li>教室课表</li>
+					</a>
+					<a href="./check_gradeSchedule.html">
+						<li>年级课表</li>
+					</a>
+					<a href="./check_studentSchedule.html">
+						<li>学生课表</li>
+					</a>
+					<a href="./check_detailSchedule.html">
+						<li>学生分班明细</li>
+					</a>-->
+                </ul>
+            </div>
+            <!--   设置课表    -->
+            <div class="setkebiao classSchedule" style="padding:0 30px">
+                <div class="wx_jiaoshi_guize_qie">
+                    <ul id="class_schedule_ul">
+                        <li> <b>课表名称：</b><span id="schedule_name"></span> </li>
+                        <li class="clearfix mlh_height">
+							<div class="mlh_generate">
+								<em>年&nbsp;&nbsp;&nbsp;&nbsp;级：</em>
+								<select id="sel_grade">
+									<!--<option>高一</option>-->
+								</select>
+								<em>教学班：</em>
+								<select id="sel_class">
+									<!--<option>语文</option>-->
+								</select>
+								<!--<em>教学班：</em>
+								<input id="input_class" type="text" name="">-->
+								<!--<button class="mlh_btn">查询</button>-->
+							</div>
+						</li>
+						<li class="wx_setjieshu">
+                                <input type="checkbox" id="wx_shangwu">
+                                <label for="wx_shangwu">显示教师</label>
+                                <input type="checkbox" id="wx_xiawu">
+                                <label for="wx_xiawu">显示上课教室</label>
+                        </li>
+                         <!--<li class="mlh_setclass clearfix">
+                         	<b>教学班：地理（选）（G1703班）：</b>
+                         	<p>
+	                         	<i class="mlh_addfz mlh_button mlh_bg"><em class="daochu"></em>导出</i>
+	                         	<i class="mlh_button mlh_dayin  dayin_tc"><em class="dayin"></em>打印</i>
+	                         	<i class="mlh_button mlh_dayin"><em class="dayin"></em>打印设置</i>
+                         	</p>
+                         </li>   
+                        <li>
+                            <table class="wx_setrenwu_table wx_setkemu_bupai">
+                                    <thead>
+                                        <tr id="day_tr">
+                                           <th>节次</th>
+                                            <th>星期一</th>
+                                            <th>星期二</th>
+                                            <th>星期三</th>
+                                            <th>星期四</th>
+                                            <th>星期五</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="class_table">
+                                        <tr>
+                                            <td class="wx_jieci">第一节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第二节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第三节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第四节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第五节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第六节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第七节</td>
+                                            <td></td>
+                                            <td>地理（选）<br/>（G1703班）</td>
+                                            <td></td>
+                                            <td>地理（选）<br/>（G1703班）</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wx_jieci">第八节</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>地理（选）<br/>（G1703班）</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </li>-->
+                    </ul>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+    
+   
+  	<!--打印弹窗 start-->
+	<div class="wx_tanchuang mlh_dayintc" style="display:none">
+        <div class="wx_hide"></div>
+        <div class="wx_tanchuangcon wx_fenzu_tc_height">
+            <div class="tc_con_tit"> <span>班级课表</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+            <div class="tc_con_neirong">
+                <p class="wx_fenzu_p"> 课&nbsp;表&nbsp;名&nbsp;称：
+                    <input type="text" placeholder="请输入名称"> 
+                </p>
+                <p class="wx_fenzu_p"> 底注第一行：
+                    <textarea name="" id="" cols="30" rows="10" placeholder="请输入名字，至少能输入250个字"></textarea>
+                </p>
+                <p class="wx_fenzu_p"> 底注第二行：
+                    <textarea name="" id="" cols="30" rows="10" placeholder="请输入名字，至少能输入250个字"></textarea>
+                </p>
+                <p class="wx_fenzu_p"> 底注第三行：
+                    <textarea name="" id="" cols="30" rows="10" placeholder="请输入名字，至少能输入250个字"></textarea>
+                </p>
+                <p class="wx_fenzu_p"> 打&nbsp;印&nbsp;设&nbsp;置：
+                    <span class="active">一页一表</span><span>一页两表</span>
+                </p>
+
+                <p style="margin-top:20px;text-align:center">
+                    <button class="tc_anniu_queding">确定</button>
+                    <button class="tc_anniu_quxiao">取消</button>
+                </p>
+            </div>
+        </div>
+    </div>
+	<!--打印弹窗 end--> 
+    <!-- 删除提示弹窗   -->
+    <div class="wx_tanchuang wx_delet_tips" style="display:none">
+        <div class="wx_hide"></div>
+        <div class="wx_tanchuangcon  wx_xgrwtc_height">
+            <div class="tc_con_tit"> <span>删除</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+            <div class="tc_con_neirong" style="margin-top:30px;">
+                <div style="text-align:center"> <em class="wx_erro_icon"></em>
+                    <p style="font-size:16px;">确认要删除吗？</p>
+                </div>
+            </div>
+            <p style="margin-top:20px;text-align:center">
+                <button class="tc_anniu_queding">确定</button>
+                <button class="tc_anniu_quxiao">取消</button>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+	$(function() {
+	    //打印
+	    $('.dayin_tc').click(function(){
+	        $('.mlh_dayintc').show();
+	    });
+	    $('.tc_con_tit .img_guanbi').click(function(){
+        $('.mlh_dayintc').hide();
+    });
+    })
+</script>

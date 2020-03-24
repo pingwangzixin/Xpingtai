@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>走班排课-查看-年级课表</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../fonts/iconfont.css">
+		<link rel="stylesheet" href="../css/index.css" />
+		<script src="../js/jquery-1.11.2.min.js"></script>
+		<script src="../common/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/check_grade.js"></script>
+	</head>
+
+	<body>
+		<iframe src="../header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+		<div class="indexcon clearfix">
+			<div class="fanhui">
+				<a href="javaScript:void(0)" onclick="goIndex()"><img src="../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+			</div>
+			<div class="pkqh_con">
+				<!--   切换的列表        -->
+				<div class="qiehu_con_tit">
+					<ul id="cs_tab">
+						<!--<a href="./check_classSchedule.html">
+						<li>班级课表</li>
+					</a>
+					<a href="./check_teacherSchedule.html">
+						<li>教师课表</li>
+					</a>
+					<a href="./check_classroomSchedule.html">
+						<li>教室课表</li>
+					</a>
+					<a href="./check_gradeSchedule.html">
+						<li class="active">年级课表</li>
+					</a>
+					<a href="./check_studentSchedule.html">
+						<li>学生课表</li>
+					</a>
+					<a href="./check_detailSchedule.html">
+						<li>学生分班明细</li>
+					</a>-->
+					</ul>
+				</div>
+				<!--   设置课表    -->
+				<div class="setkebiao classSchedule" style="padding:0 30px">
+					<div class="wx_jiaoshi_guize_qie">
+						<ul>
+							<li> <b>课表名称：</b><span id="schedule_name"></span> </li>
+							<li class="clearfix mlh_height">
+								<div class="mlh_generate">
+									<em>年&nbsp;&nbsp;&nbsp;&nbsp;级：</em>
+									<select id="sel_grade">
+										<!--<option>高一</option>-->
+									</select>
+									<button class="mlh_btn">查询</button>
+								</div>
+							</li>
+							<li class="wx_setjieshu">
+								<input type="radio" name="shangke" id="guding" checked="checked" value="gd" onclick="radioShow();">
+								<label for="guding">固定上课</label>
+								<input type="radio" name="shangke" id="zouban" value="zb" onclick="radioShow();">
+								<label for="zouban">走班上课</label>
+							</li>
+
+						</ul>
+						<div id="shangke">
+							<ul>
+								<!--固定上课布局  start-->
+								<li class="wx_setjieshu">
+									<input type="checkbox" id="gd_showTeacher">
+									<label for="gd_showTeacher">显示教师</label>
+									<!--<input type="checkbox" id="wx_kemu">
+	                                <label for="wx_kemu">显示科目全称</label>-->
+									<input type="checkbox" id="gd_showClassRoom">
+									<label for="gd_showClassRoom">显示上课教室</label>
+								</li>
+								<!--固定上课布局  end-->
+								<li class="mlh_setclass mlh_width clearfix">
+									<b>所属年级：<span id="gd_grade"></span>(固定上课)</b>
+									<p>
+										<i onclick="addExportHref()" class="mlh_addfz mlh_button mlh_bg"><em class="daochu"></em>导出</i>
+									</p>
+								</li>
+								<li class="mlh_gradeSchedule">
+									<table class="wx_setrenwu_table wx_setkemu_bupai">
+										<thead id="gd_th">
+											<!--<tr>
+                                            <th>星期</th>
+                                            <th colspan="8">星期一</th>
+                                            <th colspan="8">星期二</th>
+                                            <th colspan="8">星期三</th>
+                                        </tr>
+                                        <tr>
+                                            <th>节次</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                        </tr>-->
+										</thead>
+										<tbody id="gd_tbody">
+											<!--<tr>
+                                            <td class="wx_jieci">G1701班</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                        </tr>-->
+										</tbody>
+									</table>
+								</li>
+							</ul>
+							<ul style="display:none">
+								<!--走班上课布局  start-->
+								<li class="wx_setjieshu">
+									<input type="checkbox" id="zb_showTeacher">
+									<label for="zb_showTeacher">显示教师</label>
+									<input type="checkbox" id="zb_showClassRoom">
+									<label for="zb_showClassRoom">显示上课教室</label>
+								</li>
+								<!--走班上课布局  end-->
+								<li class="mlh_setclass mlh_width clearfix">
+									<b>所属年级：<span id="zb_grade"></span>(走班上课)</b>
+									<p>
+										<i onclick="addExportHref()" class="mlh_addfz mlh_button mlh_bg"><em class="daochu"></em>导出</i>
+									</p>
+								</li>
+								<li class="mlh_gradeSchedule">
+									<table class="wx_setrenwu_table wx_setkemu_bupai">
+										<thead id="zb_th">
+											<!--<tr>
+                                            <th>星期</th>
+                                            <th colspan="8">星期一</th>
+                                            <th colspan="8">星期二</th>
+                                            <th colspan="8">星期三</th>
+                                        </tr>
+                                        <tr>
+                                            <th>节次</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                        </tr>-->
+										</thead>
+										<tbody id="zb_tbody">
+											<!--<tr>
+                                            <td class="wx_jieci">G1701班</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                            <td>语文雷天舒<br/>G1701班教室</td>
+                                        </tr>-->
+										</tbody>
+									</table>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- 删除提示弹窗   -->
+		<div class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>删除</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">确认要删除吗？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button class="tc_anniu_queding">确定</button>
+					<button class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script>
+	function radioShow() {
+		var shangke = document.getElementsByName("shangke");
+		var ul = document.getElementById("shangke").getElementsByTagName("ul");
+		for(i = 0; i < ul.length; i++) {
+			if(shangke[i].checked) {
+				ul[i].style.display = "block";
+				$('.span_teaName,.span_classromm').hide();
+				$('#gd_showTeacher,#gd_showClassRoom,#zb_showTeacher,#zb_showClassRoom').prop('checked',false);
+			} else {
+				ul[i].style.display = "none";
+			}
+		}
+	}
+</script>

@@ -1,0 +1,76 @@
+<system nav="navShowDet"></system>
+<div class="wx_user_bg" style="margin-top:70px;">
+   <select name="" id="" class="wx_nav_select" ng-model="ustate" ng-options="userState.id as userState.name for userState in userStates" ng-change="userstateChange()"></select>
+   
+    <div class="wx_search_user"> <span class="wx_search"><input type="text" class="searchSchool" placeholder="请选择省市区学校"><span class="wx_down_select">▼</span></span>
+        <input type="text" placeholder="请输入机构类型/机构名称" class="search_user_input" ng-model="schoolInfo" ng-keyup="reltime()">
+        <button class="wx_btn inquiry" ng-click="selectSchool()">查询</button>
+        <button class="wx_btn add" ng-click="addjigouInfo()" ng-hide="xinzeng">新增</button>
+    </div>
+    <div class="user_list_table">
+        <table border="1" cellpadding="0" cellspacing="0" class="user_list_tb wx_jigouadmin">
+            <thead>
+                <tr>
+                    <th style="text-align:left;text-indent:70px;width:600px;">机构名称</th>
+                    <th style="width:450px">机构类型</th>
+                    <th style="width:169px;text-align:center;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="scl in schools1" ng-mouseleave="yincanglist($event)">
+                    <td>{{scl.schoolname}}</td>
+                    <td>{{scl.schoolType}}</td>
+                    <td style="position:relative;text-align:center;">
+                        <button class="wx_contrl" ng-click="contrl($event)">操作&nbsp;&nbsp;∨</button>
+                        <ul class="wx_caozuo_ul" style="display:none">
+                            <li ng-show="huishouzhan"><em class="icon iconfont icon-fanhui"></em>还原</li>
+                            <li ng-show="yitingyong"><em class="icon iconfont icon-kaiguan2"></em>启用</li>
+                            <li><em class="icon iconfont icon-bianji1"></em>编辑</li>
+                            <li ng-show="yizhuce"><em class="icon iconfont icon-offline"></em>停用</li>
+                            <li ng-show="huishouzhan"><em class="icon iconfont wx_red_color icon-shanchu"></em><span class="wx_color_red">彻底删除</span></li>
+                            <li ng-show="!huishouzhan"><em class="icon iconfont wx_red_color icon-shanchu"></em><span class="wx_color_red">删除</span></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="wx_paging">
+            <zjy-pagination conf="contentpageConfig" onSelectStart="return false"></zjy-pagination>
+            <div class="wx_user_total">共<span>300</span>条记录</div>
+        </div>
+    </div>
+</div>
+
+
+<!--添加机构弹窗-->
+<!--添加教师弹窗-->
+<div class="wx_add_str toggle" ng-hide="addteacherTc">
+    <div class="wx_hide"></div>
+    <div class="wx_add_str_con  wx_add_jigou_con">
+        <div class="wx_add_par_tit"> <span class="fl wx_bold">添加机构</span> <i class="fr" ng-click="addteacherTc = true">×</i> </div>
+        <div class="wx_add_str_detail">
+            <p>机构名称</p>
+            <input type="text" ng-model="teacherName">
+            <p>机构区域</p>
+            <span class="wx_search" ng-hide="quxian"><input type="text" ng-model="sckey" ng-focus="showxiala()" class="searchSchool" placeholder="请选择省市区学校" ng-keyup="keyinput()"><span class="wx_down_select">▼</span></span>
+            <p>机构类型</p>
+            <ul class="wx_add_ter_ul">
+                <li ng-class="{active:addtype==r.id}" ng-repeat="r in range" ng-model="liname" ng-click="changeaddtype($index)">{{r.name}}</li>
+            </ul>
+            <button class="wx_sure_btn" ng-click="sureTj()">确认提交</button>
+        </div>
+    </div>
+</div>
+
+
+<!--删除弹框-->
+<div class="gy_del_down zy_delete_role" ng-hide="conformTc">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+    	<p class="zy_delete_who">确定要删除<span>XXX</span>机构吗？</p>
+    	<div class="zy_del_btn">
+    		<button class="zy_cancel_role" ng-click="conformTc = !conformTc">取消</button>
+    		<button class="zy_sure_role" ng-click="conformdel()">确认</button>
+    	</div>
+	</div>
+</div>

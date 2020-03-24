@@ -1,0 +1,256 @@
+
+<div class="zy_main">
+	<div class="zy_bg zy_main_bg" ng-hide="loggedIn">
+		<div class="zy_central_content zy_main_login clearfix"> 
+			<div class="zy_login_box fr">
+				<span>登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</span>
+				<div class="zy_user_login">
+					<div class="zy_tip_box">
+						<i class="zy_error_tip" ng-bind="userLoggedMsg.errorTip" ng-show="userLoggedMsg.showTips"></i>
+					</div>
+					<div class="zy_login_enter">
+						<p class="zy_user_input">
+							<input type="text" name="" class="zy_user_name" value="" placeholder="手机号/国网学籍号（学生）" ng-model="userInfo.username" />
+							<label for=""></label>
+						</p>
+						<p class="zy_user_input">
+							<input type="password" name="" class="zy_password" value="" placeholder="密码"  ng-model="userInfo.password"  />
+							<label for=""></label>
+						</p>
+						<!--<p class="zy_user_input">
+							<input type="text" name="" class="zy_verify_code" value="" placeholder="验证码"  ng-model="userInfo.yanzhengma"  />
+							<em><img src="./img/zy_verify_code.png"/></em>
+							<i class="zy_change_code">换一张</i>
+						</p>-->
+					</div>
+					<div class="zy_submit_box">
+						<!--<i class="zy_now_register">立即注册</i>-->
+						<button class="zy_logon_btn" ng-click="loginT()">登录</button>
+						<i class="zy_forget_password">忘记密码</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="zy_logged_in" ng-show="loggedIn">
+		<div class="zy_main_logged_nav_bg toggle" ng-show="adminBtn">
+			<div class="zy_central_content zy_main_login clearfix"> 
+				<!--<ul class="zy_my_area fl">
+					<li ng-repeat="nav in loggedleftNav" ng-class="{'active':nav.checked}" ng-click="loggedleftNavTab($index)">
+							<i class="iconfont" ng-class="nav.icon"></i>
+							<span ng-bind="nav.name"></span>
+					</li>
+				</ul>-->
+				<p class="zy_my_more fr">
+					<span ng-click="doorAdminShow()">门户管理</span>
+					<!--<span>用户中心</span>-->
+				</p>
+			</div>
+		</div>
+		<div class="zy_bg zy_main_bg zy_main_logged_bg">
+			
+		</div>
+	</div>
+	
+	
+	<!--应用-->
+	<div class="zy_bg zy_application_bg" ng-if="pcassembly[0].checked">
+		<div class="zy_central_content zy_application">
+			<p>
+				<!--<img src="./img/application.png"/>-->
+				<i class="iconfont icon-yingyong"></i>
+				<span>应用</span>
+			</p>
+			<ul class="clearfix">
+				<li class="fl" ng-repeat="i in application">
+					<a ng-href="{{i.href}}">
+						<img ng-src="./img/{{i.icon}}.png"/>
+						<span ng-bind="i.name"></span>
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	
+	
+	<!--消息中心-->
+	<div class="zy_bg zy_message_center_bg" ng-if="pcassembly[1].checked">
+		<div class="zy_central_content zy_message_center">
+			<div class="zy_linear zy_news">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit"><i class="iconfont icon-xinwen-copy"></i><span>消息中心</span></div>
+					<div class="zy_new_box clearfix">
+						<img src="./img/{{globalStyle.timePic}}.png" class="fl" />
+						<div class="zy_new_list_wrap fr">
+							<ul class="zy_new_list clearfix">
+								<!--<seamless-rolling news="news"></seamless-rolling>-->
+								<li ng-repeat="newss in news" repeat-finish="renderFinish()">
+									<h4>
+										<span ng-bind="newss.title"></span>
+										<i class="fr" ng-bind="newss.createTime|timeFilter"></i>
+									</h4>
+									<div class="zy_new_content"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--空间展示-->
+	<div class="zy_bg zy_space_bg" ng-if="pcassembly[2].checked">
+		<div class="zy_central_content zy_space">
+			<div class="zy_linear zy_space_display">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit clearfix">
+						<i class="fl iconfont icon-kongjian1 bg_radius"></i>
+						<span class="fl">空间展示</span>
+						<ul class="zy_type_switch zy_exhibition_type fr">
+							<li class="" ng-class="{'active':state.space==0}" ng-click="switchSpace(0)">学校</li>
+							<!--<li class="" ng-class="{'active':state.space==1}" ng-click="switchSpace(1)">班级</li>-->
+							<li class="" ng-class="{'active':state.space==2}" ng-click="switchSpace(2)">老师</li>
+							<li class="" ng-class="{'active':state.space==3}" ng-click="switchSpace(3)">学生</li>
+							<!--<li class="" ng-class="{'active':state.space==4}" ng-click="switchSpace(4)">家长</li>-->
+						</ul>
+					</div>
+					<div class="zy_exhibition_list" ng-switch="state.space">
+						<div class="zy_exhibition_school" ng-switch-when="0">
+							<ul class="clearfix">
+								<li ng-repeat="xx in spaceschool">
+									<img ng-src="{{xx.logo}}"/>
+									<span ng-bind="xx.officeName"></span>
+								</li>
+								
+							</ul> 
+						</div>
+						<div class="zy_exhibition_class" ng-switch-when="1">
+							<ul class="clearfix">
+								<li>
+									<img src="./img/triangleSchool.png"/>
+									<span>闪电发货和</span>
+								</li>
+							</ul> 
+						</div>
+						<div class="zy_exhibition_teacher" ng-switch-when="2">
+							<ul class="clearfix">
+								<li ng-repeat="xx in spacetea">
+									<img ng-src="{{xx.userFace}}"/>
+									<span ng-bind="xx.userName"></span>
+								</li>
+							</ul> 
+						</div>
+						<div class="zy_exhibition_student" ng-switch-when="3">
+							<ul class="clearfix">
+								<li ng-repeat="xx in spacestu">
+									<img ng-src="{{xx.userFace}}"/>
+									<span ng-bind="xx.userName"></span>
+								</li>
+							</ul> 
+						</div>
+						<div class="zy_exhibition_parent" ng-switch-when="4">
+							<ul class="clearfix">
+								<li>
+									<img src="./img/triangleSchool.png"/>
+									<span>闪电发货和</span>
+								</li>
+							</ul> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--应用监控-->
+	<div class="zy_bg zy_watch_bg" ng-if="pcassembly[3].checked">
+		<div class="zy_central_content zy_watch">
+			<div class="zy_linear zy_space_watch">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit clearfix">
+						<i class="fl iconfont icon-yingyongjiankong bg_radius"></i>
+						<span class="fl">应用监控</span>
+						<ul class="zy_type_switch zy_watch_type fr">
+							<li ng-class="{'active':state.watching==0}" ng-click="switchWatching(0)">空间</li>
+							<!--<li ng-class="{'active':state.watching==1}" ng-click="switchWatching(1)">资源</li>-->
+						</ul>
+					</div>
+					<div class="zy_watch_list" ng-switch="state.watching">
+						<div class="zy_space_block" ng-switch-when="0">
+							<div class="zy_total_people">
+								已开通的空间
+								<z-score cont="statistics.total"></z-score>
+								人
+							</div>
+							
+							<ul class="zy_ratio clearfix">
+								<li class="clearfix">
+									<img src="./img/Teachers.png" class="fl" />
+									<p class="fl">
+										老师
+										<br />
+										<z-score cont="statistics.teacher"></z-score>
+										人
+									</p>
+								</li>
+								<li class="clearfix">
+									<img src="./img/Teachers.png" class="fl" />
+									<p class="fl">
+										学生
+										<br />
+										<z-score cont="statistics.student"></z-score>
+										人
+									</p>
+								</li>
+								<li class="clearfix">
+									<img src="./img/Teachers.png" class="fl" />
+									<p class="fl">
+										家长
+										<br />
+										<z-score cont="statistics.parent"></z-score>
+										人
+									</p>
+								</li>
+							</ul>
+							<!--'background-color':username === 'zxc' ? 'green' : 'red'-->
+							<ul class="zy_progress_chart clearfix">
+								<li class="zy_ratio_active">
+									<img src="./img/space_active.png" class="fl" />
+									<p class="fl" >
+										<span ng-style="{width:speed.active.progress+'%'}"></span>
+										<i ng-bind="speed.active.progress + '%'" ng-style="{color : speed.active.color}"></i>
+									</p>
+								</li>
+								<li class="zy_ratio_open">
+									<img src="./img/space_open.png" class="fl" />
+									<p class="fl" >
+										<span ng-style="{width:speed.open.progress+'%'}"></span>
+										<i ng-bind="speed.open.progress + '%'" ng-style="{color : speed.open.color}"></i>
+									</p>
+								</li>
+							</ul>
+						</div>	
+						<div class="zy_resources_block" ng-switch-when="1">
+							<div>都是课件佛</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg">
+		<div class="zy_central_content zy_waiting">
+			<img src="./img/{{globalStyle.bigBg}}.png"/>
+		</div>
+	</div>
+</div>
+<!--'background-color':username === 'zxc' ? 'green' : 'red'-->
+<!--<i        ng-style="{color : speed.active.color}"></i>-->
+<!--<z-footer ng-style="{color:.color}"></z-footer>-->
+<!--<z-footer ng-style="{color:'red'}"></z-footer>-->
+<z-footer></z-footer>

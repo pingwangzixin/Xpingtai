@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>设置选科</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" href="../../css/newEaxm.css">
+		<link rel="stylesheet" href="../../css/tanchuang.css">
+		<link rel="stylesheet" href="../../common/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		<link href="../../common/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<!--最大容器 start-->
+		<div class="mlh_wrapper">
+			<!--头部 start-->
+			<div class="mlh_header">
+				<div class="content">
+					<div class="left">
+						<a href="#"><img src="../../img/logo.png"></a>
+						<span>3+3选科</span>
+					</div>
+					<div class="right">
+						<!--<span class="help"><i class="iconfont icon-help"></i>用户帮助</span>-->
+						<span class="user">
+							<i class="iconfont icon-user"></i>
+							<!--王老师-->
+							<span id="createName"></span>
+							<i class="arrow"></i>
+							<div class="exit" onclick="loginOut()"><i class="iconfont icon-tuichu"></i>退出登录</div>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--头部 end-->
+			<!--整个容器 start-->
+			<div class="mlh_container">
+				<div class="fanhui">
+					<a href="javaScript:void(0)" onclick="goClassify()"><img src="../../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+				</div>
+				<div class="mlh_creat">
+					<div class="mlh_wrap">
+						<div class="cont">
+							<div class="left">
+								<span>学年 </span>
+								<select name="" id="schoolYear" class="index_xuenian range">
+									<option value="2019">2019-2020学年</option>
+									<!--<option value="">请选择</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>-->
+								</select>
+								<span>学期 </span>
+								<select name="" id="term" class="index_xuenian">
+									<option value="1" selected="selected">第一学期</option>
+									<!-- <option value="2" selected="selected">第二学期</option> -->
+									<!--<option value="">请选择</option>
+									<option value="1">第一学期</option>
+									<option value="2">第二学期</option>-->
+								</select>
+							</div>
+							<div class="right">
+								<button type="button" onclick="importModel()" class="addkebiao"><i class="iconfont icon-daochu"></i>导出模版</button>
+								<button type="button" class="addkebiao create_sub_btn"><i class="iconfont icon-add"></i>创建选科</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="mlh_file">
+				<div class="mlh_wrap">
+					<i class="icon-file"></i>
+					<input class="text" type="text" name="" value="" placeholder="">
+					<button class="mlh_btn preserve">保存</button>
+					<button class="mlh_btn cancel">取消</button>
+				</div>
+			</div>-->
+				<div class="mlh_table" id="sub_table">
+					<!--<div class="table-tr">
+						<div class="table-th">
+							<i class="icon-file"></i>
+							<span class="title">高一年级语文选科（单科）0323</span>
+						</div>
+						<div class="table-th">
+							<div class="check">
+								<a href="#" class="check-jindu">查看进度...</a>
+							</div>
+							<div class="mlh_schedule">
+								<div class="mlh_progress">
+									<div class="progress">
+										<div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+										</div>
+									</div>
+								</div>
+								<span class="percent">20%</span>
+								<div class="time">选科时间：2018-05-05 00:00--2018-05-25 23:59</div>
+							</div>
+						</div>
+						<div class="table-th clearfix">
+							<ul class="operate">
+								<li class="item repair">
+									<a href="javascript:;"><i class="icon_election"></i>按组合补选</a>
+								</li>
+								<li class="item edit">
+									<a href="javascript:;"><i class="iconfont icon-edit"></i>编辑</a>
+								</li>
+								<li class="item see">
+									<a href="check.html"><i class="iconfont icon-check"></i>查看</a>
+								</li>
+								<li class="item del">
+									<a href="javascript:;"><i class="iconfont icon-del"></i>删除</a>
+								</li>
+							</ul>
+						</div>
+					</div>-->
+				</div>
+			</div>
+			<!--整个容器 end-->
+		</div>
+		<!--最大容器 end-->
+		<!--编辑选科弹窗 start-->
+		<div class="del_down" id="edit" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>编辑选科</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table" id="m-warpper">
+						<form id="sub_form">
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="table-width">选科名称：</td>
+									<td><input type="text" id="subName" name="name" placeholder="请输入选科名称"></td>
+								</tr>
+								<tr>
+									<td class="table-width">选科年级：</td>
+									<td>
+										<select id="grade_select" name="gradeId">
+											<option>请选择</option>
+											<option selected="">高一</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-width">选科时间：</td>
+									<td>
+										<div class="time">
+											<input id="startTime" name="startTime" class="mlh_time" type="text" class="Wdate" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',lang:'zh-cn',readOnly:true,position:'absolute'})"
+											 placeholder="请选择开始时间"> 至
+											<input id="endTime" name="endTime" class="mlh_time" type="text" class="Wdate" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',lang:'zh-cn',readOnly:true,position:'absolute'})"
+											 placeholder="请选择结束时间">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-width">选科方式：</td>
+									<td class="checkbox">
+										<label>
+											<input type="radio" name="style" value="1" checked>按单个科目选择
+										</label>
+										<label class="mlh_spacing">
+											<input type="radio" name="style" value="2">按三科组合科目选择
+										</label>
+										<label class="mlh_spacing">
+											<input type="radio" name="style" value="3">3+1+2
+										</label>
+									</td>
+								</tr>
+								<tr class="danke">
+									<td class="table-width">选科科目：</td>
+									<td id="onesub_list">
+										<!--<a href="javascript:;" class="course">语文</a>
+										<a href="javascript:;" class="course">数学</a>
+										<a href="javascript:;" class="course">美术</a>
+										<a href="javascript:;" class="course">音乐</a>-->
+									</td>
+								</tr>
+								<tr class="sanke sanke_btn tzy1" style="display:none ;">
+									<td class="table-width">选科科目：</td>
+									<td>
+										<span class="sub_group_select zzz">
+											<!--<span class="mlh_btn selected">语文<i class="iconfont icon-ICon-"></i></span>-->
+										</span>
+										<button type="button" class="addkebiao addsub_group_btn"><i class="iconfont icon-add"></i>添加科目组合</button>
+									</td>
+								</tr>
+								<tr class="sanke sanke_btn tzy" style="display:none ;">
+									<td class="table-width">选科科目：</td>
+									<td>
+										<span class="sub_group_select ttt"><span class="mlh_btn selected" data-ids="1,2,3" data-names="政治,历史,地理">政历地</span><span class="mlh_btn selected" data-ids="1,2,5"
+											 data-names="政治,历史,化学">政历化</span><span class="mlh_btn selected"
+											 data-ids="1,2,6" data-names="政治,历史,生物">政历生</span><span
+											 class="mlh_btn selected" data-ids="2,3,5" data-names="历史,地理,化学">历地化</span><span
+											 class="mlh_btn selected" data-ids="2,3,6" data-names="历史,地理,生物">历地生</span><span
+											 class="mlh_btn selected" data-ids="2,5,6" data-names="历史,化学,生物">历化生</span><span
+											 class="mlh_btn selected" data-ids="1,3,4" data-names="政治,地理,物理">政地物</span><span
+											 class="mlh_btn selected" data-ids="1,4,5" data-names="政治,物理,化学">政物化</span><span
+											 class="mlh_btn selected" data-ids="1,4,6" data-names="政治,物理,生物">政物生</span><span
+											 class="mlh_btn selected" data-ids="3,4,5" data-names="地理,物理,化学">地物化</span><span
+											 class="mlh_btn selected" data-ids="3,4,6" data-names="地理,物理,生物">地物生</span><span
+											 class="mlh_btn selected" data-ids="4,5,6" data-names="物理,化学,生物">物化生</span></span>
+								
+									</td>
+								</tr>
+								<tr class="sanke select_sub_gruop" style="display:none ;">
+									<td colspan="2">
+										<div class="cont">
+											<div class="cont-width">
+												<p class="text">请选择三门科目 </p>
+												<div class="kemu sub_group_div">
+													<!--<a href="#" class="mlh_btn active">语文</a>-->
+												</div>
+												<!--<div class="kemu-selected sub_group_select">
+													<span class="mlh_btn selected">语文<i class="iconfont icon-ICon-"></i></span>
+												</div>-->
+												<div class="kemu-btn">
+													<button type="button" class="mlh_btn wx_noaccess_btn addsub_gruop_insert_btn">添加</button>
+													<button type="button" class="mlh_btn cancel addsub_gruop_close_btn">关闭</button>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-width">选科数量：</td>
+									<td id="selMumMsg">
+										允许学生任意选择3门科目
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="button" id="subSave" class="mlh_btn sure">确定</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--编辑选科弹窗 end-->
+		<!--查看进度弹框 start-->
+		<div class="del_down" id="progess" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>查看进度情况</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="prog">
+						<p id="pro_grade" class="class">选科年级：高一</p>
+						<p class="num"><span id="pro_total" style="padding-left: 0px;">总选科人数：434人</span> <span id="pro_yx">已选科人数：434人</span><span
+							 id="pro_wx">未选科人数 : 0人</span></p>
+						<p id="pro_list" class="checked">
+							<!--<span>政治   已选232人</span>-->
+						</p>
+						<p class="tc_button">
+							<button class="mlh_btn cancel">关闭</button>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--查看进度弹框 end-->
+		<!--按组合补选弹框 start-->
+		<div class="del_down" id="election" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>补选</span>
+					<a href="#" class="mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td class="table-width">选科名称：</td>
+								<td id="repair_title"></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="explain">
+									<span>说明：</span><span>补选是按组合分班时，选择最大的三科组合优先固定分班，剩下人数较少的组合的学生，重新选择优先固定的组合。</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-width">起止时间：</td>
+								<td>
+									<div class="time">
+										<input id="repair_startTime" class="mlh_time" type="text" class="Wdate" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'repair_endTime\')}',lang:'zh-cn',readOnly:true,position:'absolute'})"
+										 placeholder="请选择开始时间"> 至
+										<input id="repair_endTime" class="mlh_time" type="text" class="Wdate" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'repair_startTime\')}',lang:'zh-cn',readOnly:true,position:'absolute'})"
+										 placeholder="请选择结束时间">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-width table-valign">科目组合：</td>
+								<td>
+									<div class="cont-width kemu-width">
+										<div id="repair_group" class="kemu repair-group-kemu">
+											<!--<a href="#" class="mlh_btn kemu_btn active">政史地（72人）</a>-->
+										</div>
+										<p class="checked-zuhe">
+											已选组合：
+											<!--<span>地化生（39人  ）</span>-->
+										</p>
+										<p class="prompt">剩余组合人数<span id="repair_num"></span>需要重新按以上所选的组合进行选科</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<button type="button" onclick="repairSave()" class="mlh_btn sure">确定</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!--导入学生选科弹框start-->
+		<div id="import" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>导入学生选科</span> <img onclick="cancel('import')" src="../../img/tanchuanshanchu.png"
+					 class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center">
+						<form id="importForm" method="post" action="" enctype="multipart/form-data">
+							<input type="file" name="file" id="ofile"><label for="ofile">选择文件</label>
+							<span id="show"></span>
+							<input type="hidden" name="id" id="importSubId" />
+							<input type="hidden" name="style" id="importStyle" />
+						</form>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button onclick="saveImportExcel()" id="importBtn" class="tc_anniu_queding">上传</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 删除提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>删除</span> <img onclick="cancel('deleteTips')" src="../../img/tanchuanshanchu.png"
+					 class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">确认要删除吗？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" class="tc_anniu_queding">确定</button>
+					<button onclick="cancel('deleteTips')" class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<input type="hidden" id="repair_subId" />
+		<input id="sub_id" type="hidden" value="" />
+		<!--按组合补选弹框 end-->
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../common/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../common/form.js"></script>
+		<script src="../../js/stu-common.js"></script>
+		<script src="../../js/student-selection.js"></script>
+		<script src="../../common/My97DatePicker/WdatePicker.js"></script>
+		<script src="../../common/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script src="../../js/loginOut.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#m-warpper").mCustomScrollbar({
+					theme: "minimal-dark"
+				});
+			})
+		</script>
+	</body>
+
+</html>

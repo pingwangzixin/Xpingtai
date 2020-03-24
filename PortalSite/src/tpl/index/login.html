@@ -1,0 +1,47 @@
+<div>
+	<div class="zy_login_header">
+		<div class="zy_login_bar clearfix">
+			<div class="zy_login_logo_box fl">
+				<img src="./img/logo_login.png" alt=""/>
+			</div>
+			<div class="zy_to_space fr" ui-sref="wrap.index">
+				<span>教育云空间</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg zy_login_main_pic">
+		<!--<img src="./img/RQcode_02.png"/>-->
+		<div class="zy_central_content zy_login_enter clearfix"> 
+			<div class="zy_login_box fr">
+				<span>登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</span>
+				<div class="zy_user_login">
+					<div class="zy_tip_box">
+						<i class="zy_error_tip" ng-bind="userLoggedMsg.errorTip" ng-show="userLoggedMsg.showTips"></i>
+					</div>
+					<div class="zy_login_enter">
+						<p class="zy_user_input">
+							<input type="text" name="" class="zy_user_name" value="" placeholder="手机号/国网学籍号（学生）" ng-model="userInfo.username" />
+							<label for=""></label>
+						</p>
+						<p class="zy_user_input">
+							<input type="password" name="" class="zy_password" value="" placeholder="密码" ng-model="userInfo.password" />
+							<label for=""></label>
+						</p>
+						<!--<p class="zy_user_input">
+							<input type="text" name="" class="zy_verify_code" value="" placeholder="验证码" />
+							<em><img src="./img/zy_verify_code.png"/></em>
+							<i class="zy_change_code">换一张</i>
+						</p>-->
+					</div>
+					<div class="zy_submit_box">
+						<button class="zy_logon_btn" ng-click="loginT()">登录</button>
+						<i class="zy_now_register">立即注册</i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="zy_forget_password">忘记密码</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<z-footer></z-footer>

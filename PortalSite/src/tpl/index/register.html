@@ -1,0 +1,22 @@
+<style type="text/css">
+	body{background: #f1f2f3;}
+</style>
+<system nav="navShowDet"></system>
+
+
+<div>
+	
+	<div class="zy_central_content zy_register_choose_role">
+		<p>选择角色</p>
+		<ul class="clearfix">
+			<li class="fl" ng-repeat="role in roles" ng-class="{'active':role.checked}" ng-click="chooseRole($index)">
+				<p><img src="./img/{{role.src}}.png"/></p>
+				<span ng-bind="role.name">我是家长</span>
+			</li>
+		</ul>
+	</div>
+	
+</div>
+
+
+<z-footer></z-footer>

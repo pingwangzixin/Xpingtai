@@ -1,0 +1,138 @@
+<style type="text/css">
+	.wx_fullscreen{float: right;margin-right: 30px;margin-top: 12px;cursor: pointer;}
+	.wx_backscreen{position: fixed;right:30px;top:30px;z-index: 101;cursor: pointer;}
+</style>
+<div>
+	<div class="zy_bg">
+		<img src="./img/suoxiao.png" alt="" class="wx_backscreen" style="display: none;"/>
+		<div class="zy_central_content zy_resources_detail">
+			<div class="zy_catalog">
+				<ul class="clearfix">
+					<li>资源</li>
+					<li>&gt;</li>
+					<li>政治资料</li>
+					<li>&gt;</li>
+					<li>高中人教版</li>
+					<li>&gt;</li>
+					<li>必修2 种植生活</li>
+					<li>&gt;</li>
+					<li>综合内容与测试</li>
+					<li>&gt;</li>
+					<li>资料详情</li>
+				</ul>
+			</div>
+			<div class="zy_resources_detail_coat clearfix">
+				<div class="zy_resources_detail_left fl">
+					<div class="zy_resources_tit_box">
+						<div class="zy_resources_tit">
+							<div class="zy_resources_h4">
+								<img src="./img/resources_word_big.png" alt="" />
+								<h4>精品解析：江西省上饶县中学2016-2017学年高一下学期第四周半月考政治试题</h4>
+							</div>
+						</div>
+						<div class="zy_resources_operation clearfix">
+							<ul class="fl">
+								<li class="zy_icon_see">12</li>
+								<li class="zy_icon_down">12</li>
+								<li class="zy_icon_good">12</li>
+								<li class="zy_icon_time">2017/07/10  13:30:00</li>
+								<li class="zy_icon_size">120k</li>
+								<li class="zy_icon_collection">收藏</li>
+							</ul>
+							<span class="zy_resources_share fr">分享</span>
+						</div>
+					</div>
+					<div class="zy_resources_detail_box">
+						<div class="zy_resources_detail_head">
+							<img src="./img/quanping.png" alt="" class="wx_fullscreen"/>
+						</div>
+						<div class="zy_resources_detail_cont" style="background: #fff;">
+							1111111111111111 <br />
+						
+						</div>
+					</div>
+					<div class="zy_resources_tips_box">
+						<div class="zy_resources_tips_word">
+							<img src="./img/tips_lamp.png"/>
+							<p>预览已结束，查看全部内容需要登录哦~</p>
+						</div>
+						<span class="zy_resources_download">立即下载</span>
+					</div>
+				</div>
+				
+				<div class="zy_resources_detail_right fr">
+					<div class="zy_fixed_box" style="margin-top:40px;">
+						<span class="zy_resources_download">立即下载</span>
+						<div class="zy_resources_relevant_box">
+							<p>相关资源推荐</p>
+							<ul>
+								<li>
+									<span><img src="./img/resources_ear_big.png"/></span>
+									<p>湖北省武汉市2016年中考英语模拟题湖北省武汉市2016年中考英语模拟题湖北省武汉市2016年中考英语模拟题.do</p>
+								</li>
+								<li>
+									<span><img src="./img/resources_excal_bg.png"/></span>
+									<p>大王大大王大大王大大王大大王大大王大大王大大王大大王大大王大大王大大王大大王大</p>
+								</li>
+								<li>
+									<span><img src="./img/resources_ppt_big.png"/></span>
+									<p>1234664sad65163169的双方各第三个646541651654161641651654163</p>
+								</li>
+								<li>
+									<span><img src="./img/resources_pdf_big.png"/></span>
+									<p>湖北省武汉市20题.do</p>
+								</li>
+								<li>
+									<span><img src="./img/resources_pic_bog.png"/></span>
+									<p>湖北省武汉市2016年中考英语模拟题.do</p>
+								</li>
+								<li>
+									<span><img src="./img/resources_word_big.png"/></span>
+									<p>湖北省武汉市2016年中考英语模拟题.do</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+        $(function(){
+            $(window).scroll(function(){
+                var daynav=$(".zy_resources_relevant_box")
+                var main=$(".zy_resources_detail_box");
+                var maintop=main.offset().top;
+                var winTop=$(window).height()
+                var scrollTop=$(window).scrollTop()
+                
+                if(scrollTop>=maintop){
+                    daynav.css({"position":"fixed","top":"0","margin-top":"0"})
+                }else{
+                    daynav.css({"position":"relative","margin-top":"20px"})
+                }
+
+            })
+            
+            $(".wx_fullscreen").on("click",function(){
+            	$(".zy_resources_detail_cont").css({"position":"fixed","top":"0","left":"0","right":"0","bottom":"0","z-index":"100","overflow-y":"auto"});
+            	$(".wx_backscreen").show();
+            })
+            
+            $(".wx_backscreen").on("click",function(){
+            	$(".zy_resources_detail_cont").css({"position":"relative"});
+            	$(".wx_backscreen").hide();
+            })
+            
+            $(window).keydown(function(){
+            	var e = event || window.event 
+            	if(e.keyCode==27){
+            		$(".zy_resources_detail_cont").css({"position":"relative"});
+            		$(".wx_backscreen").hide();
+            	}
+            })
+            
+        })
+</script>

@@ -1,0 +1,22 @@
+<div class="zy_index">
+    <!--<div class="zy_head">
+        <header class="clearfix">
+            <div class="zy_head_logo fl">
+                <p>
+                	<img ng-repeat="logo in pcLogo" ng-src="./img/{{logo.path}}.png" alt="" />
+                </p>
+            </div>
+            <ul class="zy_head_group fl">
+                <li ui-sref="{{column.href}}" ui-sref-active="active" ng-repeat="column in pcColumn" ng-bind="column.name">首页</li>
+            </ul>
+            <div class="zy_users fr">
+            	<img src="./img/zy_user.png" alt="" />
+            	<span>登录</span>
+            	<span>注册</span>
+            </div>
+        </header>
+    </div>-->
+    
+    <div ui-view class=""></div>
+    
+</div>

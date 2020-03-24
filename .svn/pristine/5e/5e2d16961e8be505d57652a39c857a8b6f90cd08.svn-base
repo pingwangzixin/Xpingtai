@@ -1,0 +1,308 @@
+<style>
+	
+.btn {
+    margin-right: 8px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+    height:100px
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+    border: 1px solid #dae2ea;
+    background: #f8faff;
+    color: #7c9eb2;
+}
+
+.nodrop {
+    background-color: #f2dede;
+}
+
+.tree-node-content {
+    margin: 10px;
+}
+.tree-handle {
+    padding: 10px;
+    background: #428bca;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+</style>
+
+<div>
+	<div class="zy_resources_second_main">
+		<div class="zy_central_content clearfix">
+			<div class="zy_resources_search_box fr">
+				<input type="text" name="" id="" value="" placeholder="搜索..." />
+				<i></i>
+			</div>
+		</div>
+	</div>
+	
+	<div class="zy_bg zy_resources_second_cnntent_bg">
+		<div class="zy_central_content zy_resources_second_cnntent">
+			<div class="zy_linear">
+				<div class="zy_linear_simulation">
+					<div class="zy_resources_screen">
+						<ul>
+							<li class="clearfix">
+								<div class="zy_resources_screen_line fl">
+									<span class="fl">学段：</span>	
+									<ul class="fl">
+										<li>全部</li>
+										<li class="active">小学</li>
+										<li>初中</li>
+										<li>高中</li>
+										<li>大学</li>
+									</ul>
+								</div>
+								<i class="fr zy_resources_screen_more zy_resources_screen_more_down">更多</i>
+								<!--<i class="fr zy_resources_screen_more">更多</i>-->
+							</li>
+							<li class="clearfix">
+								<div class="zy_resources_screen_line fl">
+									<span class="fl">学科：</span>	
+									<ul class="fl">
+										<li>全部</li>
+										<li>小学</li>
+										<li>初中</li>
+										<li>高中</li>
+										<li>大学</li>
+									</ul>
+								</div>
+								<i class="fr zy_resources_screen_more">更多</i>
+							</li>
+							<li class="clearfix">
+								<div class="zy_resources_screen_line fl">
+									<span class="fl">版本：</span>	
+									<ul class="fl">
+										<li>全部</li>
+										<li>小学</li>
+										<li>初中</li>
+										<li>高中</li>
+										<li>大学</li>
+									</ul>
+								</div>
+								<i class="fr zy_resources_screen_more">更多</i>
+							</li>
+							<li class="clearfix">
+								<div class="zy_resources_screen_line fl">
+									<span class="fl">教材：</span>	
+									<ul class="fl">
+										<li>全部</li>
+										<li>小学</li>
+										<li>初中</li>
+										<li>高中</li>
+										<li>大学</li>
+									</ul>
+								</div>
+								<i class="fr zy_resources_screen_more">更多</i>
+							</li>
+							<li class="clearfix">
+								<div class="zy_resources_screen_line fl">
+									<span class="fl">年级：</span>	
+									<ul class="fl">
+										<li>全部</li>
+										<li>小学</li>
+										<li>初中</li>
+										<li>高中</li>
+										<li>大学</li>
+									</ul>
+								</div>
+								<i class="fr zy_resources_screen_more">更多</i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="zy_resources_content_box clearfix">
+				<div class="zy_resources_content_box_left fl">
+					<div class="zy_linear">
+						<div class="zy_linear_simulation">
+							<p class="zy_zy_resources_tree_tit">
+								<span>教材目录</span>
+							</p>
+							<div class="zy_resources_tree">
+								
+								<!--<div ui-tree="treeOptions">
+								  <ol ui-tree-nodes ng-model="nodes">
+								    <li ng-repeat="node in nodes" ui-tree-node>{{node.title}}</li>
+								  </ol>
+								</div>-->
+								
+								<div ui-tree id="tree-root" class="ng-scope angular-ui-tree" data-drag-enabled="false">
+							        <ol ui-tree-nodes ng-model="data" class="ng-pristine ng-untouched ng-valid ng-scope angular-ui-tree-nodes">
+							            <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer'" class="ng-scope angular-ui-tree-node" collapsed="false">
+							            </li>
+							        </ol>
+							    </div>
+								
+								
+								<!--<div ui-tree id="tree-root">
+							      <ol ui-tree-nodes ng-model="data">
+							        <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'" data-collapsed="true"></li>
+							      </ol>
+							    </div>-->
+							    
+							    
+								<script type="text/ng-template" id="nodes_renderer">
+								    <div ui-tree-handle class="tree-node tree-node-content">
+								        <a class="btn btn-success btn-xs " ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
+								    <span class="glyphicon"
+								          ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></span></a>
+								        {{node.title}}
+								    </div>
+								    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+								        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer'">
+								        </li>
+								    </ol>
+								</script>
+															    
+							    
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="zy_resources_content_box_right fr">
+					<div class="zy_linear">
+						<div class="zy_linear_simulation">
+							<div class="zy_resources_screen_line clearfix">
+								<span class="fl">格式：</span>	
+								<ul class="fl">
+									<li>全部</li>
+									<li class="active">小学</li>
+									<li>初中</li>
+									<li>高中</li>
+									<li>大学</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="zy_linear">
+						<div class="zy_linear_simulation">
+							<div class="zy_resources_screen_result_box">
+								<div class="zy_resources_screen_result_order clearfix">
+									<ul class="fl">
+										<li class="active">最新上传</li>
+										<li>最多下载</li>
+										<li>最多浏览</li>
+									</ul>
+									<p class="fr">共<span>10</span>个资源</p>
+									<div class="zy_resources_search_box_little fr">
+										<input type="text" class="fl" name="" id="" value="" placeholder="搜索..." />
+										<i class="fr"></i>
+									</div>
+								</div>
+								<div class="zy_resources_screen_result_show">
+									<ul>
+										<li class="clearfix">
+											<img src="./img/resources_excal_super_bg.png" class="fl" />
+											<div class="zy_resources_brief fl">
+												<h4>人教【整合】人教版高二必修3 第1章第1节细胞生活的环境课件（共16张ppt）</h4>
+												<ul>
+													<li>
+														<div>
+															<img src="./img/resources_subject.png"/>
+															<span>生物人教版</span>														
+														</div>
+													</li>
+													<li>
+														<div>
+															<img src="./img/resources_label.png"/>
+															<span>期末</span>														
+														</div>
+													</li>
+													<li>
+														<div>
+															<img src="./img/resources_school.png"/>
+															<span>牡丹江中学</span>														
+														</div>
+													</li>
+													<li>
+														<div>
+															<img src="./img/resources_people.png"/>
+															<span>王大浪</span>														
+														</div>
+													</li>
+													<li>
+														<div>
+															<img src="./img/resources_time.png"/>
+															<span>2017/8/25  10:44</span>														
+														</div>
+														<div>
+															<img src="./img/resources_size.png"/>
+															<span>401KB</span>														
+														</div>
+														<div>
+															<img src="./img/resources_download.png"/>
+															<span>5236人</span>														
+														</div>
+													</li>
+												</ul>	
+											</div>
+											<div class="zy_resoureces_start fr">
+												<p>
+													<img src="./img/resources_download_colour.png"/>
+													<span>下载</span>
+												</p>
+												<p>
+													<img src="./img/resources_collection_colour.png"/>
+													<span>收藏</span>
+												</p>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			
+		</div>
+	</div>
+</div>

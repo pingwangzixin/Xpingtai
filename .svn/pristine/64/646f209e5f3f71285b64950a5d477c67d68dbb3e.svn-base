@@ -1,0 +1,156 @@
+<system nav="navShowDet"></system>
+
+<div>
+
+	<div class="zy_cont_eight" style="width:1200px;">
+		<div class="zy_per_info_head">
+			<ul class="clearfix">
+				<!--<li ng-class="{'active': personalInfoState == 0}" ng-click="personalInfoTab(0)">个人信息</li>
+				<li ng-class="{'active': personalInfoState == 1}" ng-click="personalInfoTab(1)">子女资料</li>-->
+			</ul>
+		</div>
+		<style type="text/css">
+			.wx_add_shouke_table{width:100%;margin-bottom:30px;border:1px solid #e7e7e7;}
+			.wx_add_shouke_table thead{background:#f1f2f3;}
+			.wx_add_shouke_table thead tr th{height:50px;text-align: center;}
+			.wx_add_shouke_table tbody tr td{height:50px;text-align: center;}
+			.wx_del_color{color:#bc1a3c;cursor: pointer;}
+		</style>
+		<!--个人信息-->
+		<div class="zy_pre_info_box" ng-show="personalInfoState == 0" style="width: 800px;margin:0 auto">
+			<p class="zy_pre_info_tit">个人信息</p>
+			<div class="zy_pre_info_cont">
+				<ul class="wx_jiazhang">
+					<li class="zy_pre_info_line">
+						<p>用户名 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>新密码 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>确认密码 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<hr />
+					<li class="zy_pre_info_line">
+						<p>真实姓名 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>性别 <i class="star">*</i></p>
+						<div class="zy_pre_info_sex">
+							<input type="radio" name="per_sex" id="per_sex_male" value="男" />
+							<label for="per_sex_male">男</label>
+							<input type="radio" name="per_sex" id="per_sex_female" value="女" />
+							<label for="per_sex_female">女</label>
+						</div>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>民族 <i class="star">*</i></p>
+						<select name="">
+							<option value=""></option>
+						</select>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>身份证号 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>手机号 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>邮箱 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>单位名称 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>教学角色 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<span>学科组长(一年级语文)</span>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>是否授课 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<div class="zy_pre_info_sex">
+							<input type="radio" name="per_shouke" id="yes_shouke" value="" />
+							<label for="yes_shouke">是</label>
+							<input type="radio" name="per_shouke" id="no_shouke" value="" />
+							<label for="no_shouke">否</label>
+							<button class="wx_add_shouke_btn">添加授课</button>
+						</div>
+					</li>
+				</ul>
+				<table border="" cellspacing="" cellpadding="" class="wx_add_shouke_table">
+					<thead>
+						<tr><th>序列</th><th>年级</th><th>班级</th><th>学科</th><th>教材版本</th><th>操作</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>1</td><td>初一年级</td><td>50班</td><td>思想品德</td><td>新课标人教2017版</td><td class="wx_del_color">删除</td></tr>
+						<tr><td>2</td><td>初一年级</td><td>50班</td><td>思想品德</td><td>新课标人教2017版</td><td class="wx_del_color">删除</td></tr>
+						<tr><td>3</td><td>初一年级</td><td>50班</td><td>思想品德</td><td>新课标人教2017版</td><td class="wx_del_color">删除</td></tr>
+					</tbody>
+				</table>
+				<div class="zy_btn_group">
+					<button>保存</button>
+				</div>
+				<!--<div class="zy_btn_group zy_btn_group_register">
+					<button>马上注册</button>
+				</div>-->
+			</div>
+		</div>
+
+</div>
+
+<z-footer></z-footer>
+<style type="text/css">
+	.wx_add_zinv_con{width:432px;height:560px;background: #fff;position: fixed;top:0;left:0;right:0;bottom: 0;margin:auto;border-radius: 4px;}
+	.wx_addzinv_tit{height:50px;line-height: 50px;padding:0 30px;border-bottom: 2px solid #e0e2e4;}
+	.wx_tit_font{color:#399fdf;}
+	.wx_detail_con_addzinv{padding:10px 30px;}
+	.wx_suer_addzinv{width:378px;height:42px;border:0;background: #1abd9d;color:#fff;outline: none;}
+</style>
+<!--添加子女弹窗-->
+<div class="wx_add_zinv" ng-show="state.add_zinv">
+	<div class="wx_hide_tc"></div>
+	<div class="wx_add_zinv_con">
+		<div class="wx_addzinv_tit">
+			<span class="wx_tit_font wx_fl">添加子女</span><img src="./img/wx_guanbi.png" style="margin-top: 20px;cursor:pointer;" class="wx_fr" ng-click="state.add_zinv=!state.add_zinv">
+		</div>
+		<div class="wx_detail_con_addzinv">
+			<ul>
+				<li class="zy_pre_info_line">
+						<p>子女姓名 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>学籍号 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>性别 <i class="star">*</i></p>
+						<div class="zy_pre_info_sex">
+							<input type="radio" name="per_sex" id="per_sex_man" value="男" />
+							<label for="per_sex_man">男</label>
+							<input type="radio" name="per_sex" id="per_sex_fewoman" value="女" />
+							<label for="per_sex_fewoman">女</label>
+						</div>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>学校 <i class="star">*</i></p>
+						<select name="" id=""></select>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>年级 <i class="star">*</i></p>
+						<select name="" id=""></select>
+					</li>
+			</ul>
+			<p>
+				<button class="wx_suer_addzinv">确认</button>
+			</p>
+		</div>
+	</div>
+</div>

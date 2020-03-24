@@ -1,0 +1,185 @@
+<system nav="navShowDet"></system>
+
+<div>
+	
+	<div class="zy_cont_eight">
+		<div class="zy_per_info_head">
+			<ul class="clearfix">
+				<!--<li ng-class="{'active': personalInfoState == 0}" ng-click="personalInfoTab(0)">个人信息</li>-->
+				<!--<li ng-class="{'active': personalInfoState == 1}" ng-click="personalInfoTab(1)">修改密码</li>-->
+			</ul>
+		</div>
+		<style type="text/css">
+			.wx_jiazhang li p {
+				display: inline-block;
+				width: 80px;
+				text-align: end;
+				margin-right: 16px;
+			}
+			
+			.wx_jiazhang li input {
+				width: 85%!important;
+			}
+			
+			.wx_jiazhang li select {
+				width: 85%!important;
+			}
+			
+			.wx_jiazhang .zy_pre_info_sex {
+				width: 85%!important;
+				display: inline-block;
+			}
+		</style>
+		<!--个人信息-->
+		<div class="zy_pre_info_box" ng-show="personalInfoState == 0">
+			<p class="zy_pre_info_tit">个人信息</p>
+			<div class="zy_pre_info_cont wx_jiazhang">
+				<ul class="">
+					<!--<li class="zy_pre_info_line">
+						<p>修改头像</p>
+						<div class="zy_pre_info_photo">
+							<input type="file" name="" id="" value="" />
+							<img src="./img/default_avatar.png"/>
+							<span>更换头像</span>								
+						</div>
+					</li>-->
+					<li class="zy_pre_info_line">
+						<p>用户名 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>新密码 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>确认密码 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<hr />
+					<li class="zy_pre_info_line">
+						<p>真实姓名 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>学籍号 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>性别 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<div class="zy_pre_info_sex">
+							<input type="radio" name="per_sex" id="per_sex_male" value="男" />
+							<label for="per_sex_male">男</label>
+							<input type="radio" name="per_sex" id="per_sex_female" value="女" />
+							<label for="per_sex_female">女</label>
+						</div>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>民族 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<select name="">
+							<option value="">请选择</option>
+						</select>
+					</li>
+					
+					<li class="zy_pre_info_line">
+						<p>生日 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input readonly zjy-laydate type="text" id="id" min-date="{{mindataTime}}" ng-model="activityOverTime" placeholder="请选择" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>所在学校<strong class="error_prompt"></strong></p>
+						<select name="">
+							<option value="">请选择</option>
+						</select>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>所在年级 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<select name="">
+							<option value="">请选择</option>
+						</select>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>分组 </p>
+						<select name="" class="wx_short" style="width:70%!important">
+							<option value="">请选择</option>
+						</select>
+						<button class="wx_addfz" ng-click="state.addGroup=true">添加分组</button>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>设备名称 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" />
+					</li>
+				</ul>
+				<div class="zy_btn_group">
+					<button>保存</button>
+				</div>
+				<!--<div class="zy_btn_group zy_btn_group_register">
+					<button>马上注册</button>
+				</div>-->
+			</div>
+		</div>
+		
+		<!--修改密码-->
+		<!--<div class="zy_pre_info_box" ng-show="personalInfoState == 1">
+			<p class="zy_pre_info_tit">修改密码</p>
+			<div class="zy_pre_info_cont">
+				<ul>
+					<li class="zy_pre_info_line">
+						<p>原密码（登录时需要输入的密码） <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>新密码 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>确认密码 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+				</ul>
+				<p class="zy_fill_email">为方便您找回密码，修改密码前，请先设置您的邮箱地址。马上去填写 <span ui-sref="managerInfo({status:0})">邮箱地址</span> >></p>
+				<div class="zy_btn_group">
+					<button>保存</button>
+				</div>
+			</div>
+		</div>-->
+		
+	</div>
+	
+</div>
+<!--添加分组弹窗-->
+<div class="wx_addfen_tc" ng-show="state.addGroup">
+	<div class="wx_hide_tc"></div>
+	<div class="wx_tc_con">
+		<div class="wx_tc_tit">
+			<span class="wx_tit_font wx_fl">添加分组</span><img src="./img/wx_guanbi.png" style="margin-top: 20px;cursor:pointer;" class="wx_fr" ng-click="state.addGroup=!state.addGroup">
+		</div>
+		<div class="wx_addfen_tc_con">
+			<ul>
+				<li><input type="radio" id="selct_xz" name="xiaozu" ng-click="test()" value="xz" ng-model="qiehuan"/> <label for="selct_xz">选择小组</label></li>
+				<li><input type="radio" id="add_xz"  name="xiaozu"  ng-click="test()" value="add" ng-model="qiehuan"/> <label for="add_xz">添加小组</label></li>
+			</ul>
+		</div>
+		<div ng-show="xuanze" class="wx_xz_ul">
+			<ul>
+				<li class="active">第一小组</li>
+				<li>第二小组</li>
+				<li>第三小组</li>
+				<li>第一小组</li>
+				<li>第二小组</li>
+				<li>第三小组</li>
+			</ul>
+			<p class="textCenter">
+				<button class="wx_add_fenzu_btn">确认</button>
+			</p>
+		</div>
+		<div ng-show="tianjia" class="wx_add_input_con">
+			<span class="wx_span mr12">添加小组：</span><input type="text" />
+			<p class="textCenter">
+				<button class="wx_add_fenzu_btn">确认添加</button>
+			</p>
+			
+		</div>
+		
+	</div>
+</div>
+
+<z-footer></z-footer>

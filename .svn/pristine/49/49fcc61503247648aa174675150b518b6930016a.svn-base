@@ -1,0 +1,81 @@
+<style type="text/css">
+	body{background:#f1f2f3;}
+	.wx_renke_taber{width:100%;overflow-x: auto;}
+</style>
+<system nav="navShowDet"></system>
+
+<div class="wx_wrap">
+	<div class="wx_daohang">
+		<div class="wx_biaoti wx_fl">任课管理</div><div class="wx_biaoti wx_fl">导入任课关系</div>
+		<button class="wx_fr wx_setxkbtn wx_mr30 wx_mt15"><img src="./img/daoru.png" alt="" style="margin-right:10px;vertical-align: middle;" />导入任课关系</button>
+	</div>
+	<!--导入模板文件-->
+	<div class="wx_daorutpl">
+			<p><b class="wx_blue_color">模板下载</b>（空白表，只包含格式，用于导入新数据）</p>
+			<button class="wx_setxkbtn wx_mr30 wx_mt20 wx_ft16"><img src="./img/wx_daoru.png" alt="" style="margin-right:10px;vertical-align: middle;" />浏览文件</button>
+			<p class="wx_color_orange wx_mt20 wx_ft16">注：多个教师用逗号分隔</p>
+	</div>
+	<div class="wx_cont">
+		<div class="wx_switch_nav">
+			<ul>
+				<li ng-repeat="nianji in nianjiList" ng-class="{true: 'active', false: ''}[$index==0]" ng-click="switchGrade($event,$index)" >{{nianji.name}}</li>
+			</ul>
+		</div>
+		<div class="wx_renke_main">
+			<div class="wx_renke_head">
+				<span>年级组长 : </span>
+				<span ng-repeat="user in page.gradeEaUserCourse" >{{user.teaName}} {{$index!=0?'|':''}} </span>
+				<i class="wx_bianji" ng-click="showTealist('',12,'','')"></i>
+			</div>
+			<div class="wx_renke_taber">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>班级</th>
+						<th ng-repeat="class in page.eaClassList" >( {{class.name}} ) 班</th>
+					</tr>
+					<tr>
+						<td>班主任</td>
+						<td ng-repeat="(className,leaders) in page.classLeader" >
+							<span ng-repeat="leader in leaders track by $index" >{{leader.teaName}}</span> 
+							<i class="wx_bianji" ng-click="showTealist('',1,$index,'')" ></i>
+						</td>
+					</tr>
+					<tr ng-repeat="temp in page.subjectList " >
+						<td>{{temp.subject.name}}</td>
+						<td data-sid="{{temp.subject.id}}" ng-repeat="tea in temp.subjectTeaList track by $index"  >{{tea.teaName}} <i class="wx_bianji" ng-click="showTealist(temp.subject,14,$index,$event)" data-sid="{{temp.subject.id}}"  ></i></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--添加老师弹窗-->
+<div class="wx_addClass" style="display: none;">
+    <div class="wx_gy_hide"></div>
+    <div class="wx_addclass_con">
+        <p class="zy_boxTit"> <span style="font-size:16px;font-weight:bold">英语老师</span> (点击选择，再次点击取消选择) <i class="zy_close zy_SubjCloseBtn" ng-click="addClass=!addClass"></i> </p>
+        <div class="wx_addclassul">
+            <button ng-repeat="c in classes" ng-class="{active:active,yicunzai:c.rept==1}" ng-click="active=!active" ng-disabled="c.rept==1" data-cid="{{c.id}}" >{{c.name}}<span class="wx_duigou">✔</span></button>
+        </div>
+        <div class="zy_btnGroup">
+            <input type="button" class="zy_sure zy_selectSubSure" ng-click="sureadd()"  value="确认" />
+    	</div>
+	</div>
+</div>
+
+<!--导入老师弹窗-->
+<div class="wx_addClass" style="display: none;">
+    <div class="wx_gy_hide"></div>
+    <div class="wx_daoru_con">
+        <p class="zy_boxTit"> <span style="font-size:16px;font-weight:bold">导入任课关系</span> <i class="zy_close zy_SubjCloseBtn" ng-click="addClass=!addClass"></i> </p>
+        <div class="wx_inputupload">
+        	<input type="file" id="uptpl" class="wx_noinput"><label for="uptpl"><span class="wx_yuan">+</span>上传我的文件</label>
+        </div>
+        <div class="zy_btnGroup">
+            <input type="button" class="zy_sure zy_selectSubSure" ng-click="sureadd()"  value="确认" />
+    	</div>
+	</div>
+</div>
+
+<z-footer></z-footer>

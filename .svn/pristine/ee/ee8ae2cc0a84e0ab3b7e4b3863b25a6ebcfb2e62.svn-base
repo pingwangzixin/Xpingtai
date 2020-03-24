@@ -1,0 +1,41 @@
+
+<div class="zy_main zy_main_index">
+	<div class="zy_bg zy_main_banner">
+		<img src="./img/banner3.png"/>
+		<!--<img src="./img/banner.png"/>-->
+	</div>
+	
+	<div class="zy_bg">
+		<div class="zy_main_con zy_teachers">
+			<p class="zy_tit">角色介绍</p>
+			<!--{{roleList}}-->
+			<div class="mban">
+		        <ul class="clearfix">
+		            <li class="animated" ng-class="role.className" ng-repeat="role in roleList">
+		               <a href="">
+		                   <i><img src="./img/{{role.src}}.png" alt=""></i>
+		                   <span ng-bind="role.role">管理者</span>
+		                   <p ng-bind="role.con">我想知道如何提升工作效率</p>
+		               </a>
+		            </li>
+		        </ul>
+		    </div>	
+		</div>
+	</div>
+	
+	<div class="zy_bg" style="padding-bottom: 20px;">
+		<div class="zy_main_con zy_activity">
+			<p class="zy_tit">活动介绍</p>
+			<ul class="">
+				<li ng-repeat="i in activityList">
+					<div class="zy_details">
+						<p ng-bind="i.con"></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	
+</div>
+<z-footer></z-footer>

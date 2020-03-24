@@ -1,0 +1,40 @@
+<div class="">
+	<div class="zy_bg zy_news_main_pic">
+		<!--<img src="./img/RQcode_02.png"/>-->
+	</div>
+	
+	<!--消息中心详情-->
+	<div class="zy_bg zy_news_details_bg">
+		<div class="zy_central_content zy_news_details">
+			<div class="zy_catalog">
+				<ul class="clearfix">
+					<li ui-sref="wrap.index">首页</li>
+					<li>&gt;</li>
+					<li ui-sref="wrap.new">消息</li>
+					<li>&gt;</li>
+					<li ng-bind="showNews.title"></li>
+				</ul>
+			</div>
+			<div class="zy_linear">
+				<div class="zy_linear_simulation">
+					<div class="zy_new_box clearfix">
+						<h4 ng-bind="showNews.title"></h4>
+						<ul class="zy_relevant_info clearfix">
+							<li><span>发布时间：</span><i ng-bind="showNews.createTime|timeFilter"></i></li>
+							<li><span>发布单位：</span><i>牡丹江市教育科学研究院</i></li>
+							<li><span>点击量：</span><i>1216</i></li>
+						</ul>
+						<div class="zy_new_con">
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+<!--<z-footer></z-footer>-->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>走班排课</title>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<link rel="stylesheet" href="./css/index.css">
+	</head>
+
+	<body>
+		<iframe src="./header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+		<div class="indexcon">
+			<div class="fanhui">
+            	<a href="javascript:void(0)" onclick="toLoginPass()"><img src="./img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+        	</div>
+			<ul class="mlh_classify">
+				<li onclick="toPage(0)">
+					<img src="img/xuanke.png">
+					<span>3+3选科</span>
+				</li>
+				<li onclick="toPage(1)">
+					<img src="img/zhinengfenban.png">
+					<span>智能分班</span>
+				</li>
+				<li onclick="toPage(2)">
+					<img src="img/zoubanpaike.png">
+					<span>走班排课</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/classify.js"></script>
+</html>

@@ -1,0 +1,60 @@
+<system nav="navShowDet"></system>
+<div>
+	<div class="zy_cont_eight">
+		<div class="zy_per_info_head">
+			<ul class="clearfix"></ul>
+		</div>
+		<!--个人信息-->
+		<div class="zy_pre_info_box">
+			<p class="zy_pre_info_tit">学生</p>
+			<div class="zy_pre_info_cont">
+				<ul class="">
+					<li class="zy_pre_info_line">
+						<p>真实姓名 <i class="star">*</i></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>学籍号 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input type="text" name="" id="" value="" placeholder="请输入" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>性别 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<div class="zy_pre_info_sex">
+							<input type="radio" name="per_sex" id="per_sex_male" value="男" />
+							<label for="per_sex_male">男</label>
+							<input type="radio" name="per_sex" id="per_sex_female" value="女" />
+							<label for="per_sex_female">女</label>
+						</div>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>民族 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<select name="">
+							<option value="">请选择</option>
+						</select>
+					</li>
+					
+					<li class="zy_pre_info_line">
+						<p>生日 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<input readonly zjy-laydate type="text" id="id" min-date="{{mindataTime}}" ng-model="activityOverTime" placeholder="请选择" />
+					</li>
+					<li class="zy_pre_info_line">
+						<p>所在学校<strong class="error_prompt"></strong></p>
+						<select name="">
+							<option value="">请选择</option>
+						</select>
+					</li>
+					<li class="zy_pre_info_line">
+						<p>所在年级 <i class="star">*</i><strong class="error_prompt"></strong></p>
+						<select name="">
+							<option value="">请选择</option>
+						</select>
+					</li>
+				</ul>
+				<div class="zy_btn_group zy_btn_group_register">
+					<button>马上注册</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<z-footer></z-footer>

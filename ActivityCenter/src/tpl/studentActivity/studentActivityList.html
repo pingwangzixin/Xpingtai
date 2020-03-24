@@ -1,0 +1,37 @@
+<div>
+	<div class="zy_bg zy_activity_list_bg">
+		<div class="zy_main_con zy_activity_list">
+			<div class="zy_activity_box">
+				<ul>
+					<li class="clearfix" ng-repeat="activity in activityList">
+						<em ng-class="activity.class" ng-bind="activity.state">未开始</em>
+						<!--<div class="zy_btn_group">
+							<p>
+								<span class="zy_issued" ng-show="activity.issued" ng-click="issued.issuedBox = true"><img src="./img/to_lssued.png"/>下发</span>
+								<span class="zy_update" ng-show="activity.update" ui-sref="updateActivity"><img src="./img/to_update.png" />更新</span>
+								<span class="zy_delete" ng-show="activity.delete" ng-click="deleteBtn($event)"><img src="./img/to_delete.png"/>删除</span>
+							</p>
+						</div>-->
+						<div class="zy_l_img fl" ui-sref="studentActivityDetail({activityId : '{{activity.id}}'})">
+							<img ng-src={{activity.src}} style="width: 284px;height: 150px;"/>
+						</div>
+						<div class="zy_r_cont fr">
+							<h4 ui-sref="studentActivityDetail({activityId : '{{activity.id}}'})" ng-bind="activity.title">爱心字典行动招募志愿者</h4>
+							<p>
+								<span>活动日期:</span>
+								<i ng-bind="activity.time">2017-06-26~2017-04-30</i>
+							</p>
+							<div ng-bind="activity.cont">
+								“爱心灵沟通桥梁，通过“结对”形式为学生的全面发展提供力所能及的帮助。
+							</div>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--<z-footer></z-footer>-->

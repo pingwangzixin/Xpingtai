@@ -1,0 +1,174 @@
+<div>
+	<div class="zy_set_wrap_bg">
+		<div class="zy_set_wrap">
+			<div class="zy_set_bar clearfix">
+				<div class="fl">
+					<img src="./img/set_logo.png"/>
+					<span ui-sref="schoolManagement">门户管理</span>
+				</div>
+				<ul class="fl">
+					<li class="fl" ng-class="{'active':tabState.stateA==0}" ng-click="tabs.classA(0)">页面设置</li>
+					<li class="fl" ng-class="{'active':tabState.stateA==1}" ng-click="tabs.classA(1)">内容管理</li>
+				</ul>
+				<!--<p class="zy_users zy_set_users fr">
+					<i>李</i>
+					<span>李朋霖老师</span>
+				</p>-->
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="zy_tabs" ng-switch="tabState.stateA">
+		<div class="zy_switch zy_page_set" ng-switch-when="0">
+			<div class="zy_det_nav_bg">
+				<div class="zy_det_nav clearfix">
+					<p class="fr">
+						<span class="zy_nav_out" ng-click="closeDoorAdmin()">退出</span>
+						<span class="zy_nav_save">保存</span>
+					</p>
+					<ul class="zy_various_set fr">
+						<li class="" ng-class="{'active':tabState.stateB==0}" ng-click="tabs.classB(0)">风格设置</li>
+						<li class="" ng-class="{'active':tabState.stateB==1}" ng-click="tabs.classB(1)">标志设置</li>
+						<li class="" ng-class="{'active':tabState.stateB==2}" ng-click="tabs.classB(2)">板式设置</li>
+						<li class="" ng-class="{'active':tabState.stateB==3}" ng-click="tabs.classB(3)">广告设置</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="zy_set_detail_bg">
+				<div class="zy_detail_con clearfix" ng-switch="tabState.stateB">
+					
+					<div class="zy_set_detail" ng-switch-when="0" ng-model="styleSet">
+						<ul class="zy_styles clearfix">
+							<!--<li class="zy_style_tidewater_blue">-->
+							<li ng-repeat="style in styleSet" ng-click="changeStyle($index)">
+								<div class="zy_color_value" ng-class="style.class">
+									<img src="./img/style_selected.png" ng-show="style.checked" />
+									<p class="clearfix">
+										<span class="fl"></span>
+										<span class="fr"></span>
+									</p>
+								</div>
+								<span ng-bind="style.name"></span>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="zy_set_detail" ng-switch-when="1">
+						<i class="zy_tips">(注：限制上传图片的大小为500k)</i>
+						<div class="zy_logo_setting">
+							<div class="zy_logo_box">
+								<ul class="zy_logo_group" ng-model="logoBox">
+									<!--<li class="fl" ng-repeat="i in [1,2]">-->
+									<li class="fl" ng-repeat="logo in logoBox">
+										<p class="zy_logo_center">
+											<img ng-src="./img/{{logo.path}}.png"/>
+										</p>
+										<p class="zy_delete_fff">
+											<i ng-click="deleteLogo($event)">删除</i>
+										</p>
+									</li>
+								</ul>
+							</div>
+							<p class="zy_upload fr" ng-show="fileBtn.logoFile">
+								<input type="file" name="" id="" value="" />
+								<span>+</span>
+							</p>
+						</div>
+					</div>
+					
+					<div class="zy_set_detail" ng-switch-when="2">
+						<div class="zy_various_box_bg">
+							<div class="zy_various_box clearfix">
+								<div class="zy_various_left fl">
+									<ul>
+										<li class="" ng-class="{'active':tabState.statePlate==0}" ng-click="tabs.classPlate(0)">
+											选择栏目
+										</li>
+										<li class="" ng-class="{'active':tabState.statePlate==1}" ng-click="tabs.classPlate(1)">
+											选择排版
+										</li>
+										<li class="" ng-class="{'active':tabState.statePlate==2}" ng-click="tabs.classPlate(2)">
+											增删组件
+										</li>
+									</ul>
+								</div>
+								<div class="zy_various_right fl" ng-switch="tabState.statePlate">
+									<div class="zy_various_con zy_column" ng-switch-when="0">
+										<ul class="clearfix">
+											<li ng-class="{'active':column.checked}" ng-repeat="column in columnChoose" ng-click="changeColumn($index)">
+												<img src="./img/column_selected.png" alt="" ng-show="column.checked" />
+												<span ng-bind="column.name"></span>
+											</li>
+										</ul>
+									</div>
+									
+									<div class="zy_various_con zy_typesetting" ng-switch-when="1">
+										<ul class="clearfix" ng-model="typesettingChoose">
+											<li ng-class="{'active':typesetting.checked}" ng-repeat="typesetting in typesettingChoose" ng-click="changeTypesetting($index)">
+												<p>
+													<img src="./img/plate_ok.png" class="zy_plate_ok" ng-show="typesetting.checked" />
+													<img ng-src="./img/{{typesetting.img}}.jpg" class="zy_plate zy_plate_one" />
+												</p>
+												<span ng-bind="typesetting.name"></span>
+											</li>
+										</ul>
+									</div>
+									
+									<div class="zy_various_con zy_assembly" ng-switch-when="2">
+										<ul class="clearfix" ng-model="assemblyChoose">
+											<li class="" ng-repeat="assembly in assemblyChoose" ng-click="changeAssembly($index)">
+												<p ng-show="assembly.checked">
+													<img src="./img/column_selected.png" class="zy_assembly_ok" />
+													<img ng-src="./img/{{assembly.imgChecked}}.png" alt="" />
+												</p>
+												<p ng-show="!assembly.checked"><img ng-src="./img/{{assembly.imgUnchecked}}.png"/></p>
+												<span ng-bind="assembly.name">应用</span>
+											</li>
+										</ul>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="zy_set_detail" ng-switch-when="3">
+						<i class="zy_tips">(注：鼠标拖动banner可改变顺序，限制上传图片的大小为500k){{todos}}</i>
+						<div class="zy_ad_setting clearfix">
+							<div class="zy_ad_box">
+								<ul class="zy_ad_group clearfix" ui-sortable="sortableOptions" ng-model="adBox" ui-sortable-update="ttt" ui-sortable-stop="stop">
+									<!--<ul ui-sortable="{ 'ui-floating': true }" ng-model="items">-->
+									<li class="fl" ng-repeat="ad in adBox"> 
+										<div class="zy_ad_con">
+											<img ng-src="./img/{{ad.img}}.jpg"/>
+											<p class="zy_delete_fff">
+												<i ng-click="deleteAd($event)">删除</i>
+											</p>
+										</div>
+										<span ng-bind="ad.span">广告1</span>
+									</li>
+								</ul>
+							</div>
+							
+							<p class="zy_upload fr" ng-show="fileBtn.adFile">
+								<input type="file" name="" id="" value="" />
+								<span>+</span>
+							</p>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		
+		</div>
+		
+		<div class="zy_switch zy_conten_set" ng-switch-when="1">
+			<p>你搜if红的是否是否合适电话费收到后付款老大是</p>
+			
+		</div>
+	
+	</div>
+	
+</div>

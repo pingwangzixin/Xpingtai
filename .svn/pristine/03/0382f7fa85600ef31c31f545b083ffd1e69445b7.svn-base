@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>走班排课-设置教学任务</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../css/main.css">
+	</head>
+	<style>
+		table tr th {
+			cursor: pointer;
+		}
+		
+		table tr td {
+			cursor: pointer;
+			border: 1px solid #e6e6e6;
+		}
+		
+		table tr td:hover {
+			background: #e3f1fa;
+		}
+		
+		.wx_lanzi2 {
+			color: #399fdf;
+		}
+		
+		.wx_lanline2 {
+			background: #e3f1fa;
+		}
+		
+		.tdbg {
+			background: #e3f1fa;
+			color: #399fdf;
+		}
+		
+		.wx_xiaozu_width span {
+			position: relative;
+		}
+		
+		.wx_xiaozu_width span i {
+			display: block;
+			left: 0px;
+			top: -30px;
+			position: absolute;
+			cursor: pointer;
+			padding: 0 12px;
+			background: #09c;
+			color: #fff;
+		}
+		
+		.wx_xiaozu_width span i b {
+			width: 30px;
+		}
+	</style>
+
+	<body>
+		<iframe src="../header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+		<div class="indexcon">
+			<div class="fanhui">
+				<a href="javaScript:void(0)" onclick="goIndex()"><img src="../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+			</div>
+			<div class="pkqh_con">
+				<!--   切换的列表        -->
+				<div class="qiehu_con_tit">
+					<ul id="ul_tab">
+						<!--<a href="./set_kebiao.html">
+							<li>设置课表</li>
+						</a>
+						<a href="./generate_classes.html">
+							<li>生成教学班</li>
+						</a>
+						<a href="./set_jiaoxuerenwu.html">
+							<li class="active">设置教学任务</li>
+						</a>
+						<a href="./set_paike_role.html">
+							<li>设置固定课规则</li>
+						</a>
+						<a href="./set_goClass_time.html">
+							<li>设置走班时段</li>
+						</a>
+						<a href="./zhineng_kebiao.html">
+							<li>智能编排课表</li>
+						</a>
+						<a href="#">
+							<li>微调</li>
+						</a>-->
+					</ul>
+				</div>
+				<!--   设置课表       -->
+				<div class="setkebiao">
+					<ul class="mlh_kebiao">
+						<li> <b>课 表 名 称：</b><span id="schedule_name"></span> </li>
+						<li class="clearfix mlh_height">
+							<div class="mlh_generate">
+								<em>年&nbsp;&nbsp;&nbsp;&nbsp;级：</em>
+								<select id="sel_grade">
+									<!--<option>高一</option>-->
+								</select>
+								<em>科&nbsp;&nbsp;&nbsp;&nbsp;目：</em>
+								<select id="sel_sub">
+									<!--<option>语文</option>-->
+								</select>
+								<em>教&nbsp;学&nbsp;班：</em>
+								<input id="input_class" type="text" name="">
+								<button onclick="findTeachTask()" class="mlh_btn">查询</button>
+							</div>
+							<em class="wx_addfz mlh_button mlh_bg exportModel"><i class="iconfont daochu"></i>导出模版</em>
+							<button onclick="importClick()" class="wx_addfz mlh_bg wx_qingkong mlh_button"><i class="iconfont daoru"></i>导入教学任务</button>
+						</li>
+
+						<li>
+							<div class="mlh_table mlh_tableTwo">
+								<table id="uc_table" cellpadding="0" cellspacing="0">
+									<!--<tr class="mlh_th">
+                                    <td>科目</td>
+                                    <td>教学班名称</td>
+                                    <td>每周上课节数</td>
+                                    <td>两节连上次数</td>
+                                    <td>任课教师</td>
+                                    <td>上课教室</td>
+                                    <td>操作</td>
+                                </tr>
+                                <tr>
+                                    <td>语文</td>
+                                    <td>物化生</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>雷天舒/易红/何丹</td>
+                                    <td></td>
+                                    <td class="mlh_show"><button class="index_lanse wx_qingkong"><em class="index_edit"></em>编辑</button><button class="index_hongse wx_qingkong"><em class="index_delet"></em>删除</button></td>
+                                </tr>-->
+								</table>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 编辑教学任务弹窗   -->
+		<div id="edit_couse_dialog" class="wx_tanchuang" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  mlh_tc">
+				<div class="tc_con_tit"> <span>编辑教学任务</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0" style="width: 95%;">
+							<tr>
+								<td class="first">
+									<span>科目：<span id="edit_couse_sub">语文</span></span>
+									<span>教学班：<span id="edit_couse_class">语文</span></span>
+								</td>
+							</tr>
+							<tr class="search">
+								<td>
+									<input id="input_tea" type="text" name="" placeholder="请输入教师姓名">
+									<button onclick="searchTeaBtn()">查询</button>
+								</td>
+							</tr>
+							<tr class="danke">
+								<td>
+									<div id="teacher_table" class="mlh_teacherHeight">
+										<!--<a href="javascript:;" class="mlh_btn subjects active">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects active">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>
+	                                <a href="javascript:;" class="mlh_btn subjects">张珊珊</a>-->
+									</div>
+								</td>
+							</tr>
+							<tr class="teacher">
+								<td>
+									<span>已选择教师：</span><br>
+									<span id="choose_tea"></span>
+									<!--<a href="javascript:;" class="mlh_btn">张珊珊<i class="cuoicon close"></i></a>-->
+								</td>
+							</tr>
+							<tr class="classroom">
+								<td>
+									<span>上课的教室：</span><input id="input_classRoom" type="text" name="" placeholder="请输入上课教室">
+								</td>
+							</tr>
+							<tr class="attendClass">
+								<td>
+									<span>每周上课 </span><input id="input_classNum" type="text" name="" placeholder=""> 节，其中两节连上 <input id="input_twoNum" type="text" name="" placeholder=""> 次
+								</td>
+							</tr>
+							<tr>
+								<td align="center">
+									<button id="add_tea_course" class="tc_anniu_queding">确定</button>
+									<button class="tc_anniu_quxiao">取消</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--导入教学任务弹窗   -->
+		<div class="wx_tanchuang wx_addfenzutc" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  mlh_tc">
+				<div class="tc_con_tit"> <span>编辑教学任务</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0" style="width: 620px;">
+							<tr>
+								<td class="guide">
+									<span>1.下载模板，填写数据后上传</span>>2.对应表格字段>3.校验数据>4.导入结果
+								</td>
+							</tr>
+							<tr>
+								<td class="choice">
+									<span>选择年级：</span>
+									<select>
+										<option>高一</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="download">
+									下载模板：
+									<span>教学任务导入模板.xl</span>
+								</td>
+							</tr>
+							<tr class="search">
+								<td>
+									<span class="file">上传文件:</span>
+									<input type="text" name="" placeholder="选择模板文件">
+									<strong class="mlh_add active"> 选择文件<input type="file"> </strong>
+								</td>
+							</tr>
+							<tr class="tips">
+								<td>
+									<p>
+										提示：<br> 请从本页面下载
+										<span>教学任务导入模板.xls</span>并填入数据，勿使用其它模板；<br> 模板填定中“科目” “教学班名称” “每周上课节数”为必填；<br> 设置单双周课程时需将每天上课节数填为带0.5节的课时，如0.5，1.5，2.5等。
+									</p>
+									<table cellspacing="0" cellpadding="0">
+										<tr>
+											<td>科目 <span>*</span></td>
+											<td>教学班名称 <span>*</span></td>
+											<td>每周上课节数 <span>*</span></td>
+											<td>两节连上次数</td>
+											<td>任课老师</td>
+											<td>上课教室</td>
+										</tr>
+										<tr>
+											<td>政治</td>
+											<td>政治</td>
+											<td>1</td>
+											<td>0</td>
+											<td class="sample">样表</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>政治</td>
+											<td>政治</td>
+											<td>1</td>
+											<td>0</td>
+											<td></td>
+											<td></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">
+									<button class="tc_anniu_queding">确定，下一步</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 删除提示弹窗   -->
+		<div class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>删除</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">确认要删除吗？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button class="tc_anniu_queding">确定</button>
+					<button class="tc_anniu_quxiao">取消</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips tips_most" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips tips_most" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips tips_most" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!--导入教师任课弹框start-->
+		<div class="wx_tanchuang wx_delet_tips" id="import" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>导入教师任课</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> 
+						<form id="importForm" method="post" action="" enctype="multipart/form-data">
+							<input type="file" name="file" id="ofile"><label for="ofile">选择文件</label>
+							  <span id="show"></span>
+							<input type="hidden" name="scheduleId" id="scheduleId" />
+						</form>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="importBtn" onclick="saveImportExcel()" class="tc_anniu_queding">上传</button>
+				</p>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="../common/form.js" ></script>
+	<script src="../common/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/set_jiaoxuerenwu.js"></script>
+	<script src="../js/main.js"></script>
+
+</html>

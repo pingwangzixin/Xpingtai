@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>学生分班明细查看</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" href="../../css/newEaxm.css">
+		<link rel="stylesheet" href="../../css/tanchuang.css" />
+	</head>
+
+	<body>
+		<!--最大容器 start-->
+		<div class="mlh_wrapper">
+			<!--头部 start-->
+			<div class="mlh_header">
+				<div class="content">
+					<div class="left">
+						<a href="#"><img src="../../img/logo.png"></a>
+						<span>智能分班</span>
+					</div>
+					<div class="right">
+						<!--<span class="help"><i class="iconfont icon-help"></i>用户帮助</span>-->
+						<span class="user">
+						<i class="iconfont icon-user"></i>
+						<!--王老师-->
+						<span id="createName"></span>
+						<i class="arrow"></i>
+						<div class="exit" onclick="loginOut()"><i class="iconfont icon-tuichu"></i>退出登录</div>
+					</span>
+					</div>
+				</div>
+			</div>
+			<!--头部 end-->
+			<!--整个容器 start-->
+			<div class="mlh_container">
+				<div class="fanhui">
+	            	<a href="javaScript:void(0)" onclick="goClassHtml()"><img src="../../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+	        	</div>
+				<div class="mlh_title">
+					<span>学生分班明细查看</span>
+				</div>
+				<div class="mlh_student" style="display: block;">
+					<ul class="mlh_query">
+						<li class="item">选科名称：<span id="sel_sub_name"></span></li>
+						<li class="item item-1">
+							<p>
+								分班类型：
+								<select>
+									<option>全部</option>
+								</select>
+								<span class="name">班级名称：</span>
+								<input id="className_input" type="text" placeholder="请输入班级">
+								<span class="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+								<input id="stuName_input" type="text" placeholder="请输入学生姓名">
+								<button type="button" id="dc_detail_search_btn" class="mlh_btn preserve">查询</button>
+							</p>
+							<p class="tiaoban">
+								<a href="#" class="daoru"><i class="iconfont icon-tiaoxu"></i> 调班</a>
+								<a href="#" class="daochu"><i class="iconfont icon-daochu"></i> 导出</a>
+							</p>
+						</li>
+					</ul>
+					<div class="mlh_table mlh_tab">
+						<table cellpadding="0" cellspacing="0">
+							<thead id="dc_detail_thead">
+								<!--<tr>
+								<td></td>
+								<td>现行政班</td>
+								<td>姓名</td>
+								<td>选科科目</td>
+								<td>原班级</td>
+								<td>生物</td>
+								<td>历史</td>
+								<td>地理</td>
+								<td>物理</td>
+								<td>政治</td>
+								<td>化学</td>
+							</tr>-->
+							</thead>
+							<tbody id="big_check_deatil_table">
+								<!--<tr>
+								<td>1</td>
+								<td>1232</td>
+								<td>陈红</td>
+								<td>化学,生物,政治</td>
+								<td>G1705班</td>
+								<td>生物（选）<br />（G1705班）</td>
+								<td>生物（选）<br />（G1705班）</td>
+								<td>生物（选）<br />（G1705班）</td>
+								<td>生物（选）<br />（G1705班）</td>
+								<td>生物（选）<br />（G1705班）</td>
+								<td>生物（选）<br />（G1705班）</td>
+							</tr>-->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--整个容器 end-->
+		</div>
+		<!--最大容器 end-->
+		<!--调班 start-->
+		<div class="del_down" id="mlh_change" style="display: none;">
+			<div class="mlh_hide"></div>
+			<div class="con mlh_tc">
+				<div class="title">
+					<span>调班</span>
+					<a href="#" class="change_close mlh_close"><img src="../../img/tc_del.png"></a>
+				</div>
+				<div class="content">
+					<ul class="mlh_query">
+						<li class="item explain">说明：左边为已排区域，右边为未排区域，可勾选学生进行左右置换完成调班。</li>
+						<li class="item">
+							姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：
+							<input id="change_search_input" type="text" name="" class="text-input">
+							<button onclick="changeSearch()" class="mlh_btn sure">查询</button>
+						</li>
+						<li class="item">
+							科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目：
+							<select id="change_sel"></select>
+						</li>
+					</ul>
+					<div class="mlh_cont">
+						<!--left start-->
+						<div class="have-row">
+							<ul class="mlh_query">
+								<li class="item">已安排区</li>
+								<li class="item">
+									教学班级：
+									<select id="change_class_sel" class="text-input">
+										<option>高一</option>
+									</select>
+									班级人数：<span id="change_sel_num">33</span>人
+									<button onclick="saveChangeClass('save')" class="mlh_btn sure" style="float: right;">保存</button>
+								</li>
+							</ul>
+
+							<div class="mlh_tab">
+								<table cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<td>
+												<input id="no_change_all" type="checkbox" name="" class="checkbox checkbox-all">
+											</td>
+											<td>姓名</td>
+											<td>性别</td>
+											<td>科目</td>
+											<td>教学班级</td>
+										</tr>
+									</thead>
+									<tbody id="no_change_table">
+										<!--<tr >
+										<td>
+											<input type="checkbox" name="" class="checkbox">
+										</td>
+										<td>陈红</td>
+										<td>女</td>
+										<td>史地生1班</td>
+										<td>史地生1班</td>
+									</tr>-->
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--left end-->
+						<!--center start-->
+						<div class="two-arrow">
+							<i onclick="insertStu()" class="iconfont icon-arrowL"></i>
+							<i onclick="removeStu()" class="iconfont icon-arrowR"></i>
+						</div>
+						<!--center end-->
+						<!--right start-->
+						<div class="not-line">
+							<ul class="mlh_query">
+								<li class="item">未安排区</li>
+								<li class="item">
+									未排班级学生共<span id="change_stu_num" class="special">3</span>人
+								</li>
+							</ul>
+							<div class="mlh_tab">
+								<table cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<td>
+												<input id="change_all" type="checkbox" name="" class="checkbox checkbox-all">
+											</td>
+											<td>姓名</td>
+											<td>性别</td>
+											<td>科目</td>
+											<td>教学班级</td>
+										</tr>
+									</thead>
+									<tbody id="change_table">
+										<!--<tr>
+										<td>
+											<input type="checkbox" name="" class="checkbox">
+										</td>
+										<td>陈红</td>
+										<td>女</td>
+										<td>史地生1班</td>
+										<td>史地生1班</td>
+									</tr>-->
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--center end-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--调班 end-->
+
+		<!-- 删除提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>确认提示</span> <img onclick="cancel('deleteTips')" src="../../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">您有未保存的调班，是否要保存？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" onclick="saveChangeClass('')" class="tc_anniu_queding">保存</button>
+					<button onclick="abandon()" class="tc_anniu_quxiao">放弃</button>
+				</p>
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/stu-common.js"></script>
+		<script src="../../js/set_check.js"></script>
+		<script src="../../js/loginOut.js"></script>
+	</body>
+
+</html>

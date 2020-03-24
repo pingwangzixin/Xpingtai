@@ -1,0 +1,194 @@
+<div class="">
+	<div class="zy_bg zy_RQcode_main_pic">
+		<!--<img src="./img/RQcode_02.png"/>-->
+	</div>
+	<!--常见问题-->
+	<div class="zy_bg">
+		<div class="zy_central_content zy_common_problem">
+			<p>
+				<!--<img src="./img/common_problem.png"/>-->
+				<i class="iconfont icon-changjianwenti"></i>
+				<span>常见问题</span>
+			</p>
+			<div class="zy_problem_box">
+				<div class="zy_problem_tit">
+					<ul class="clearfix">
+						<li ng-class="{'active':state.problem==0}" ng-click="problemSwitch(0)">账户信息</li>
+						<li ng-class="{'active':state.problem==1}" ng-click="problemSwitch(1)">资源问题</li>
+						<li ng-class="{'active':state.problem==2}" ng-click="problemSwitch(2)">云课堂问题</li>
+						<li ng-class="{'active':state.problem==3}" ng-click="problemSwitch(3)">校讯通app问题</li>
+					</ul>
+				</div>
+				<div class="zy_linear zy_problem_list_box_linear">
+					<div class="zy_linear_simulation zy_problem_list_box" ng-switch="state.problem">
+						<div class="" ng-switch-when="0">
+							<ul>
+								<li>
+									<i class="zy_dot"></i>
+									<p>账号忘了怎么办？0</p>
+								</li>
+								<li>
+									<i class="zy_dot"></i>
+									<p>家长信息注册时填写出现错误，如何处理？</p>
+								</li>
+								<li>
+									<i class="zy_dot"></i>
+									<p>教师登录提示“该身份证已经注册请登录，没激活的用户请激活完善信息”怎么办？</p>
+								</li>
+								<li>
+									<i class="zy_dot"></i>
+									<p>学生由管理员重置密码后怎么登陆能成功？</p>
+								</li>
+								<li>
+									<i class="zy_dot"></i>
+									<p>密码忘记怎么办？</p>
+								</li>
+								<li>
+									<i class="zy_dot"></i>
+									<p>云空间个人资源中心新增功能？</p>
+								</li>
+							</ul>
+						</div>
+						<div class="" ng-switch-when="1">
+							<ul>
+								<li>
+									<i class="zy_dot"></i>
+									<p>账号忘了怎么办？1</p>
+								</li>
+							</ul>
+						</div>
+						<div class="" ng-switch-when="2">
+							<ul>
+								<li>
+									<i class="zy_dot"></i>
+									<p>账号忘了怎么办？2</p>
+								</li>
+							</ul>
+						</div>
+						<div class="" ng-switch-when="3">
+							<ul>
+								<li>
+									<i class="zy_dot"></i>
+									<p>账号忘了怎么办？3</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<!--新手指南-->
+	<div class="zy_bg zy_space_bg">
+		<div class="zy_central_content zy_guide">
+			<div class="zy_linear">
+				<div class="zy_linear_simulation">
+					<div class="zy_con_tit clearfix">
+						<i class="fl iconfont icon-zhinan bg_radius"></i>
+						<span class="fl">新手指南</span>
+						<ul class="zy_type_switch zy_exhibition_type fr">
+							<li class="" ng-class="{'active':state.guide==0}" ng-click="guideSwitch(0)">管理者</li>
+							<li class="" ng-class="{'active':state.guide==1}" ng-click="guideSwitch(1)">教师</li>
+							<li class="" ng-class="{'active':state.guide==2}" ng-click="guideSwitch(2)">学生</li>
+							<li class="" ng-class="{'active':state.guide==3}" ng-click="guideSwitch(3)">家长</li>
+						</ul>
+					</div>
+					<div class="zy_exhibition_list" ng-switch="state.guide">
+						<div class="zy_exhibition_school" ng-switch-when="0">
+							<ul class="clearfix">
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+							</ul> 
+						</div>
+						<div class="zy_exhibition_class" ng-switch-when="1">
+							<ul class="clearfix">
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+							</ul> 
+						</div>
+						<div class="zy_exhibition_teacher" ng-switch-when="2">
+							<ul class="clearfix">
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+							</ul> 
+						</div>
+						<div class="zy_exhibition_student" ng-switch-when="3">
+							<ul class="clearfix">
+								<li>
+									<img src="./img/ad_1.jpg"/>
+									<p class="clearfix">
+										<span class="fl">资源导学</span>
+										<i class="fr">30:03</i>
+									</p>
+								</li>
+							</ul> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+<z-footer></z-footer>

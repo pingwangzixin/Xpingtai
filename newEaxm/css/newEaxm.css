@@ -1,0 +1,1328 @@
+/* 整个容器的样式 */
+
+input {
+	vertical-align: middle;
+}
+
+.mlh_wrapper {
+	color: #4f5355;
+	background: #f1f2f3;
+}
+
+
+/* 顶部样式 */
+
+.mlh_header {
+	height: 64px;
+	line-height: 64px;
+	background: #399fdf;
+}
+
+.mlh_header .content {
+	/*display: flex;
+	justify-content: space-between;
+	align-items: center;*/
+	margin: 0 auto;
+	/*width: 1200px;*/
+	max-width: 1200px;
+	height: 100%;
+}
+.mlh_header .left {
+	float: left;
+}
+.mlh_header .left a,
+.mlh_header .left span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.mlh_header .left span {
+	padding-left: 30px;
+	font-size: 18px;
+	color: #fff;
+}
+
+.mlh_header .right {
+	float: right;
+	font-size: 16px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.mlh_header .right span {
+	display: inline-block;
+}
+
+.mlh_header .help {
+	margin-right: 20px;
+}
+
+.mlh_header .iconfont {
+	display: inline-block;
+	padding-right: 10px;
+	vertical-align: middle;
+	font-size: 28px;
+}
+
+.mlh_header .user {
+	position: relative;
+}
+
+.mlh_header .user:hover .exit {
+	display: block;
+}
+
+.mlh_header .arrow {
+	box-sizing: content-box;
+	display: inline-block;
+	padding-right: 10px;
+	width: 12px;
+	height: 12px;
+	background: url(../img/xiala.png) no-repeat right center;
+}
+
+.mlh_header .exit {
+	display: none;
+	position: absolute;
+	top: 52px;
+	right: 0;
+	width: 105px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	color: #4f5355;
+	background: #fff;
+	box-shadow: 1px 1px 3px #888;
+}
+
+.mlh_header .icon-tuichu {
+	vertical-align: top;
+	font-size: 18px;
+	padding-right: 5px;
+}
+
+.mlh_container {
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	max-width: 1200px;
+	min-height: 550px;
+	background: #fff;
+}
+
+
+/* 学生选科页面样式 */
+
+.mlh_creat {
+	height: 70px;
+	border-bottom: 1px solid #f1f2f3;
+}
+
+.mlh_creat .cont {
+	display: flex;
+	justify-content: space-between;
+	/*align-items: center;*/
+	height: 32px;
+	padding-top: 19px;
+}
+
+.mlh_wrap {
+	margin: 0 auto;
+	width: 1140px;
+}
+
+.mlh_creat .range {
+	margin-right: 40px;
+}
+
+.mlh_creat .index_xuenian {
+	margin-left: 5px;
+	width: 277px;
+	height: 31px;
+	border: 1px solid #399fdf;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: url(../img/select_bg.png)no-repeat right;
+	text-indent: 10px;
+	color: #999;
+	outline: none;
+	cursor: pointer;
+}
+
+.mlh_creat .addkebiao {
+	padding: 0 10px;
+	margin-right: 15px;
+	height: 31px;
+	line-height: 31px;
+	overflow: hidden;
+	font-size: 14px;
+	background: #1abc9c;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+}
+
+.mlh_creat .addkebiao:last-child {
+	margin-right: 0;
+}
+
+.mlh_creat .icon-add {
+	padding-right: 5px;
+	font-size: 22px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.mlh_creat .icon-daochu {
+	padding-right: 5px;
+	font-size: 16px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.mlh_file {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 57px;
+	border-bottom: 1px solid #f1f2f3;
+}
+
+.mlh_file .icon-file {
+	display: inline-block;
+	vertical-align: middle;
+	width: 28px;
+	height: 28px;
+	background: url(../img/icon_file.png) no-repeat center center;
+}
+
+.mlh_file .text {
+	margin-left: 8px;
+	width: 275px;
+	height: 30px;
+	text-indent: 10px;
+	border: 1px solid #ccc;
+}
+
+.mlh_btn {
+	padding: 0 30px;
+	height: 32px;
+	line-height: 32px;
+	font-size: 16px;
+	text-align: center;
+	border: 0;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.mlh_file .preserve,
+.kemu-btn .preserve,
+.mlh_query .preserve {
+	margin-left: 30px;
+	color: #fff;
+	background: #39a0de;
+}
+
+.mlh_file .cancel,
+.kemu-btn .cancel,
+.adjust .cancel {
+	margin-left: 20px;
+	color: #666;
+	background: #f0f0f0;
+}
+
+.mlh_table,
+.mlh_table * {
+	margin: 0 auto;
+	padding: 0;
+}
+
+.mlh_table {
+	display: table;
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+}
+
+.mlh_table .table-tr {
+	display: table-row;
+	height: 80px;
+}
+
+.mlh_table .table-tr:nth-child(odd) {
+	background: #fbfdfe;
+}
+
+.mlh_table .table-tr:nth-child(even) {
+	background: #fff;
+}
+
+.mlh_table .table-th {
+	width: 33.3%;
+	display: table-cell;
+	border-bottom: 1px solid #edf0f3;
+	vertical-align: middle;
+}
+
+.mlh_table .table-td {
+	display: table-cell;
+	border-bottom: 1px solid #edf0f3;
+	vertical-align: middle;
+}
+
+.mlh_table .icon-file {
+	float: left;
+	margin-left: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 28px;
+	height: 28px;
+	background: url(../img/icon_file.png) no-repeat center center;
+}
+
+.mlh_table .title {
+	float: left;
+	padding-left: 8px;
+	width: 75%;
+	font-size: 14px;
+}
+
+.mlh_table .check {
+	display: inline-block;
+	vertical-align: top;
+	width: 70px;
+	text-decoration: underline;
+}
+
+.mlh_table .check a {
+	color: #399fdf;
+}
+
+.mlh_schedule {
+	display: inline-block;
+	margin-left: 5px;
+	font-size: 12px;
+}
+
+.mlh_progress {
+	display: inline-block;
+	width: 190px;
+}
+
+.mlh_progress .progress {
+	height: 12px;
+	margin-bottom: 0;
+}
+
+.mlh_schedule .percent {
+	margin-left: 10px;
+	color: #999;
+}
+
+.mlh_schedule .time {
+	margin-top: 2px;
+}
+
+.mlh_table .icon_election {
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	height: 18px;
+	background: url(../img/icon_election.png) no-repeat center center;
+}
+
+.mlh_table .operate {
+	float: right;
+}
+
+.mlh_table .operate .item {
+	float: left;
+	margin-right: 15px;
+	font-size: 14px;
+}
+
+.mlh_table .operate .item a {
+	display: inline-block;
+	padding: 0 5px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.mlh_table .operate .item a:hover {
+	text-decoration: none;
+}
+
+.mlh_table .operate .iconfont {
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.mlh_table .operate .import a {
+	background: #e7f7f6;
+	border-radius: 5px;
+}
+
+.mlh_table .operate .repair a {
+	color: #01ab9c;
+	background: #e7f7f6;
+	border-radius: 5px;
+}
+
+.mlh_table .operate .edit a {
+	color: #399fdf;
+	background: #e9f4fb;
+	border-radius: 5px;
+}
+
+.mlh_table .operate .see a {
+	color: #999;
+	background: #eff1f3;
+	border-radius: 5px;
+}
+
+.mlh_table .operate .icon-del {
+	font-size: 15px;
+}
+
+.mlh_table .operate .del a {
+	color: #f66375;
+	background: #faeff3;
+	border-radius: 5px;
+}
+
+
+/* 编辑学科 按单个科目选择*/
+
+.del_down .mlh_tc {
+	width: 680px;
+	height: auto;
+	overflow: hidden;
+	color: #4f5355;
+	border-radius: 0;
+}
+
+.mlh_tc .title {
+	position: relative;
+	height: 48px;
+	line-height: 48px;
+	font-size: 16px;
+	color: #fff;
+	background: #39a0de;
+}
+
+.mlh_tc .title a {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+.mlh_tc .title a img {
+	vertical-align: middle;
+}
+.mlh_tc .mlh_ipad{
+	width: 640px;
+	height: 375px;
+	overflow: auto;
+}
+.mlh_tc .table {
+	width: 640px;
+	overflow-y: auto;
+	overflow-x:hidden;
+	margin: 0 auto;
+	margin-top: 15px;
+	padding: 0;
+	text-align: left;
+	font-size: 14px;
+}
+
+.mlh_tc .table table {
+	width: 100%;
+}
+
+.mlh_tc .table td {
+	padding-bottom: 15px;
+	vertical-align: middle;
+}
+
+.mlh_tc .table-width {
+	width: 75px;
+}
+
+.mlh_tc input[type=text] {
+	width: 185px;
+	height: 30px;
+	border: 1px solid #ccc;
+	text-indent: 10px;
+}
+
+.mlh_tc input[type=radio] {
+	margin: 0;
+	margin-right: 3px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.mlh_tc .checkbox label {
+	padding-left: 0;
+}
+
+.mlh_tc select {
+	width: 185px;
+	height: 30px;
+	border: 1px solid #ccc;
+	text-indent: 10px;
+	color: #999;
+	outline: none;
+	cursor: pointer;
+}
+
+.mlh_time {
+	width: 185px;
+	height: 32px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: url(../img/icon_time.png)no-repeat 158px;
+	text-indent: 10px;
+	color: #999;
+	outline: none;
+	cursor: pointer;
+}
+
+.mlh_spacing {
+	margin-left: 30px;
+}
+
+.mlh_tc .course {
+	display: inline-block;
+	margin-right: 40px;
+}
+
+.mlh_tc .course {
+	color: #4f5355;
+}
+
+.mlh_tc .sure,
+.mlh_step .sure,
+.mlh_query .sure {
+	display: inline-block;
+	margin: 0 auto;
+	color: #fff;
+	background: #399fdf;
+}
+
+
+/* 编辑学科 按三科组合科目选择*/
+
+.mlh_tc .addkebiao {
+	padding: 0 5px;
+	width: auto;
+	height: 31px;
+	line-height: 31px;
+	overflow: hidden;
+	font-size: 14px;
+	background: #1abc9c;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+}
+
+.sanke-height {
+	height: auto;
+}
+
+.mlh_tc .icon-add {
+	padding-right: 5px;
+	font-size: 22px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.mlh_tc .cont {
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+.mlh_tc .cont-width {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.mlh_tc .cont-width .text {
+	margin: 15px 0;
+	font-size: 16px;
+	text-align: center;
+}
+
+.mlh_tc .cont-width .kemu {
+	border-bottom: 1px solid #ddd;
+}
+
+.mlh_tc .cont-width .kemu a,
+.mlh_query .sansan .mlh_btn {
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #999;
+	border: 1px solid #ccc;
+}
+
+.mlh_tc .cont-width .kemu a:hover,
+.mlh_query .sansan .mlh_btn:hover {
+	color: #fff;
+	background: #399fdf;
+	border-color: #399fdf;
+	text-decoration: none;
+}
+
+.mlh_tc .cont-width .kemu a.active,
+.mlh_query .sansan .active {
+	color: #fff;
+	background: #399fdf;
+	border-color: #399fdf;
+	text-decoration: none;
+}
+
+.mlh_tc .selected {
+	position: relative;
+	display: inline-block;
+	margin: 10px 10px 10px 0;
+	color: #666;
+	background: #f0f0f0;
+	overflow: inherit;
+}
+
+.mlh_tc .selected .iconfont {
+	position: absolute;
+	top: -10px;
+	right: -5px;
+	color: #bdbdbd;
+}
+
+.mlh_tc .kemu-btn {
+	margin: 0 auto;
+	margin-bottom: 10px;
+	width: 285px;
+}
+
+
+/* 查看进度弹框 */
+
+.mlh_tc .prog {
+	margin: 0 auto;
+	width: 640px;
+	min-height: 300px;
+	text-align: left;
+	color: #666;
+}
+
+.mlh_tc .prog p {
+	margin-top: 15px;
+}
+
+.mlh_tc .prog .num span {
+	padding-left: 50px;
+}
+
+.mlh_tc .prog .num span:nth-child(1) {
+	color: #999;
+}
+
+.mlh_tc .prog .num span:nth-child(2) {
+	color: #f66375;
+}
+
+.mlh_tc .prog .checked {
+	background: #f0f0f0;
+}
+
+.mlh_tc .prog .checked span {
+	display: inline-block;
+	margin: 15px 20px;
+}
+
+.mlh_tc .prog p.tc_button {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 105px;
+}
+
+
+/* 按组合补选弹框 */
+
+.mlh_tc .explain span {
+	float: left;
+}
+
+.mlh_tc .explain span:last-child {
+	width: 600px;
+}
+
+.mlh_tc .explain {
+	font-size: 12px;
+	color: #999;
+}
+
+.mlh_tc .kemu-width {
+	width: 570px;
+}
+
+.mlh_tc .kemu-width .kemu {
+	border: none;
+}
+
+.mlh_tc .table td.table-valign {
+	vertical-align: top;
+}
+
+.mlh_tc .kemu_btn {
+	width: auto;
+	padding: 0px 10px;
+}
+
+.mlh_tc .checked-zuhe {
+	font-size: 12px;
+}
+
+.mlh_tc .checked-zuhe span {
+	padding-right: 12px;
+}
+
+.mlh_tc .prompt,
+.mlh_query em {
+	font-size: 12px;
+	color: #f66375;
+}
+
+
+/* 查看页面 */
+
+.mlh_check {
+	display: flex;
+	align-items: center;
+	padding-left: 30px;
+}
+
+.mlh_check a {
+	display: inline-block;
+	margin-right: 25px;
+	padding: 0 20px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	color: #4f5355;
+	text-align: center;
+}
+
+.mlh_check a.active {
+	color: #fff;
+	background: #39a0de;
+}
+
+.mlh_student {
+	display: none;
+	margin: 0 auto;
+	width: 1160px;
+}
+
+.mlh_query .item {
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+.mlh_query .item .name {
+	padding-left: 30px;
+}
+
+.mlh_query select {
+	width: 185px;
+	height: 30px;
+	border: 1px solid #ccc;
+	text-indent: 10px;
+	color: #999;
+	outline: none;
+	cursor: pointer;
+}
+
+.mlh_query input[type=text] {
+	width: 185px;
+	height: 30px;
+	border: 1px solid #ccc;
+	text-indent: 10px;
+}
+
+.mlh_query .number {
+	margin-right: 30px;
+}
+
+.mlh_query .number:nth-child(2) {
+	color: #999;
+}
+
+.mlh_query .number:nth-child(3) {
+	color: #f66375;
+}
+
+.mlh_query .item-1,
+.mlh_tc .item-1 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mlh_query .item-1 a,
+.mlh_tc .item-1 a {
+	display: inline-block;
+	padding: 0 5px;
+	border-radius: 5px;
+}
+
+.mlh_query .tiaoban {
+	padding-top: 20px;
+}
+
+.mlh_query .daoru {
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	color: #399fdf;
+	background: #edf6fc;
+}
+
+.mlh_query .iconfont {
+	font-size: 16px;
+}
+
+.mlh_query .daochu,
+.mlh_tc .daochu {
+	margin-left: 20px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	color: #01ab9c;
+	background: #e8f7f6;
+}
+
+.mlh_tab {
+	width: 1160px;
+}
+
+.mlh_tab table,
+.mlh_tc .sub-table {
+	margin-top: 20px;
+	width: 100%;
+	font-size: 14px;
+	border: 1px solid #ddd;
+	table-layout: fixed;
+}
+
+.mlh_tab table thead td,
+.mlh_tc .sub-table thead td {
+	background: #e3f1fa;
+}
+
+.mlh_tab td,
+.mlh_tc .sub-table td {
+	height: 40px;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+.mlh_tab .icon-duihao {
+	font-size: 20px;
+	color: #399fdf;
+}
+
+.mlh_tab .list {
+	color: #399fdf;
+}
+
+
+/* 调整弹窗 */
+
+.mlh_tc .left_range {
+	padding-left: 30px;
+}
+
+.mlh_tc .adjust-width {
+	margin: 0 auto;
+	width: 640px;
+}
+
+.mlh_tc .adjust {
+	padding-top: 100px;
+}
+
+.del_down .adjust_height {
+	height: 365px;
+}
+
+
+/* 查看名单 */
+
+.mlh_tc .checkname {
+	height: 530px;
+	overflow: auto;
+}
+
+.mlh_tc .sub-table {
+	margin-top: 0;
+	height: auto;
+}
+
+.mlh_tc .sub-table td {
+	padding-bottom: 0;
+}
+
+#election .mlh_tc {
+	height: 535px;
+}
+
+#progess .mlh_tc {
+	height: 345px;
+}
+
+
+/*学生分班明细查看*/
+
+.mlh_title {
+	display: flex;
+	align-items: center;
+	height: 54px;
+	line-height: 54px;
+	border-bottom: 1px solid #efefef;
+}
+
+.mlh_title span {
+	display: inline-block;
+	margin-left: 20px;
+	font-size: 16px;
+	color: #399fdf;
+	border-bottom: 2px solid #399fdf;
+}
+
+
+/* 创建分班任务 */
+
+#mlh_class {
+	position: relative;
+}
+.mlh_search{
+	margin-bottom: 10px;
+}
+.mlh_search input{
+	vertical-align: top;
+}
+.mlh_search button{
+	padding: 0 30px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    text-align: center;
+    border: 0;
+    overflow: hidden;
+    cursor: pointer;
+    color: #fff;
+    background: #399fdf;
+}
+#mlh_class .mlh_tc,
+#mlh_edit .mlh_tc,
+#mlh_bzr .mlh_tc {
+	height: 430px;
+	overflow: inherit;
+}
+#mlh_bzr .mlh_tc {
+	height: 460px;
+}
+#mlh_class .class-width {
+	width: 100px;
+}
+
+.mlh_tc .team {
+	box-sizing: border-box;
+	float: left;
+	margin-right: 20px;
+	padding: 10px;
+	width: 120px;
+	height: 80px;
+	line-height: 1.5;
+	color: #a9a9a9;
+	border: 1px solid #eaeaea;
+}
+
+.mlh_tc .team:last-child {
+	margin-right: 0;
+}
+
+.mlh_tc .team:hover,
+.mlh_tc .distinguish .active {
+	color: #fff;
+	background: #399fdf;
+	border-color: #399fdf;
+	text-decoration: none;
+}
+
+.mlh_tc .team:hover span,
+.mlh_tc .distinguish .active span {
+	color: #fff;
+}
+
+.mlh_tc .team span {
+	display: block;
+	text-align: center;
+	color: #4d5555;
+}
+
+.mlh_tc .distance {
+	margin-top: 50px;
+}
+
+.mlh_tc .state {
+	position: absolute;
+	top: 284px;
+	right: -20px;
+	padding: 10px;
+	width: 200px;
+	height: 100px;
+	font-size: 12px;
+	color: #666;
+	background: #fff;
+	text-align: left;
+	box-shadow: 0px 0px 3px #ddd;
+	box-sizing: border-box;
+	z-index: 10;
+}
+
+.mlh_tc .state::after {
+	position: absolute;
+	top: -8px;
+	left: 50%;
+	margin-left: -8px;
+	width: 0;
+	height: 0;
+	content: '';
+	border-style: solid;
+	border-width: 8px;
+	border-color: #fff #fff transparent transparent;
+	transform: rotate(-45deg);
+	box-shadow: 1px -1px 1px #ddd;
+	z-index: 99;
+}
+
+
+/*分班-设置分班*/
+
+.mlh_tab input {
+	width: 86px;
+	height: 24px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+.mlh_query .tips {
+	margin-left: 100px;
+	font-size: 12px;
+	color: #999;
+}
+
+.mlh_step {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.mlh_step .step_top {
+	color: #fff;
+	background: #01ab9c;
+}
+
+.mlh_step .step_btn {
+	margin-left: 25px;
+}
+
+
+/*学生选科 student-choose*/
+
+.mlh_table .choose .item {
+	margin-right: 150px;
+}
+
+.mlh_tc .danke .subjects,
+.mlh_query .subjects {
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #999;
+	border: 1px solid #ccc;
+}
+
+.mlh_tc .danke .subjects.active,
+.mlh_query .subjects.active {
+	color: #399fdf;
+	border-color: #399fdf;
+	text-decoration: none;
+}
+
+.mlh_tc .table td.table-top {
+	vertical-align: top;
+}
+
+#edit .mlh_choose {
+	height: 450px;
+}
+
+.mlh_table .operate .icon-text {
+	display: inline-block;
+	margin-right: 2px;
+	vertical-align: middle;
+	width: 12px;
+	height: 14px;
+	background: url(../img/icon_text.png) no-repeat center center;
+}
+
+
+/*分班*/
+
+.mlh_query p .mlh_btn {
+	margin-top: 20px;
+}
+
+.mlh_query .color {
+	font-size: 12px;
+	color: #999;
+}
+
+.mlh_query em {
+	font-style: normal;
+}
+
+.mlh_student .classes {
+	box-sizing: border-box;
+	margin-top: 15px;
+	padding: 10px;
+	width: 100%;
+	border: 1px solid #ddd;
+	background: #fbfbfb;
+}
+
+.mlh_student .kaiban span {
+	padding-left: 30px;
+}
+
+.mlh_student .select {
+	margin-top: 10px;
+}
+
+.mlh_student .select label {
+	margin-right: 10px;
+}
+
+.mlh_student .select span {
+	display: inline-block;
+	padding-left: 20px;
+}
+
+
+/*调班*/
+
+#mlh_change .mlh_tc {
+	width: 100%;
+	height: 100%;
+}
+
+#mlh_change .content {
+	margin: 0 20px;
+	text-align: left;
+}
+
+.mlh_tc .text-input {
+	margin-right: 15px;
+}
+
+.mlh_cont {
+	display: flex;
+	flex-flow: row;
+	margin-top: 20px;
+}
+
+.mlh_cont .have-row {
+	flex: 1;
+}
+
+.mlh_cont .two-arrow {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+}
+
+.mlh_cont .two-arrow .iconfont {
+	padding: 5px 0;
+	font-size: 48px;
+	color: #1296db;
+	cursor: pointer;
+}
+
+.mlh_cont .not-line {
+	flex: 1;
+}
+
+.mlh_tab .checkbox {
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+}
+
+.mlh_cont .mlh_tab {
+	margin-top: 20px;
+	width: auto;
+	height: 320px;
+	overflow-y: auto;
+}
+
+.mlh_cont .mlh_tab table {
+	margin-top: 0;
+}
+
+.mlh_query .special {
+	color: #f66375;
+}
+
+
+/*大走班*/
+
+.mlh_student .kaiban mark {
+	background: none;
+	color: #f66375;
+	vertical-align: middle;
+}
+
+.mlh_student .mlh_query input.mean {
+	width: 70px;
+}
+
+.mlh_query .classes .mlh_set {
+	width: 640px;
+}
+
+.mlh_query .classes .mlh_set input {
+	width: 85px;
+	height: 25px;
+	text-indent: 0;
+}
+
+.mlh_query .classes .tips {
+	padding-left: 0;
+	margin-left: 0;
+}
+
+.mlh_query .icon-jiantou {
+	font-weight: bold;
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+.mlh_query .select-left {
+	width: 70px;
+	margin-right: 10px;
+}
+
+.mlh_query .class_table {
+	margin-right: 20px;
+}
+
+.mlh_tc .special_color {
+	color: #39a0de;
+}
+
+.mlh_tc .sub-table a {
+	color: #4f5355;
+}
+
+
+/*返回*/
+
+.fanhui {
+	background: #fafafa;
+	height: 35px;
+	border-bottom: 1px solid #efefef;
+	line-height: 35px;
+}
+
+.fanhui a,
+.fanhui a:hover {
+	font-size: 12px;
+	color: #999999;
+	text-decoration: none;
+}
+
+.fanhui_icon {
+	width: 15px;
+	height: 15px;
+	background: url(../img/fanhui.png)no-repeat;
+	display: inline-block;
+}
+
+
+/*设置班主任样式*/
+
+.set_bzr {
+	height: 280px;
+	overflow-y: auto;
+}
+
+.set_bzr li {
+	float: left;
+	box-sizing: border-box;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	padding: 10px 40px;
+	color: #a9a9a9;
+	border: 1px solid #eaeaea;
+	cursor: pointer;
+}
+
+.set_bzr li:hover,
+.set_bzr li.active {
+	color: #fff;
+	background: #399fdf;
+	border-color: #399fdf;
+	text-decoration: none;
+}
+
+#result_table input {
+	cursor: pointer;
+}
+
+#mlh_bzr p {
+	margin-top: 25px;
+	display: flex;
+	align-items: center;
+}
+
+#import label {
+	width: 80px;
+	height: 25px;
+	background: #f5f5f5;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 5px;
+	color: #333;
+	text-align: center;
+	line-height: 25px;
+	font-size: 12px;
+}
+
+#import input {
+	display: none;
+}
+
+.disable_btn {
+    background: #f3f3f3!important;
+    cursor: not-allowed!important;
+}
+

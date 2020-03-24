@@ -1,0 +1,38 @@
+<html><body ng-app>
+<!--<script src="common/angular/angular.js"></script>-->
+<script src="http://apps.bdimg.com/libs/angular.js/1.2.15/angular.min.js">
+</script>
+<script>
+function mapselect($scope){ 
+$scope.division=[
+{"id":1,"name":"北京市","city":[
+{"id":2,"name":"市辖区","area":[
+{"id":3,"name":"东城区"},
+{"id":4,"name":"西城区"},
+{"id":5,"name":"崇文区",}]}
+]},
+{"id":1,"name":"北京市2","city":[
+{"id":2,"name":"市辖区2","area":[
+{"id":3,"name":"东城区2"},
+{"id":4,"name":"西城区2"},
+{"id":5,"name":"崇文区2",}]}
+]}
+]
+}
+</script>
+<div class="row" ng-controller="mapselect">
+
+<select required=""ng-model="sheng" ng-options="m.name for m in division" > 
+
+</select>
+
+<select required="" ng-model="shi" ng-options="m.name for m in sheng.city" > 
+
+</select> 
+<select required="" ng-model="qu" ng-options="m.name for m in shi.area" "> 
+
+</select> 
+
+</div>
+</body>
+</html>

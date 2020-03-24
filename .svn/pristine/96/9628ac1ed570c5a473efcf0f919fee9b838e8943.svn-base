@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>走班排课-设置走班时段</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../common/layui/css/layui.css">
+		<link rel="stylesheet" href="../css/main.css">
+		<script src="../js/jquery-1.11.2.min.js"></script>
+		<script src="../common/My97DatePicker/WdatePicker.js"></script>
+		<script src="../common/layui/layui.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/set_goClass_time.js"></script>
+	</head>
+
+	<body>
+		<iframe src="../header.html" frameborder="0" marginwidth="0" marginheight="0" class="iframheader"></iframe>
+		<div class="indexcon">
+			<div class="fanhui">
+				<a href="javaScript:void(0)" onclick="goIndex()"><img src="../img/fanhui.png" style="vertical-align:middle;margin-right:3px;margin-left:15px;">返回</a>
+			</div>
+			<div class="pkqh_con">
+				<!--   切换的列表        -->
+				<div class="qiehu_con_tit">
+					<ul id="ul_tab">
+						<!--<a href="./set_kebiao.html">
+							<li>设置课表</li>
+						</a>
+						<a href="./generate_classes.html">
+							<li>生成教学班</li>
+						</a>
+						<a href="./set_jiaoxuerenwu.html">
+							<li>设置教学任务</li>
+						</a>
+						<a href="./set_paike_role.html">
+							<li>设置固定课规则</li>
+						</a>
+						<a href="./set_goClass_time.html">
+							<li class="active">设置走班时段</li>
+						</a>
+						<a href="./zhineng_kebiao.html">
+							<li>智能编排课表</li>
+						</a>
+						<a href="#">
+							<li>微调</li>
+						</a>-->
+					</ul>
+				</div>
+				<!--   设置课表       -->
+				<div class="setkebiao">
+					<ul class="mlh_kebiao">
+						<li> <b>课 表 名 称：</b><span id="schedule_name"></span> </li>
+						<li> <b>选 择 年 级：</b>
+							<select name="" id="sel_grade" class="selectClass">
+								<!--<option value="高一">高一</option>-->
+							</select>
+						</li>
+						<li class="wx_shezhijs_btn">
+							<div class="set_zbsd clearfix">
+								<p><b>设置走班时段</b><span class="smallFont">(走班时段不设置时，则系统自动随机)</span></p>
+								<a href="javascript:;" onclick="setSchedule()">设置作息时间</a>
+							</div>
+							<table class="wx_setrenwu_table wx_setjiaoshitable" style="margin-top:10px;">
+								<thead>
+									<tr id="day_tr">
+										<!--<th>节次</th>
+                                    <th>星期一</th>
+                                    <th>星期二</th>
+                                    <th>星期三</th>
+                                    <th>星期四</th>
+                                    <th>星期五</th>-->
+									</tr>
+								</thead>
+								<tbody id="class_table">
+									<!--<tr>
+                                    <td class="wx_jieci">第一节</td>
+                                    <td class="wx_duigou"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="wx_duigou"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第二节</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第三节</td>
+                                    <td class="wx_duigou"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第四节</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第五节</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第六节</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第七节</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="wx_jieci">第八节</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>-->
+								</tbody>
+							</table>
+						</li>
+						<li class="mlh_left">
+							<button id="saveBtn" onclick="" class="wx_sure_btn wx_ml100">确定</button>
+							<!--<button class="wx_noaccess_btn wx_ml100" disable="true">确定</button>-->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 设置作息时间弹窗 start   -->
+		<div id="setSchedule" class="wx_tanchuang" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  mlh_tc">
+				<div class="tc_con_tit"> <span>设置作息时间</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="content">
+					<div class="table">
+						<table cellpadding="0" cellspacing="0" style="width: 95%;">
+							<thead>
+								<tr>
+									<th class="first" width="30%">
+										节次
+									</th>
+									<th class="first">
+										作息时间
+									</th>
+								</tr>
+							</thead>
+							<tbody id="nodeTimeBody">
+								<tr>
+									<td>第一节</td>
+									<td class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第二节</td>
+									<td  class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第三节</td>
+									<td class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第四节</td>
+									<td class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第五节</td>
+									<td class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第六节</td>
+									<td class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第七节</td>
+									<td class="starttime"></td>
+								</tr>
+								<tr>
+									<td>第八节</td>
+									<td class="starttime"></td>
+								</tr>
+							</tbody>
+						</table>
+						<p>
+							<button id="add_tea_course" class="tc_anniu_queding" onclick="saveNodeTime()">确定</button>
+							<button class="tc_anniu_quxiao">取消</button>
+						</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--设置作息时间弹窗   end -->
+		<!-- 成功提示弹窗   -->
+		<div id="successTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_success_icon"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作成功</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 失败提示弹窗   -->
+		<div id="failTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon2"></em>
+						<p class="textContent" style="font-size:20px;margin-top:20px;">操作失败</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 警告提示弹窗   -->
+		<div id="warnTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_success_height">
+
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_wangning_icon"></em>
+						<p id="warnTipsContent" class="textContent" style="font-size:20px;margin-top:20px;">请输入内容</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!--数据未保存提示弹窗   -->
+		<div id="deleteTips" class="wx_tanchuang wx_delet_tips" style="display:none">
+			<div class="wx_hide"></div>
+			<div class="wx_tanchuangcon  wx_xgrwtc_height">
+				<div class="tc_con_tit"> <span>提示</span> <img src="../img/tanchuanshanchu.png" class="img_guanbi"> </div>
+				<div class="tc_con_neirong" style="margin-top:30px;">
+					<div style="text-align:center"> <em class="wx_erro_icon"></em>
+						<p style="font-size:16px;">您有未保存的数据,是否要保存已更改的数据？</p>
+					</div>
+				</div>
+				<p style="margin-top:20px;text-align:center">
+					<button id="deleteTipsYesBtn" class="tc_anniu_queding">保存</button>
+					<button id="deleteTipsNoBtn" class="tc_anniu_quxiao">不保存</button>
+				</p>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function() {
+
+		})
+	</script>
+
+</html>

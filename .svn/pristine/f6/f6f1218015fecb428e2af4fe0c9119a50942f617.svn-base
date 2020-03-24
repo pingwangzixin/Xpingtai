@@ -1,0 +1,38 @@
+<div class="zy_index">
+    <div class="zy_head">
+        <header class="clearfix">
+            <div class="zy_head_logo fl">
+                <p>
+                	<img src="./img/jetsen_logo.png" alt="" ui-sref="wrap.studentActivityList" />
+                	<!--<img ng-repeat="logo in pcLogo" ng-src="./img/{{logo.path}}.png" alt="" />-->
+                </p>
+            </div>
+            <ul class="zy_head_group fl">
+                <!--<li ui-sref="{{column.href}}" ui-sref-active="active" ng-repeat="column in pcColumn track by $index" ng-bind="column.name">首页</li>-->
+                <!--<li ui-sref="{{column.href}}" ui-sref-active="active" ng-repeat="column in pcColumn" ng-bind="column.name">首页</li>-->
+                <li ui-sref="wrap.index({token:token})" ui-sref-active="active">首页</li>
+                <li ui-sref="wrap.list({token:token})" ui-sref-active="active" class="zy_activity_list">活动列表</li>
+                <li ui-sref="wrap.newActivity({token:token})" ui-sref-active="active" ng-show="showNav">新建活动</li>
+                <li ui-sref="wrap.myShare({token:token})" ui-sref-active="active" ng-show="showNav">我的共享</li>
+                <li ui-sref="wrap.share({token:token})" ui-sref-active="active">共享库</li>
+            </ul>
+            <div class="zy_users fr">
+            	<span>
+            		<img src="./img/userPhoto.png"/>
+            	</span>
+            	<ul>
+            		<li><p>姓名：<span ng-bind="personalMsg.name">刘宇男</span></p></li>
+            		<!--<li><p>角色：<span ng-bind="personalMsg.role">班主任</span></p></li>-->
+            		<li><p>学校：<span ng-bind="personalMsg.school">淄博市第五中学</span></p></li>
+            		<li><p>班级：<span ng-bind="personalMsg.class">初三十二班</span></p></li>
+            		<!--<li ng-show="showNav"><p>学科：<span ng-bind="personalMsg.sub">地理</span></p></li>-->
+            		<li class="zy_login_out" ng-click="logout()"><p>退出</p></li>
+            	</ul>
+            </div>
+        </header>
+    </div>
+    
+    <div ui-view class="scale-fade"></div>
+    <!--<div ui-view class="slide-top"></div>-->
+    
+</div>

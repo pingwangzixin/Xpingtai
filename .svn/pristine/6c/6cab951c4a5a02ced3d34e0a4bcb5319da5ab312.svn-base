@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>活动中心</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/main.css">
+	<!--<script src="common/js/jquery-1.11.2.min.js"></script>-->
+	<script src="common/angular/angular.js"></script>
+	<script type="text/javascript">
+		angular.module('app',[]).controller('con',['$scope',function ($scope){
+			console.log(123);
+			$scope.list = [
+				{name: '土豆',price : 3},
+				{name: '大葱',price : 2.3},
+				{name: '胡萝卜',price : 0.5},
+				{name: '山药',price : 5},
+				{name: '菠菜',price : 7.8},
+				{name: '玉米',price : 12},
+			];
+			
+			$scope.cont = '';
+			
+			$scope.add = function (){
+				console.log(456)
+				$scope.list.push({name : $scope.cont});
+				console.log($scope.list);
+			};
+		}]);
+	</script>
+</head>
+<body ng-controller="con">
+	<ul>
+		<li ng-repeat="i in list">
+			<!--<span>{{i.name}}</span>
+			<span>{{i.price}}</span>-->
+			<span ng-bind="$parent.list[$index].name"></span>
+			<span ng-bind="$parent.list[$index].price"></span>
+		</li>
+	</ul>
+	<input type="text" name="" id="" value="" ng-model="cont" />
+	<button ng-click="add()">button</button>
+</body>
+
+</html>

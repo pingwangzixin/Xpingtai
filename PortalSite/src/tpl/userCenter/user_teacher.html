@@ -1,0 +1,151 @@
+<div class="wx_user_bg">
+    <select name="" id="" class="wx_nav_select" ng-model="ustate" ng-options="userState.id as userState.name for userState in userStates" ng-change="userstateChange()"></select>
+    <div class="wx_search_user">
+       
+       <span style="position:relative">
+           <span class="wx_search" ng-hide="quxian"><input type="text" ng-model="sckey" ng-focus="showxiala()" class="searchSchool" placeholder="请选择省市区学校" ng-keyup="keyinput()"><span class="wx_down_select">▼</span></span>
+           <div class="ditutc">
+               <!--      点击出来的     -->
+               <div class="xuanzequyu" ng-hide="selectarea">
+                    <div class="left fl">
+                        <span class="allarea">所有区域 ▼</span>
+                        <ul>
+                            <li ng-repeat="a in areas" ng-class="{active:changeActive==a.id}" ng-click="changeId($index)">{{a.name}}</li> 
+                        </ul>
+                    </div>
+                    <div class="right fl">
+                        <span class="jigoutype">机构类型 ▼</span>
+                        <ul>
+                            <li>幼儿园</li>
+                            <li>小学</li>
+                            <li class="active">小学教学点</li>
+                            <li>初级中学</li>
+                            <li>九年一贯制学校</li>
+                            <li>高级中学</li>
+                            <li>完全中学</li>
+                            <li>特殊教育学校</li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <!--      输入之后出来的      -->
+               <div class="keyseacher toggle" ng-hide="inputrue">
+                    <div class="seachertit">
+                        <select name="" class="quyuselect">
+                            <option value="">牡丹江</option>
+                        </select>
+                        <select name="" class="schooltype">
+                            <option value="">小学</option>
+                            <option value="">初中</option>
+                            <option value="">高中</option>
+                        </select>
+                    </div>
+                    <div class="scresult">
+                        <ul>
+                            <li ng-repeat="sc in schooldata1"><span class="resultscool">{{sc.name}}</span><span class="rusltdiqu">{{sc.schadd}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+           </div>
+       </span>
+        
+        <input type="text" placeholder="请输入教师姓名/手机号" class="search_user_input" ng-model="teacherInfo" ng-keyup="reltime()">
+        <button class="wx_btn inquiry" ng-click="selectTeacher()">查询</button>
+        <button class="wx_btn add" ng-click="addteacher()" ng-hide="huishouzhan">新增</button>
+        <button class="wx_btn inadd" ng-hide="huishouzhan">批量导入</button>
+        <button class="wx_btn downmodel" ng-hide="huishouzhan">下载模板</button>
+    </div>
+    <div class="user_list_table">
+        <table border="1" cellpadding="0" cellspacing="0" class="user_list_tb">
+            <thead>
+                <tr ng-mouseleave="yincanglist($event)">
+                    <th style="width:156px;">
+                        <input type="checkbox" ng-click="selectAll($event)" ng-checked="isSelectedAll()" id="cked"><label for="cked"></label>
+                    </th>
+                    <th style="text-align:left;width:200px;">教师姓名</th>
+                    <th style="width:160px;text-align:left;">手机</th>
+                    <th style="text-align:left;">角色</th>
+                    <th style="width:169px;"> <span class="wx_contrl" ng-click="contrl($event)" style="cursor: pointer">操作&nbsp;&nbsp;▼</span>
+                        <ul class="wx_caozuo_ul" style="display:none">
+                            <li ng-show="huishouzhan"><em class="icon iconfont icon-fanhui"></em>批量还原</li>
+                            <li ng-show="yizhuce" ng-click="piliangshenhe()"><em class="icon iconfont icon-kejian"></em>批量审核</li>
+                            <li ng-show="yitingyong"><em class="icon iconfont icon-kaiguan2"></em>批量启用</li>
+                            <li ng-show="yizhuce"><em class="icon iconfont icon-offline"></em>批量停用</li>
+                            <li ng-show="yizhuce" ng-click="piliangchongzhi()"><em class="icon iconfont icon-unlock"></em>重置密码</li>
+                            <li ng-show="huishouzhan"><em class="icon iconfont wx_red_color icon-shanchu"></em><span class="wx_color_red">彻底删除</span></li>
+                            <li ng-show="!huishouzhan" ng-click="alldelete()"><em class="icon iconfont wx_red_color icon-shanchu"></em><span class="wx_color_red">批量删除</span></li>
+                        </ul>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in userTeacher1" ng-mouseleave="yincanglist($event)">
+                    <td>
+                        <input type="checkbox" name="selected" ng-checked="isSelected(user.userId)" ng-click="updateSelection($event,user.userId)" id="cked{{$index}}"><label for="cked{{$index}}"></label>
+                    </td>
+                    <td><i ng-show="user.uStating==1" class="wx_yuan_cheng"></i>{{user.name}} <span ng-show="user.uStating==1" class="wx_will_examine">待审核</span> </td>
+                    <td>{{user.mobl}}</td>
+                    <td>{{user.role}}</td>
+                    <td class="wx_caozuo">
+                        <button class="wx_contrl" ng-click="contrl($event)">操作&nbsp;&nbsp;∨</button>
+                        <ul class="wx_caozuo_ul" style="display:none">
+                            <li ng-show="huishouzhan" ng-click="resetUser($index,user.userId)"><em class="icon iconfont icon-fanhui"></em>还原</li>
+                            <li ng-show="yizhuce" ng-click="shenhe($index,user.uStating,user.userId)"><em class="icon iconfont icon-kejian"></em>审核</li>
+                            <li ng-show="yitingyong"><em class="icon iconfont icon-kaiguan2"></em>启用</li>
+                            <li ng-click="editor(user.userId)"><em class="icon iconfont icon-bianji1"></em>编辑</li>
+                            <li ng-show="yizhuce" ng-click="tingyong(user.userId)"><em class="icon iconfont icon-offline"></em>停用</li>
+                            <li ng-show="yizhuce" ng-click="chongzhimima(user.userId)"><em class="icon iconfont icon-unlock"></em>重置密码</li>
+                            <li ng-show="huishouzhan"><em class="icon iconfont wx_red_color icon-shanchu"></em><span class="wx_color_red">彻底删除</span></li>
+                            <li ng-show="!huishouzhan" ng-click="deluser($index,user.userId)"><em class="icon iconfont wx_red_color icon-shanchu"></em><span class="wx_color_red">删除</span></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="wx_paging">
+            <zjy-pagination conf="contentpageConfig" onSelectStart="return false"></zjy-pagination>
+            <div class="wx_user_total">共<span ng-bind="contentpageConfig.totalItems"></span>条记录</div>
+        </div>
+    </div>
+</div>
+<!--添加教师弹窗-->
+<div class="wx_add_str toggle" ng-hide="addteacherTc">
+    <div class="wx_hide"></div>
+    <div class="wx_add_str_con  wx_add_ter_con">
+        <div class="wx_add_par_tit"> <span class="fl wx_bold">添加教师</span> <i class="fr" ng-click="addteacherTc = true">×</i> </div>
+        <div class="wx_add_str_detail">
+            <p>教师姓名</p>
+            <input type="text" ng-model="teacherName">
+            <p>身份证号</p>
+            <input type="text" ng-model="teacherNo">
+            <p>性别</p>
+            <input type="radio" name="sex" value="男" id="nan" ng-model="sex">
+            <label for="nan">男</label>
+            <input type="radio" name="sex" value="女" id="nv" ng-model="sex">
+            <label for="nv">女</label>
+            <p>手机号</p>
+            <input type="text" class="searchSchool" ng-model="teacherMobl">
+            <p>学校</p>
+            <p style="position:relative;margin-bottom:0;margin-top:5px;">
+                <input type="text" class="searchSchool"><span style="position:absolute;right:10px;top:8px;">▼</span> </p>
+            <p>角色</p>
+            <ul class="wx_add_ter_ul">
+                <li ng-class="{active:active}" ng-repeat="r in range" ng-model="liname" ng-click="active = !active">{{r.name}}</li>
+            </ul>
+            <button class="wx_sure_btn" ng-click="sureTj()">确认提交</button>
+        </div>
+    </div>
+</div>
+
+
+<!--删除弹框-->
+<div class="gy_del_down zy_delete_role" ng-hide="conformTc">
+    <div class="gy_hide"></div>
+    <div class="gy_con"><!--弹框具体宽高自定义-->
+    	<p class="zy_delete_who">确定要删除<span>xxxxx</span>老师吗？</p>
+    	<div class="zy_del_btn">
+    		<button class="zy_cancel_role" ng-click="conformTc = !conformTc">取消</button>
+    		<button class="zy_sure_role" ng-click="conformdel()">确认</button>
+    	</div>
+	</div>
+</div>
